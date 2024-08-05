@@ -1,0 +1,16 @@
+{
+    "name": "pluginly/content-restriction",
+    "autoload": {
+        "psr-4": {
+            "ContentRestriction\\": "app/"
+        }
+    },
+    "scripts": {
+        "setup": [
+			"composer install --no-cache"
+		],
+       "build": [
+			"composer -d vendor --no-plugins --no-interaction install --no-scripts --no-dev"
+		]
+    }
+}
