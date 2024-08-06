@@ -43,13 +43,13 @@ class User {
 	public static function ip(): string {
 		$ip = '127.0.0.1'; // Local IP
 		if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
-			$ip = $_SERVER['HTTP_CLIENT_IP'];
+			$ip = sanitize_text_field( $_SERVER['HTTP_CLIENT_IP'] );
 		} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+			$ip = sanitize_text_field( $_SERVER['HTTP_X_FORWARDED_FOR'] );
 		} else {
-			$ip = ! empty( $_SERVER['REMOTE_ADDR'] ) ? $_SERVER['REMOTE_ADDR'] : $ip;
+			$ip = ! empty( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( $_SERVER['REMOTE_ADDR'] ) : $ip;
 		}
 
-		return sanitize_text_field( $ip );
+		return $ip;
 	}
 }

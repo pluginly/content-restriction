@@ -79,7 +79,10 @@ Yes. content restriction can restrict access to media that is embedded within a 
 No you don’t have to create account to use this plugin. Gated content rules setup & membership data live securely within the central WordPress dashboard of your website.
 
 
+= Content Restriction is awesome! Can I contribute? =
+Yes, you can! Join in on our [GitHub repository](https://github.com/pluginly/content-restriction/).
+
 == Changelog ==
 
-= 1.0 – Aug 5, 2024 =
+= 1.0 – Aug 7, 2024 =
 * Initial Release 
