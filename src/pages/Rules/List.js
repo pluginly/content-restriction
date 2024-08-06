@@ -5,6 +5,7 @@ import postData from '@helpers/postData';
 import ModifiedTime from '@helpers/ModifiedTime';
 import showDeleteConfirm from '@helpers/showDeleteConfirm';
 import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
+import { __ } from '@wordpress/i18n';
 
 export default function List() {
   const [rules, setRules] = useState( [] );
@@ -26,11 +27,10 @@ export default function List() {
     });
     postData( 'content-restriction/rules/update', { rule_id: id, data:{isPublished: checked, title: title, rule: rule} } )
         .then( ( res ) => {
-          openNotificationWithIcon('success', 'Successfully updated!')
+          openNotificationWithIcon('success', __( 'Successfully updated!', 'content-restriction' ))
         } )
         .catch( ( error ) => {
-          openNotificationWithIcon('error', 'Status update error')
-          console.log('Status Update Error', error);
+          openNotificationWithIcon('error', __( 'Status update error', 'content-restriction' ))
         });
   }
 
@@ -40,11 +40,9 @@ export default function List() {
           setRules(res);
       } )
       .catch( ( error ) => {
-        openNotificationWithIcon('error', "Something wen't wrong!")
-          console.log('Rules List Error', error);
+        openNotificationWithIcon('error', __( "Something wen't wrong!", 'content-restriction' ))
       });
   }, []);
-
 
   return (
     <div class="content-restriction__rules relative">
@@ -52,16 +50,16 @@ export default function List() {
         <thead class="content-restriction__rules__list__header">
           <tr>
             <th scope="col" width="5%">
-              Status
+              {__( 'Status', 'content-restriction' )}
             </th>
             <th scope="col">
-              Name
+              {__( 'Name', 'content-restriction' )}
             </th>
             <th scope="col">
-              Last edit	
+              {__( 'Last edit', 'content-restriction' )}
             </th>
             <th scope="col">
-              Action
+              {__( 'Action', 'content-restriction' )}
             </th>
           </tr>
         </thead>
@@ -69,7 +67,6 @@ export default function List() {
           {
             rules.length > 0 ? 
             rules.map((rule, index) => {
-              // setIsPublished(rule.is_published);
               return(
                 <tr key={index}>
                   <td>
@@ -89,7 +86,7 @@ export default function List() {
                     <ModifiedTime timestamp={rule.modified} />
                   </td>
                   <td className="content-restriction__rules__action">
-                    <Tooltip title="Delete">
+                    <Tooltip title={__( 'Delete', 'content-restriction' )}>
                       <a href='#' className="delete-btn">
                         <svg
                           onClick={() => showDeleteConfirm(rule.id)}
@@ -115,7 +112,7 @@ export default function List() {
               )
             }) :
             <tr>
-              <td colSpan="4" className="text-center">No rules was found! Create new rule</td>
+              <td colSpan="4" className="text-center">{__( 'No rules was found! Create new rule', 'content-restriction' )}</td>
             </tr>
           }
         </tbody>

@@ -1,3 +1,5 @@
+import { __ } from '@wordpress/i18n';
+
 export default function ModifiedTime( { timestamp } ) {
 	let jsTime = timestamp * 1000;
 	const relativeTime = getRelativeTime(jsTime);
@@ -11,23 +13,23 @@ const getRelativeTime = (timestamp) => {
   
     let interval = Math.floor(seconds / 31536000);
     if (interval >= 1) {
-      return interval === 1 ? "1 year ago" : interval + " years ago";
+      return interval === 1 ? __( " 1 year ago", 'content-restriction' ) : interval + __( " years ago", 'content-restriction' );
     }
     interval = Math.floor(seconds / 2592000);
     if (interval >= 1) {
-      return interval === 1 ? "1 month ago" : interval + " months ago";
+      return interval === 1 ? __( " 1 month ago", 'content-restriction' ) : interval + __( " months ago", 'content-restriction' );
     }
     interval = Math.floor(seconds / 86400);
     if (interval >= 1) {
-      return interval === 1 ? "1 day ago" : interval + " days ago";
+      return interval === 1 ? __( " 1 day ago", 'content-restriction' ) : interval + __( " days ago", 'content-restriction' );
     }
     interval = Math.floor(seconds / 3600);
     if (interval >= 1) {
-      return interval === 1 ? "1 hour ago" : interval + " hours ago";
+      return interval === 1 ? __( " 1 hour ago", 'content-restriction' ) : interval +  __( " hours ago", 'content-restriction' );
     }
     interval = Math.floor(seconds / 60);
     if (interval >= 1) {
-      return interval === 1 ? "1 minute ago" : interval + " minutes ago";
+      return interval === 1 ? __( " 1 minute ago", 'content-restriction' ) : interval + __( " minutes ago", 'content-restriction' );
     }
-    return Math.floor(seconds) === 1 ? "1 second ago" : Math.floor(seconds) + " seconds ago";
+    return Math.floor(seconds) === 1 ? __( " 1 second ago", 'content-restriction' ) : Math.floor(seconds) + __( " seconds ago", 'content-restriction' );
 };

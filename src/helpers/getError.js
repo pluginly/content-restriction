@@ -1,20 +1,22 @@
+import { __ } from '@wordpress/i18n';
+
 export default function getErrorMessage( code ) {
 	let errorMessage = '';
 	switch ( code ) {
 		case 404:
-			errorMessage = 'Resource not found';
+			errorMessage = __( 'Resource not found', 'content-restriction' );
 			break;
 		case 400:
-			errorMessage = 'Invalid Request';
+			errorMessage = __( 'Invalid Request', 'content-restriction' );
 			break;
 		case 422:
-			errorMessage = 'Invalid data';
+			errorMessage = __( 'Invalid data', 'content-restriction' );
 			break;
 		case 500:
-			errorMessage = 'Internal server error';
+			errorMessage = __( 'Internal server error', 'content-restriction' );
 			break;
 		default:
-			errorMessage = 'Technical error';
+			errorMessage = __( 'Technical error', 'content-restriction' );
 			break;
 	}
 	return errorMessage;

@@ -1,4 +1,4 @@
-import logo from '@icons/logo.svg';
+import { __ } from '@wordpress/i18n';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 
@@ -6,15 +6,9 @@ const items = [
   {
     key: 'rules',
     label: (
-      <Link to="/" className="content-restriction__menu__single">Rules</Link>
+      <Link to="/" className="content-restriction__menu__single">{__( 'Rules', 'content-restriction' )}</Link>
     ),
-  },
-  {
-    key: 'integrations',
-    label: (
-      <Link to="/integrations" className="content-restriction__menu__single">Integrations</Link>
-    ),
-  },
+  }
 ];
 
 export default function Menus({ }) {

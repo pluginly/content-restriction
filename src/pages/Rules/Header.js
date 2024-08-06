@@ -8,6 +8,7 @@ import postData from '@helpers/postData';
 import logo from '@icons/logo.svg';
 import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
 import showDeleteConfirm from "@helpers/showDeleteConfirm";
+import { __ } from '@wordpress/i18n';
 
 export default function Header({ }) {
 	const [ contentRule, setContentRule ] = useState( {} );
@@ -27,17 +28,16 @@ export default function Header({ }) {
       postData( 
         'content-restriction/rules/create', { data:{isPublished, title: ruleTitle, rule: contentRule} } )
         .then( ( res ) => {
-          openNotificationWithIcon('success', 'Successfully Created!')
+          openNotificationWithIcon('success', __( 'Successfully Created!', 'content-restriction' ))
           setRuleID(res);
           history(`/rule/${res}`);
           window.location.reload();
         } )
         .catch( ( error ) => {
-          openNotificationWithIcon('error', 'Rules create error')
-          console.log('Rules Create Error', error);
+          openNotificationWithIcon('error', __( 'Rules create error', 'content-restriction' ))
         });
     } else {
-      openNotificationWithIcon('warning', 'Please complete the setup');
+      openNotificationWithIcon('warning', __( 'Please complete the setup', 'content-restriction' ));
     }
   }
 
@@ -50,14 +50,13 @@ export default function Header({ }) {
     if(contentRuleCompleted) {
       postData( 'content-restriction/rules/update', { rule_id: ruleId, data:{isPublished, title: ruleTitle, rule: contentRule} } )
         .then( ( res ) => {
-          openNotificationWithIcon('success', 'Successfully Updated!');
+          openNotificationWithIcon('success', __( 'Successfully Updated!', 'content-restriction' ));
         } )
         .catch( ( error ) => {
-          openNotificationWithIcon('error', 'Rules update error')
-          console.log('Rules Update Error', error);
+          openNotificationWithIcon('error', __( 'Rules update error', 'content-restriction' ))
         });
     } else {
-      openNotificationWithIcon('warning', 'Please complete the setup')
+      openNotificationWithIcon('warning', __( 'Please complete the setup', 'content-restriction' ))
     }
   }
 
@@ -183,7 +182,7 @@ export default function Header({ }) {
             className="content-restriction__btn content-restriction__btn--create"
             onClick={publishButtonClickHandler}
           >
-            {ruleID ? 'Update' : 'Publish'}
+            {ruleID ? __( 'Update', 'content-restriction' ): __( 'Publish', 'content-restriction' )}
           </button>
           {
             ruleID &&
@@ -201,7 +200,7 @@ export default function Header({ }) {
                             className="content-restriction__single__btn__dropdown__btn content-restriction__single__btn__dropdown__btn--delete"
                             onClick={() => showDeleteConfirm(ruleID)}
                         >
-                            Delete
+                          {__( 'Delete', 'content-restriction' )}
                         </button>
                     </li>
               </ul>

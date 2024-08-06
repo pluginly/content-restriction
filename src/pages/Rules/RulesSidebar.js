@@ -5,6 +5,7 @@ import 'react-tabs/style/react-tabs.css';
 import store from '@store/index';
 import transformString from '@helpers/transformString';
 import transformOptionsForSelect from '@helpers/transformOptionsForSelect';
+import { __ } from '@wordpress/i18n';
 
 const { TextArea } = Input;
 
@@ -98,7 +99,6 @@ const RulesSidebar = () => {
             }));
         } else {
             // Handle case when selectedOptionTest is undefined
-            console.error('Selected option is undefined for value:', value);
             setNestedOptions([]);
         }
     };
@@ -208,7 +208,6 @@ const RulesSidebar = () => {
                 sidebarVisible ? 'content-restriction__sidebar--visible' : ''
             }`}
         >
-            {/* <div className="content-restriction__sidebar__overlay" onClick={closeSidebar}></div> */}
             {selectedAction ? (
                 <div className="content-restriction__sidebar__content">
                     <div className="content-restriction__sidebar__content__header">
@@ -219,7 +218,7 @@ const RulesSidebar = () => {
                             className="content-restriction__sidebar__content__btn"
                             onClick={(e) => changeAction(e)}
                         >
-                            Change
+                           {__( 'Change', 'content-restriction' )}
                         </button>
                         <button
                             className="content-restriction__sidebar__content__close-btn"
@@ -234,7 +233,6 @@ const RulesSidebar = () => {
                                 className="tab-content content-restriction__sidebar__tab__content"
                                 id="nav-tabContent"
                             >
-                                {/* <TabPanel> */}
                                 <div className="content-restriction__sidebar__tab__content__event">
                                     <div className="content-restriction__sidebar__tab__content__event__wrapper">
                                         {conditionValue ? (
@@ -242,12 +240,12 @@ const RulesSidebar = () => {
                                         ) : selectedAction?.type === 'select' ? (
                                             <>
                                                 <h3 className="content-restriction__sidebar__tab__content__event__title">
-                                                    Select {selectedAction?.name} (required)
+                                                {__( 'Select ', 'content-restriction' )} {selectedAction?.name}   {__( '(required) ', 'content-restriction' )}
                                                 </h3>
                                                 <Select
                                                     allowClear
                                                     style={{ width: '100%', marginBottom: '10px' }}
-                                                    placeholder="Please select an option"
+                                                    placeholder={__( 'Please select an option', 'content-restriction' )}
                                                     onChange={handleMainSelectChange}
                                                     options={transformOptionsForSelect(
                                                         selectedAction?.options
@@ -258,7 +256,7 @@ const RulesSidebar = () => {
                                                     <>
                                                         <h3 className="content-restriction__sidebar__tab__content__event__title">
                                                             {' '}
-                                                            Choose {transformString(selectedKey)}
+                                                            {__( 'Choose', 'content-restriction' )} {transformString(selectedKey)}
                                                         </h3>
                                                         <Select
                                                             mode="multiple"
@@ -391,7 +389,7 @@ const RulesSidebar = () => {
                                                                             mode="multiple"
                                                                             allowClear
                                                                             style={{ width: '100%' }}
-                                                                            placeholder="Please select"
+                                                                            placeholder={__( "Please select", 'content-restriction' )}
                                                                             onChange={(values) =>
                                                                                 handleInputChange(
                                                                                     key,
@@ -419,7 +417,7 @@ const RulesSidebar = () => {
                                                         }
                                                     )
                                                 ) : (
-                                                    <div>No options available</div>
+                                                    <div>{__( 'No options available', 'content-restriction' )}</div>
                                                 )}
                                             </>
                                         ) : (

@@ -1,6 +1,7 @@
 import { SyncOutlined, EllipsisOutlined } from "@ant-design/icons";
 import { useEffect, useRef } from '@wordpress/element';
 import { Dropdown } from 'antd';
+import { __ } from '@wordpress/i18n';
 
 export default function DropDownContent (props) {
     const { ruleId, type, openKey, setOpenKey, changeAction, resetType } = props;
@@ -29,7 +30,7 @@ export default function DropDownContent (props) {
                     e.stopPropagation(); 
                     resetType(e, type);
                 }}>
-                    Remove
+                    {__( 'Remove', 'content-restriction' )}
                 </a>
             ),
         },
@@ -40,7 +41,7 @@ export default function DropDownContent (props) {
                     e.stopPropagation(); 
                     changeAction(e, type);
                 }}>
-                    Change
+                    {__( 'Change', 'content-restriction' )}
                 </a>
             ),
         },

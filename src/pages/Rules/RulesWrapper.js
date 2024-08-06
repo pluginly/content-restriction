@@ -7,6 +7,7 @@ import RulesModal from './RulesModal';
 import RulesSidebar from './RulesSidebar';
 import transformString from '@helpers/transformString';
 import defaultIcon from '@icons/default.svg';
+import { __ } from '@wordpress/i18n';
 
 export default function RulesWrapper() {
     const [ruleId, setRuleId] = useState(null);
@@ -86,7 +87,7 @@ export default function RulesWrapper() {
                         } else {
                         }
                     } catch (error) {
-                        console.log('Wrapper - Rules Data Error', error);
+                        // console.log('Wrapper - Rules Data Error', error);
                     }
                 };
                 
@@ -95,7 +96,7 @@ export default function RulesWrapper() {
                 fetchData('restrict-view', initialRestrictView);  
             } )
             .catch( ( error ) => {
-                console.log('Rules List Error', error);
+                // console.log('Rules List Error', error);
             });
     }, [])
 
@@ -194,7 +195,7 @@ export default function RulesWrapper() {
                                     resetType={resetType}
                                 />
                             </>
-                        ) : <h3 className="content-restriction__single__btn__title">Who can see the content?</h3>}
+                        ) : <h3 className="content-restriction__single__btn__title">{__( 'Who can see the content?', 'content-restriction' )}</h3>}
                     </div>
                 </div>
                 <div className="content-restriction__single">
@@ -215,7 +216,7 @@ export default function RulesWrapper() {
                                     resetType={resetType}
                                 />
                             </>
-                        ) : <h3 className="content-restriction__single__btn__title">What content will be unlocked?</h3>}
+                        ) : <h3 className="content-restriction__single__btn__title">{__( 'What content will be unlocked?', 'content-restriction' )}</h3>}
                     </div>
                 </div>
                 <div className="content-restriction__single">
@@ -236,7 +237,7 @@ export default function RulesWrapper() {
                                     resetType={resetType}
                                 />
                             </>
-                        ) : <h3 className="content-restriction__single__btn__title">How should the content be protected?</h3>}
+                        ) : <h3 className="content-restriction__single__btn__title">{__( 'How should the content be protected?', 'content-restriction' )}</h3>}
                     </div>
                 </div>
             </section>

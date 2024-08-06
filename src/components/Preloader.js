@@ -1,7 +1,9 @@
+import { __ } from '@wordpress/i18n';
+
 const Preloader = () => {
 	return (
 		<div className="content-restriction__preloader">
-			Content Restriction Dashboard Loading...
+			{__( 'Content Restriction Dashboard Loading...', 'content-restriction' )}
 		</div>
 	);
 };

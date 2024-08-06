@@ -3,6 +3,7 @@ import { useEffect, useState } from '@wordpress/element';
 import store from '@store/index';
 import postData from '@helpers/postData';
 import defaultIcon from '@icons/default.svg';
+import { __ } from '@wordpress/i18n';
 
 const RulesModal = () => {
     const state = select('content-restriction-stores');
@@ -25,18 +26,18 @@ const RulesModal = () => {
             setSelectedType( ruleType );
             
             if( 'restrict-view' === selectedType ) {
-                setModalTitle('How should the content be protected?');
-                setModalSubTitle('When user does not have access permission, the following options help control their experience.');
+                setModalTitle(__( 'How should the content be protected?', 'content-restriction' ));
+                setModalSubTitle(__( 'When user does not have access permission, the following options help control their experience.', 'content-restriction' ));
             } 
 
             if( 'what-content' === selectedType ) {
-                setModalTitle('What content will be unlocked?');
-                setModalSubTitle('When user have access permission, the following content will be available.');
+                setModalTitle(__( 'What content will be unlocked?', 'content-restriction' ));
+                setModalSubTitle(__( 'When user have access permission, the following content will be available.', 'content-restriction' ));
             }
 
             if( 'who-can-see' === selectedType ) {
-                setModalTitle('Who can see the content?');
-                setModalSubTitle('Which user type should be allowed to see the content.');
+                setModalTitle(__( 'Who can see the content?', 'content-restriction' ));
+                setModalSubTitle(__( 'Which user type should be allowed to see the content.', 'content-restriction' ));
             }
         } );
 
@@ -50,9 +51,6 @@ const RulesModal = () => {
             .then( ( res ) => {
                 setRulesType(res);
             } )
-            .catch( ( error ) => {
-                console.log('Modal - Rules Data Error', error);
-            });
     }
 
     useEffect( () => {
