@@ -46,6 +46,6 @@ class Time {
 	}
 
 	public static function create_date( $count = '-7days' ) {
-		return date( 'Y-m-d', strtotime( $count, self::now() ) );
+		return gmdate( 'Y-m-d', strtotime( $count, self::now() ) );
 	}
 }

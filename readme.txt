@@ -58,9 +58,6 @@ Install Content Restriction either via the WordPress.org plugin repository or by
 Yes! This plugin works with most theme out-of-the-box. However some themes may need adjustments due to not using WordPress/WooCommerce standard hooks or styles or if they add their own customizations which might conflict with Content Restriction.
 **If you have any issues using Content Restriction with your theme please let us know through the [support forum](https://wordpress.org/support/plugin/content-restriction/) and we’ll fix it asap.**
 
-= Is there a content restriction PRO version? =
-No. It’s completely free to use. Enjoy!
-
 = Is content restriction  compliant with privacy laws (GDPR / RGPD / CCPA / LGPD)? =
 We value your privacy and your customers’ privacy.
 
@@ -80,7 +77,7 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 
 = Content Restriction is awesome! Can I contribute? =
-Yes, you can! Join in on our [GitHub repository](https://github.com/pluginly/content-restriction/).
+Yes, you can! Join in on our [GitHub repository](https://github.com/pluginly/cont∑ent-restriction/).
 
 == Changelog ==
 
