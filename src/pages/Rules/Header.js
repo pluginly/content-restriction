@@ -135,9 +135,9 @@ export default function Header({ }) {
       <div className="content-restriction__header">
         <div className="content-restriction__header__action content-restriction__header__action--left">
           <a href={content_restriction_admin.plugin_admin_url} class="content-restriction__btn content-restriction__btn--sm content-restriction__btn--back">
-            <ArrowLeftOutlined />
+            <ArrowLeftOutlined /> {__( 'Back', 'content-restriction' )}
           </a>
-          <img src={logo} alt="CR" />
+          
           <div className="content-restriction__header__action__input">
             { 
               editableTitle ?

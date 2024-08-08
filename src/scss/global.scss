@@ -30,9 +30,8 @@ body.active-modal {
   position: relative;
   .container {
     min-height: 100vh;
-    padding: 20px;
     padding-top: 0;
-    background-color: #fff;
+    // background-color: #fff;
   }
   // Preloader CSS
   &__preloader {
@@ -74,11 +73,13 @@ body.active-modal {
       }
     }
     &--back {
-      color: #000;
-      font-size: 22px;
+      color: #999;
+      font-size: 16px;
+      padding: 0 !important;
       &:hover,
       &:focus {
-        background-color: #ff4f00;
+        color: #222;
+        box-shadow: none;
       }
     }
     &--delete {
@@ -116,7 +117,7 @@ body.active-modal {
     &__action {
       position: relative;
       display: flex;
-      gap: 5px;
+      gap: 20px;
       flex: 1;
       align-items: center;
       &--left {

@@ -8,7 +8,13 @@ const items = [
     label: (
       <Link to="/" className="content-restriction__menu__single">{__( 'Rules', 'content-restriction' )}</Link>
     ),
-  }
+  },
+  {
+    key: 'integrations',
+    label: (
+      <Link to="/integrations" className="content-restriction__menu__single">{__( 'Integrations', 'content-restriction' )}</Link>
+    ),
+  },
 ];
 
 export default function Menus({ }) {

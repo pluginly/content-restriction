@@ -1,5 +1,4 @@
 .content-restriction__integrations {
-	background-color: #fff;
 	clear: both;
     padding-block-start: 10px;
 	&__header {
@@ -12,15 +11,17 @@
 		display: grid;
 		grid-gap: 20px;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-		padding: 20px;
+		padding: 60px;
+		padding-top: 0;
 		&__item {
 			border: 1px solid #e6e8ea;
-			border-radius: 3px;
+			border-radius: 5px;
 			display: flex;
 			padding: 20px 24px;
 			flex-direction: column;
 			align-items: flex-start;
 			transition: all .3s;
+			background-color: #fff;
 			&__header {
 				display: flex;
 				justify-content: space-between;
