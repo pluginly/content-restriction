@@ -57,11 +57,18 @@
 					text-decoration: none;
 				}
 				.action {
-					background: #f1f3f5;
-					border-radius: 100px;
-					padding: 3px 8px;
 					text-decoration: none;
-					color: #000;
+					cursor: pointer;
+					font-size: 12px;
+					font-weight: 500;
+					line-height: 1.2;
+					padding: 8px 16px;
+					outline: none;
+					border: none;
+					border-radius: var(--content-restriction-border-radius);
+					background-color: var(--content-restriction-primary-color);
+					transition: var(--content-restriction-transition-hover);
+					color: #fff;
 				}
 			}
 		}

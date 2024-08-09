@@ -1,3 +1,9 @@
+:root {
+  --content-restriction-primary-color: #93003f;
+  --content-restriction-transition-hover: all .3s;
+  --content-restriction-border-radius: 5px;
+}
+
 #wpcontent {
   padding-left: 0px !important;
 }
@@ -31,7 +37,6 @@ body.active-modal {
   .container {
     min-height: 100vh;
     padding-top: 0;
-    // background-color: #fff;
   }
   // Preloader CSS
   &__preloader {
@@ -63,7 +68,7 @@ body.active-modal {
       color: #ffffff;
     }
     &--create {
-      background-color: #ff4f00;
+      background-color: var(--content-restriction-primary-color);
       &:hover,
       &:focus {
         background-color: #2b2358;
@@ -145,6 +150,12 @@ body.active-modal {
       }
       &--right {
         justify-content: flex-end;
+        .upgrade-to-pro {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          color: #F17C10 !important;
+        }
       }
       &__input {
         display: flex;
@@ -202,7 +213,7 @@ body.active-modal {
           }
         }
         &:hover {
-          background-color: #ff4f00;
+          background-color: var(--content-restriction-primary-color);
         }
         &.ant-switch-checked {
           background: rgb(8, 111, 61) !important;

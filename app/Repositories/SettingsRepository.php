@@ -57,6 +57,7 @@ class SettingsRepository {
 				],
 				'status'    => false, // status of this setting
 				'installed' => false, // check whether plugin installed? if not then don't allow to trigger the option
+				'link'      => '#',
 			],
 			[
 				'title'     => __( 'Directorist', 'content-restriction' ),
@@ -69,6 +70,7 @@ class SettingsRepository {
 				],
 				'installed' => false,
 				'status'    => false,
+				'action'    => 'upgrade',
 			],
 			[
 				'title'     => __( 'FluentCRM', 'content-restriction' ),
@@ -105,6 +107,7 @@ class SettingsRepository {
 				],
 				'installed' => false,
 				'status'    => false,
+				'action'    => 'upgrade',
 			],
 			[
 				'title'     => __( ' Easy Digital Downloads - All Access', 'content-restriction' ),
@@ -117,6 +120,7 @@ class SettingsRepository {
 				],
 				'installed' => false,
 				'status'    => false,
+				'action'    => 'upgrade',
 			],
 			[
 				'title'     => __( 'Block Editor', 'content-restriction' ),
