@@ -98,7 +98,10 @@ export default function Header({ }) {
       <div className="content-restriction__header">
         <div className="content-restriction__header__action content-restriction__header__action--left">
 
-          <Link to="/" class="content-restriction__btn content-restriction__btn--sm content-restriction__btn--back"><ArrowLeftOutlined /> {__( 'Back', 'content-restriction' )}</Link>
+          <Link to="/" class="content-restriction__btn content-restriction__btn--sm content-restriction__btn--back">
+            <ArrowLeftOutlined /> 
+            {__( 'Back', 'content-restriction' )}
+          </Link>
           
           <div className="content-restriction__header__action__input">
             { 

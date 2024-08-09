@@ -29,12 +29,12 @@ export default function List() {
       [id]: checked,
     });
     postData( 'content-restriction/rules/update', { rule_id: id, data:{isPublished: checked, title: title, rule: rule} } )
-        .then( ( res ) => {
-          openNotificationWithIcon('success', __( 'Successfully updated!', 'content-restriction' ))
-        } )
-        .catch( ( error ) => {
-          openNotificationWithIcon('error', __( 'Status update error', 'content-restriction' ))
-        });
+      .then( ( res ) => {
+        openNotificationWithIcon('success', __( 'Successfully updated!', 'content-restriction' ))
+      } )
+      .catch( ( error ) => {
+        openNotificationWithIcon('error', __( 'Status update error', 'content-restriction' ))
+      });
   }
 
   useEffect( () => {

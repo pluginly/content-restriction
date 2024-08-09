@@ -22,6 +22,7 @@ const handleDeleteClick = (id, navigate) => {
   postData(`content-restriction/rules/delete?rule_id=${id}`)
     .then((res) => {
       navigate('/rules');
+      window.location.reload();
     })
     .catch((error) => {
       // Handle error if necessary
