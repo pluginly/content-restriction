@@ -6,7 +6,7 @@ const items = [
   {
     key: 'rules',
     label: (
-      <Link to="/" className="content-restriction__menu__single">{__( 'Rules', 'content-restriction' )}</Link>
+      <Link to="/rules" className="content-restriction__menu__single">{__( 'Rules', 'content-restriction' )}</Link>
     ),
   },
   {
@@ -17,14 +17,16 @@ const items = [
   },
 ];
 
-export default function Menus({ }) {
+export default function Menus({menuKey}) {
   return (
     <Menu 
+    selectedKeys={[menuKey]}
     mode="horizontal" 
     items={items} 
     lineWidth="0"
     style={{
       width: "100%",
+      lineHeight: "70px"
     }}
     />
   );

@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 export default function Integrations() {
   return (
 	<>
-      	<GlobalHeader/>
+      	<GlobalHeader menuKey='integrations'/>
 
 		<div className="content-restriction__integrations container">
 

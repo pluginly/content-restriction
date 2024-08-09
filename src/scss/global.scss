@@ -105,7 +105,7 @@ body.active-modal {
     justify-content: space-between;
     background-color: #ffffff;
     padding: 0 20px;
-    height: 70px;
+    min-height: 70px;
     position: relative;
     z-index: 2;
     border-bottom: 1px solid rgb(215, 213, 210);
@@ -121,6 +121,7 @@ body.active-modal {
       flex: 1;
       align-items: center;
       &--left {
+        gap: 5px;
         .content-restriction__btn {
           .hover-icon {
             display: none;

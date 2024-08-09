@@ -2,7 +2,7 @@ import logo from '@icons/logo.svg';
 import Menus from './Menus';
 import { __ } from '@wordpress/i18n';
 
-export default function GlobalHeader({ }) {
+export default function GlobalHeader({menuKey}) {
   return (
     <>
       <div className="content-restriction__header">
@@ -11,7 +11,7 @@ export default function GlobalHeader({ }) {
         </div>
        
         <div className="content-restriction__header__action content-restriction__header__action--right">
-          <Menus />
+          <Menus menuKey={menuKey}/>
         </div>
       </div>
     </>

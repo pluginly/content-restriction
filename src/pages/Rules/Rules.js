@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 export default function Rules() {
   return (
       <>
-        <GlobalHeader/>
+        <GlobalHeader menuKey='rules' />
 
         <div className="content-restriction__rules container">
 
