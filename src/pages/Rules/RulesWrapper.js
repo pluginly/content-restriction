@@ -27,17 +27,21 @@ export default function RulesWrapper() {
         const urlParts = window.location.href.split('/');
         const lastUrlPart = urlParts[urlParts.length - 1];
 
-        setRuleId(urlParts[6])
-
-        if (!lastUrlPart) {
+        if ( 'rule' === lastUrlPart ) {
             dispatch(store).setWhoCanSee(resetValues);
             dispatch(store).setWhatContent(resetValues);
             dispatch(store).setRestrictView(resetValues);
+            dispatch(store).setRuleTitle('');
+
+            return;
         }
+
+        setRuleId(urlParts[6])
 
         postData( 'content-restriction/rules/list' )
             .then( ( res ) => {
                 setRules(res);
+
                 const activeRule = res.length > 0 && res.find(rule => rule.id === lastUrlPart);
 
                 dispatch(store).setRule(activeRule?.rule);

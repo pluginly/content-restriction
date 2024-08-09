@@ -9,6 +9,7 @@ import logo from '@icons/logo.svg';
 import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
 import showDeleteConfirm from "@helpers/showDeleteConfirm";
 import { __ } from '@wordpress/i18n';
+import { Link } from 'react-router-dom';
 
 export default function Header({ }) {
 	const [ contentRule, setContentRule ] = useState( {} );
@@ -134,9 +135,8 @@ export default function Header({ }) {
     <>
       <div className="content-restriction__header">
         <div className="content-restriction__header__action content-restriction__header__action--left">
-          <a href={content_restriction_admin.plugin_admin_url} class="content-restriction__btn content-restriction__btn--sm content-restriction__btn--back">
-            <ArrowLeftOutlined /> {__( 'Back', 'content-restriction' )}
-          </a>
+
+          <Link to="/" class="content-restriction__btn content-restriction__btn--sm content-restriction__btn--back"><ArrowLeftOutlined /> {__( 'Back', 'content-restriction' )}</Link>
           
           <div className="content-restriction__header__action__input">
             { 
