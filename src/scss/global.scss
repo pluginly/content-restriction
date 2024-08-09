@@ -35,7 +35,7 @@ body.active-modal {
 .content-restriction {
   position: relative;
   .container {
-    min-height: 100vh;
+    min-height: 90vh;
     padding-top: 0;
   }
   // Preloader CSS
@@ -109,7 +109,7 @@ body.active-modal {
     align-items: center;
     justify-content: space-between;
     background-color: #ffffff;
-    padding: 0 20px;
+    padding: 0 30px;
     min-height: 70px;
     position: relative;
     z-index: 2;
@@ -231,3 +231,21 @@ body.active-modal {
     }
   }
 }
+
+// Upgrade to PRO
+#toplevel_page_content-restriction .wp-submenu li:nth-child(6) a {
+  font-weight: 600;
+  background-color: var(--content-restriction-primary-color);
+  color: #fff;
+  margin: 3px 10px 0;
+  display: block;
+  text-align: center;
+  border-radius: 3px;
+  transition: all .3s;
+}
+
+#toplevel_page_content-restriction .wp-submenu li:nth-child(6) a:hover {
+  background-color: #c60055;
+  box-shadow: none;
+}
+
