@@ -1,7 +1,8 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import CreateRules from "@pages/Rules/CreateRules";
+import CreateRule from "@pages/Rules/CreateRule";
 import Rules from "@pages/Rules/Rules";
 import Integrations from "@pages/Integrations/Integrations";
+import UpdateRule from "@pages/Rules/UpdateRule";
 
 function App() {
   return (
@@ -9,8 +10,11 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<Rules />} />
-          <Route path="/rule" element={<CreateRules />} />
-          <Route path="/rule/:id" element={<CreateRules />} />
+
+          <Route path="/rules" element={<Rules />} />
+          <Route path="/rule" element={<CreateRule />} />
+          <Route path="/rule/:id" element={<UpdateRule />} />
+
           <Route path="/integrations" element={<Integrations />} />
         </Routes>
       </HashRouter>

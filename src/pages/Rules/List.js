@@ -6,8 +6,11 @@ import ModifiedTime from '@helpers/ModifiedTime';
 import showDeleteConfirm from '@helpers/showDeleteConfirm';
 import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
 import { __ } from '@wordpress/i18n';
+import { useNavigate } from 'react-router-dom';
 
 export default function List() {
+  const history = useNavigate();
+
   const [rules, setRules] = useState( [] );
   const [publishedStatus, setPublishedStatus] = useState({});
 
@@ -89,7 +92,7 @@ export default function List() {
                     <Tooltip title={__( 'Delete', 'content-restriction' )}>
                       <a href='#' className="delete-btn">
                         <svg
-                          onClick={() => showDeleteConfirm(rule.id)}
+                          onClick={() => showDeleteConfirm(rule.id, history)}
                           width="13"
                           height="18"
                           viewBox="0 0 304 384"

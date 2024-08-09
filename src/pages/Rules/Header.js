@@ -4,12 +4,11 @@ import { useEffect, useRef, useState } from '@wordpress/element';
 import { Switch } from "antd";
 import { useNavigate } from 'react-router-dom';
 import store from '@store/index';
-import postData from '@helpers/postData';
-import logo from '@icons/logo.svg';
-import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
 import showDeleteConfirm from "@helpers/showDeleteConfirm";
 import { __ } from '@wordpress/i18n';
 import { Link } from 'react-router-dom';
+import handleCreateRule from "./handleCreateRule";
+import handleUpdateRule from "./handleUpdateRule";
 
 export default function Header({ }) {
 	const [ contentRule, setContentRule ] = useState( {} );
@@ -21,45 +20,6 @@ export default function Header({ }) {
   
   const history = useNavigate();
   const state = select('content-restriction-stores');
-  
-  const handleCreateRule = () => {
-    const contentRuleCompleted = contentRule && contentRule.hasOwnProperty('who-can-see') && contentRule.hasOwnProperty('what-content') && contentRule.hasOwnProperty('restrict-view');
-
-    if(contentRuleCompleted) {
-      postData( 
-        'content-restriction/rules/create', { data:{isPublished, title: ruleTitle, rule: contentRule} } )
-        .then( ( res ) => {
-          openNotificationWithIcon('success', __( 'Successfully Created!', 'content-restriction' ))
-          setRuleID(res);
-          history(`/rule/${res}`);
-          window.location.reload();
-        } )
-        .catch( ( error ) => {
-          openNotificationWithIcon('error', __( 'Rules create error', 'content-restriction' ))
-        });
-    } else {
-      openNotificationWithIcon('warning', __( 'Please complete the setup', 'content-restriction' ));
-    }
-  }
-
-  const handleUpdateRule = (ruleId) => { 
-    const contentRuleCompleted = contentRule &&
-      contentRule.hasOwnProperty('who-can-see') &&
-      contentRule.hasOwnProperty('what-content') &&
-      contentRule.hasOwnProperty('restrict-view') 
-
-    if(contentRuleCompleted) {
-      postData( 'content-restriction/rules/update', { rule_id: ruleId, data:{isPublished, title: ruleTitle, rule: contentRule} } )
-        .then( ( res ) => {
-          openNotificationWithIcon('success', __( 'Successfully Updated!', 'content-restriction' ));
-        } )
-        .catch( ( error ) => {
-          openNotificationWithIcon('error', __( 'Rules update error', 'content-restriction' ))
-        });
-    } else {
-      openNotificationWithIcon('warning', __( 'Please complete the setup', 'content-restriction' ))
-    }
-  }
 
   // Handler function to be called when the switch is toggled
   const handleChange = (checked) => {
@@ -129,8 +89,10 @@ export default function Header({ }) {
     };
   }, [editableTitle]);
 
-  const publishButtonClickHandler = ruleID ? () => handleUpdateRule(ruleID) : handleCreateRule;
-  
+  const publishButtonClickHandler = ruleID
+    ? () => handleUpdateRule(ruleID, contentRule, ruleTitle, isPublished)
+    : () => handleCreateRule(contentRule, ruleTitle, isPublished, history);
+
   return (
     <>
       <div className="content-restriction__header">
@@ -198,7 +160,7 @@ export default function Header({ }) {
                     <li className="content-restriction__single__btn__dropdown__item">
                         <button
                             className="content-restriction__single__btn__dropdown__btn content-restriction__single__btn__dropdown__btn--delete"
-                            onClick={() => showDeleteConfirm(ruleID)}
+                            onClick={() => showDeleteConfirm(ruleID, history)}
                         >
                           {__( 'Delete', 'content-restriction' )}
                         </button>
