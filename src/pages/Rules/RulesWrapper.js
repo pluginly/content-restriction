@@ -31,7 +31,11 @@ export default function RulesWrapper() {
             dispatch(store).setWhoCanSee(resetValues);
             dispatch(store).setWhatContent(resetValues);
             dispatch(store).setRestrictView(resetValues);
+
             dispatch(store).setRuleTitle('');
+            dispatch(store).setRulePublished('');
+            dispatch(store).setRuleID('');
+            dispatch(store).setRule('');
 
             return;
         }
