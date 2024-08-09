@@ -37,6 +37,7 @@ class App {
 		 */
 		( new \ContentRestriction\Providers\AdminServiceProviders() )->boot();
 		( new \ContentRestriction\Providers\FrontendServiceProviders() )->boot();
+		( new \ContentRestriction\Providers\IntegrationServiceProviders() )->boot();
 		( new \ContentRestriction\Providers\RestrictionServiceProviders )->boot();
 
 		static::$loaded = \true;
