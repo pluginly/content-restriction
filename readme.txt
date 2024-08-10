@@ -77,9 +77,9 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 
 = Content Restriction is awesome! Can I contribute? =
-Yes, you can! Join in on our [GitHub repository](https://github.com/pluginly/cont∑ent-restriction/).
+Yes, you can! Join in on our [GitHub repository](https://github.com/pluginly/content-restriction/).
 
 == Changelog ==
 
-= 1.0 – Aug 7, 2024 =
+= 1.0.1 – Aug 7, 2024 =
 * Initial Release 
