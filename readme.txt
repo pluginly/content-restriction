@@ -1,10 +1,10 @@
 === Content Restriction ===
-Contributors: Pluginly
+Contributors: Pluginly, HeyMehedi
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,5 +81,5 @@ Yes, you can! Join in on our [GitHub repository](https://github.com/pluginly/con
 
 == Changelog ==
 
-= 1.0.1 – Aug 7, 2024 =
+= 1.0.2 – Aug 11, 2024 =
 * Initial Release 
