@@ -81,5 +81,5 @@ Yes, you can! Join in on our [GitHub repository](https://github.com/pluginly/con
 
 == Changelog ==
 
-= 1.0.2 – Aug 11, 2024 =
+= 1.0.2 – Aug 13, 2024 =
 * Initial Release 
