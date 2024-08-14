@@ -7,6 +7,8 @@
 
 namespace ContentRestriction\Repositories;
 
+use ContentRestriction\DTO\RuleCreateDTO;
+use ContentRestriction\Models\RuleModel;
 use ContentRestriction\Utils\Options;
 use ContentRestriction\Utils\Random;
 use ContentRestriction\Utils\Time;
@@ -22,11 +24,23 @@ class RuleRepository {
 
 	public function create( array $data ): string {
 		$key = Random::key( 16 );
-		if ( $this->set( $key, $data ) ) {
-			return $key;
-		}
+		error_log( print_r( $data, true ) );
+		$dto = ( new RuleCreateDTO )
+			->set_uid( $key )
+			->set_title( sanitize_text_field( $data['title'] ) )
+			->set_status( (bool) $data['isPublished'] )
+			->set_who_can_see( maybe_serialize( $data['rule']['who-can-see'] ) )
+			->set_what_content( maybe_serialize( $data['rule']['what-content'] ) )
+			->set_restrict_view( maybe_serialize( $data['rule']['restrict-view'] ) )
+			->set_priority( 1 );
 
-		return 0;
+		try {
+			( new RuleModel() )->create( $dto );
+
+			return $key;
+		} catch ( \Throwable $th ) {
+			return 0;
+		}
 	}
 
 	public function read( string $id ): array {
@@ -86,6 +100,27 @@ class RuleRepository {
 	}
 
 	public function get_all(): array {
+		$rules = ( new RuleModel )->get_all();
+
+		$rules = array_map(
+			function ( $rule ) {
+				$rule['rule']['who-can-see']   = maybe_unserialize( $rule['who_can_see'] );
+				$rule['rule']['what-content']  = maybe_unserialize( $rule['what_content'] );
+				$rule['rule']['restrict-view'] = maybe_unserialize( $rule['restrict_view'] );
+
+				unset( $rule['who_can_see'] );
+				unset( $rule['what_content'] );
+				unset( $rule['restrict_view'] );
+
+				return $rule;
+			},
+			$rules
+		);
+
+		return ! empty( $rules ) ? $rules : [];
+	}
+
+	public function get_all_(): array {
 		if ( isset( $this->rules ) ) {
 			return $this->rules;
 		}

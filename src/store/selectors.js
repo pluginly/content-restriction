@@ -3,7 +3,7 @@ const selectors = {
 		return state.contentRule.ruleData;
 	},
 	getRulePublished(state) {
-		return state.contentRule.isPublished;
+		return state.contentRule.status;
 	},
 	getRuleID(state) {
 		return state.contentRule.ruleID;

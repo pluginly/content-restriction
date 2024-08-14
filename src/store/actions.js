@@ -28,17 +28,17 @@ const actions = {
 		};
 	},
 
-	setRulePublished( isPublished ) {
+	setRulePublished( status ) {
 		return {
 			type: 'SET_RULE_PUBLISHED',
-			isPublished,
+			status,
 		};
 	},
 
-	setRuleID( ruleID ) {
+	setRuleID( uid ) {
 		return {
 			type: 'SET_RULE_ID',
-			ruleID,
+			uid,
 		};
 	},
 

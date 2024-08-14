@@ -1,3 +1,6 @@
+Content Restriction is a comprehensive, easy-to-use & feature-packed WordPress content restriction plugin to limit users/visitors from viewing content by restricting access.
+
+
 ## Installation and Usages
 
 1. Clone Github Repository
