@@ -60,6 +60,8 @@ class Enqueuer extends EnqueuerBase {
 			'plugin_rest_base' => rest_url( '/content-restriction' ),
 			'plugin_version'   => Config::get( 'version' ),
 
+			'pro_available'    => defined( 'CONTENT_RESTRICTION_PRO_VERSION' ) ? true : false,
+
 			'rest_args'        => [
 				'root'  => esc_url_raw( rest_url() ),
 				'nonce' => wp_create_nonce( 'wp_rest' ),

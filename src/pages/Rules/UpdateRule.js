@@ -1,7 +1,7 @@
 import Header from "./Header";
 import RulesWrapper from "./RulesWrapper";
 
-export default function CreateRules() {
+export default function UpdateRule() {
 
   return (
     <>

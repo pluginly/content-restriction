@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from '@wordpress/element';
 import { Switch } from "antd";
 import { useNavigate } from 'react-router-dom';
 import store from '@store/index';
-import postData from '@helpers/postData';
-import logo from '@icons/logo.svg';
-import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
 import showDeleteConfirm from "@helpers/showDeleteConfirm";
 import { __ } from '@wordpress/i18n';
+import { Link } from 'react-router-dom';
+import handleCreateRule from "./handleCreateRule";
+import handleUpdateRule from "./handleUpdateRule";
 
 export default function Header({ }) {
 	const [ contentRule, setContentRule ] = useState( {} );
@@ -128,16 +128,20 @@ export default function Header({ }) {
     };
   }, [editableTitle]);
 
-  const publishButtonClickHandler = ruleID ? () => handleUpdateRule(ruleID) : handleCreateRule;
-  
+  const publishButtonClickHandler = ruleID
+    ? () => handleUpdateRule(ruleID, contentRule, ruleTitle, isPublished)
+    : () => handleCreateRule(contentRule, ruleTitle, isPublished, history);
+
   return (
     <>
       <div className="content-restriction__header">
         <div className="content-restriction__header__action content-restriction__header__action--left">
-          <a href={content_restriction_admin.plugin_admin_url} class="content-restriction__btn content-restriction__btn--sm content-restriction__btn--back">
-            <ArrowLeftOutlined />
-          </a>
-          <img src={logo} alt="CR" />
+
+          <Link to="/" class="content-restriction__btn content-restriction__btn--sm content-restriction__btn--back">
+            <ArrowLeftOutlined /> 
+            {__( 'Back', 'content-restriction' )}
+          </Link>
+          
           <div className="content-restriction__header__action__input">
             { 
               editableTitle ?
@@ -198,7 +202,7 @@ export default function Header({ }) {
                     <li className="content-restriction__single__btn__dropdown__item">
                         <button
                             className="content-restriction__single__btn__dropdown__btn content-restriction__single__btn__dropdown__btn--delete"
-                            onClick={() => showDeleteConfirm(ruleID)}
+                            onClick={() => showDeleteConfirm(ruleID, history)}
                         >
                           {__( 'Delete', 'content-restriction' )}
                         </button>

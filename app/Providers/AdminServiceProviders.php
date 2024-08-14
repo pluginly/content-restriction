@@ -17,6 +17,7 @@ class AdminServiceProviders extends \ContentRestriction\Common\ProviderBase {
 		 */
 		( new \ContentRestriction\Admin\Routes\ModulesRoute() );
 		( new \ContentRestriction\Admin\Routes\RulesRoute() );
+		( new \ContentRestriction\Admin\Routes\SettingsRoute() );
 
 		add_action( 'wp_loaded', [$this, 'hide_admin_notices'] );
 		add_action( 'admin_init', [$this, 'redirect_to_dashboard'] );

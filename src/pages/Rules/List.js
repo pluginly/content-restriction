@@ -6,8 +6,11 @@ import ModifiedTime from '@helpers/ModifiedTime';
 import showDeleteConfirm from '@helpers/showDeleteConfirm';
 import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
 import { __ } from '@wordpress/i18n';
+import { useNavigate } from 'react-router-dom';
 
 export default function List() {
+  const history = useNavigate();
+
   const [rules, setRules] = useState( [] );
   const [publishedStatus, setPublishedStatus] = useState({});
 
@@ -25,13 +28,14 @@ export default function List() {
       ...publishedStatus,
       [uid]: checked,
     });
-    postData( 'content-restriction/rules/update', { rule_id: uid, data:{status: checked, title: title, rule: rule} } )
-        .then( ( res ) => {
-          openNotificationWithIcon('success', __( 'Successfully updated!', 'content-restriction' ))
-        } )
-        .catch( ( error ) => {
-          openNotificationWithIcon('error', __( 'Status update error', 'content-restriction' ))
-        });
+    
+    postData( 'content-restriction/rules/update', { rule_id: uid, data:{status: checked, title: title, rule: rule} }  )
+      .then( ( res ) => {
+        openNotificationWithIcon('success', __( 'Successfully updated!', 'content-restriction' ))
+      } )
+      .catch( ( error ) => {
+        openNotificationWithIcon('error', __( 'Status update error', 'content-restriction' ))
+      });
   }
 
   useEffect( () => {
@@ -89,7 +93,7 @@ export default function List() {
                     <Tooltip title={__( 'Delete', 'content-restriction' )}>
                       <a href='#' className="delete-btn">
                         <svg
-                          onClick={() => showDeleteConfirm(rule.uid)}
+                          onClick={() => showDeleteConfirm(rule.uid, history)}
                           width="13"
                           height="18"
                           viewBox="0 0 304 384"

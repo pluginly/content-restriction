@@ -32,7 +32,7 @@ button {
   transition: all ease 0.3s;
   &:hover,
   &:focus {
-    border-color: #ff4f00;
+    border-color: var(--content-restriction-primary-color);
   }
   &::placeholder {
     color: #95928e;
@@ -52,7 +52,7 @@ button {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px 0px;
   transition: all ease 0.3s;
   &:hover {
-    border-color: #ff4f00;
+    border-color: var(--content-restriction-primary-color);
   }
   .ant-select-selector {
     padding: 6px 20px !important;
@@ -133,7 +133,7 @@ button {
 }
 .ant-slider {
   .ant-slider-track {
-    background-color: #ff4f00;
+    background-color: var(--content-restriction-primary-color);
   }
   &:hover {
     .ant-slider-track {
@@ -147,7 +147,7 @@ button {
   }
   .ant-slider-handle {
     &:after {
-      box-shadow: 0 0 0 2px #ff4f00;
+      box-shadow: 0 0 0 2px var(--content-restriction-primary-color);
     }
     &:focus,
     &:hover,
@@ -202,4 +202,31 @@ button {
 
 .ant-menu {
   justify-content: flex-end;
+}
+
+.ant-menu-item-selected, 
+.ant-menu.ant-menu-horizontal >.ant-menu-item-selected, 
+.ant-menu-submenu-selected, 
+.ant-menu.ant-menu-horizontal >.ant-menu-submenu-selected {
+  color: var(--content-restriction-primary-color);
+}
+.ant-menu-item-selected::after, 
+.ant-menu.ant-menu-horizontal >.ant-menu-item-selected::after, 
+.ant-menu-submenu-selected::after, 
+.ant-menu.ant-menu-horizontal >.ant-menu-submenu-selected::after {
+  border-bottom-color: var(--content-restriction-primary-color);
+}
+.ant-menu-item:hover::after, 
+.ant-menu.ant-menu-horizontal >.ant-menu-item:hover::after, 
+.ant-menu-submenu:hover::after, 
+.ant-menu.ant-menu-horizontal >.ant-menu-submenu:hover::after, 
+.ant-menu-item-active::after, 
+.ant-menu.ant-menu-horizontal >.ant-menu-item-active::after, 
+.ant-menu-submenu-active::after, 
+.ant-menu.ant-menu-horizontal >.ant-menu-submenu-active::after, 
+.ant-menu-item-open::after, 
+.ant-menu.ant-menu-horizontal >.ant-menu-item-open::after, 
+.ant-menu-submenu-open::after, 
+.ant-menu.ant-menu-horizontal >.ant-menu-submenu-open::after {
+  border-bottom-color: var(--content-restriction-primary-color);
 }

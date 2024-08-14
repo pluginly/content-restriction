@@ -6,8 +6,6 @@
  */
 namespace ContentRestriction\Setup;
 
-use ContentRestriction\Utils\Config;
-
 class Activate {
 	public function __construct( $file_name ) {
 		$this->auto_deactivate( $file_name );

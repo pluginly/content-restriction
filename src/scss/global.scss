@@ -1,3 +1,9 @@
+:root {
+  --content-restriction-primary-color: #93003f;
+  --content-restriction-transition-hover: all .3s;
+  --content-restriction-border-radius: 5px;
+}
+
 #wpcontent {
   padding-left: 0px !important;
 }
@@ -29,10 +35,8 @@ body.active-modal {
 .content-restriction {
   position: relative;
   .container {
-    min-height: 100vh;
-    padding: 20px;
+    min-height: 90vh;
     padding-top: 0;
-    background-color: #fff;
   }
   // Preloader CSS
   &__preloader {
@@ -64,7 +68,7 @@ body.active-modal {
       color: #ffffff;
     }
     &--create {
-      background-color: #ff4f00;
+      background-color: var(--content-restriction-primary-color);
       &:hover,
       &:focus {
         background-color: #2b2358;
@@ -74,11 +78,13 @@ body.active-modal {
       }
     }
     &--back {
-      color: #000;
-      font-size: 22px;
+      color: #999;
+      font-size: 16px;
+      padding: 0 !important;
       &:hover,
       &:focus {
-        background-color: #ff4f00;
+        color: #222;
+        box-shadow: none;
       }
     }
     &--delete {
@@ -103,8 +109,8 @@ body.active-modal {
     align-items: center;
     justify-content: space-between;
     background-color: #ffffff;
-    padding: 0 20px;
-    height: 70px;
+    padding: 0 30px;
+    min-height: 70px;
     position: relative;
     z-index: 2;
     border-bottom: 1px solid rgb(215, 213, 210);
@@ -116,10 +122,11 @@ body.active-modal {
     &__action {
       position: relative;
       display: flex;
-      gap: 5px;
+      gap: 20px;
       flex: 1;
       align-items: center;
       &--left {
+        gap: 5px;
         .content-restriction__btn {
           .hover-icon {
             display: none;
@@ -143,6 +150,12 @@ body.active-modal {
       }
       &--right {
         justify-content: flex-end;
+        .upgrade-to-pro {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          color: #F17C10 !important;
+        }
       }
       &__input {
         display: flex;
@@ -200,7 +213,7 @@ body.active-modal {
           }
         }
         &:hover {
-          background-color: #ff4f00;
+          background-color: var(--content-restriction-primary-color);
         }
         &.ant-switch-checked {
           background: rgb(8, 111, 61) !important;
@@ -218,3 +231,21 @@ body.active-modal {
     }
   }
 }
+
+// Upgrade to PRO
+#toplevel_page_content-restriction .wp-submenu li:nth-child(6) a {
+  font-weight: 600;
+  background-color: var(--content-restriction-primary-color);
+  color: #fff;
+  margin: 3px 10px 0;
+  display: block;
+  text-align: center;
+  border-radius: 3px;
+  transition: all .3s;
+}
+
+#toplevel_page_content-restriction .wp-submenu li:nth-child(6) a:hover {
+  background-color: #c60055;
+  box-shadow: none;
+}
+
