@@ -38,11 +38,11 @@ export default function RulesWrapper() {
         postData( 'content-restriction/rules/list' )
             .then( ( res ) => {
                 setRules(res);
-                const activeRule = res.length > 0 && res.find(rule => rule.id === lastUrlPart);
-
+                const activeRule = res.length > 0 && res.find(rule => rule.uid === lastUrlPart);
+                
                 dispatch(store).setRule(activeRule?.rule);
-                dispatch(store).setRuleID(activeRule?.id);
-                dispatch(store).setRulePublished(activeRule?.isPublished);
+                dispatch(store).setRuleID(activeRule?.uid);
+                dispatch(store).setRulePublished(activeRule?.status);
                 dispatch(store).setRuleTitle(activeRule?.title);
 
                 // Extract initial values from defaultData

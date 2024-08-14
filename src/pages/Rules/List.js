@@ -14,18 +14,18 @@ export default function List() {
   // Initialize state with the published status for each rule
   useEffect(() => {
     const initialStatus = rules.reduce((acc, rule) => {
-      acc[rule.id] = rule.isPublished;
+      acc[rule.uid] = rule.status;
       return acc;
     }, {});
     setPublishedStatus(initialStatus);
   }, [rules]);
 
-  const handleChange = (checked, id, title, rule) => {
+  const handleChange = (checked, uid, title, rule) => {
     setPublishedStatus({
       ...publishedStatus,
-      [id]: checked,
+      [uid]: checked,
     });
-    postData( 'content-restriction/rules/update', { rule_id: id, data:{isPublished: checked, title: title, rule: rule} } )
+    postData( 'content-restriction/rules/update', { rule_id: uid, data:{status: checked, title: title, rule: rule} } )
         .then( ( res ) => {
           openNotificationWithIcon('success', __( 'Successfully updated!', 'content-restriction' ))
         } )
@@ -71,14 +71,14 @@ export default function List() {
                 <tr key={index}>
                   <td>
                     <Switch
-                      checked={publishedStatus[rule.id]}
-                      onChange={(checked) => handleChange(checked, rule.id, rule.title, rule.rule)}
+                      checked={publishedStatus[rule.uid]}
+                      onChange={(checked) => handleChange(checked, rule.uid, rule.title, rule.rule)}
                       checkedChildren=""
                       unCheckedChildren=""
                     />
                   </td>
                   <td>
-                    <Link to={`/rule/${rule.id}`}>
+                    <Link to={`/rule/${rule.uid}`}>
                       {rule.title}
                     </Link>
                   </td>
@@ -89,7 +89,7 @@ export default function List() {
                     <Tooltip title={__( 'Delete', 'content-restriction' )}>
                       <a href='#' className="delete-btn">
                         <svg
-                          onClick={() => showDeleteConfirm(rule.id)}
+                          onClick={() => showDeleteConfirm(rule.uid)}
                           width="13"
                           height="18"
                           viewBox="0 0 304 384"
@@ -103,7 +103,7 @@ export default function List() {
                       </a>
                     </Tooltip>
                     <Tooltip title="Edit">
-                      <Link to={`/rule/${rule.id}`}>
+                      <Link to={`/rule/${rule.uid}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24" size="24" name="actionEdit"><path fill="#2D2E2E" d="m16.92 5 3.51 3.52 1.42-1.42-4.93-4.93L3 16.09V21h4.91L19.02 9.9 17.6 8.48 7.09 19H5v-2.09L16.92 5Z"></path></svg>
                       </Link>
                     </Tooltip>

@@ -15,7 +15,7 @@ export default function Header({ }) {
 	const [ ruleID, setRuleID ] = useState( '' );
 	const [ ruleTitle, setRuleTitle ] = useState( 'Untitled Rule' );
 	const [ editableTitle, setEditableTitle ] = useState( false );
-  const [ isPublished, setIsPublished ] = useState(false);
+  const [ status, setStatus ] = useState(false);
   const [ openDropDown, setOpenDropDown ] = useState(false);
   
   const history = useNavigate();
@@ -26,7 +26,7 @@ export default function Header({ }) {
 
     if(contentRuleCompleted) {
       postData( 
-        'content-restriction/rules/create', { data:{isPublished, title: ruleTitle, rule: contentRule} } )
+        'content-restriction/rules/create', { data:{status, title: ruleTitle, rule: contentRule} } )
         .then( ( res ) => {
           openNotificationWithIcon('success', __( 'Successfully Created!', 'content-restriction' ))
           setRuleID(res);
@@ -41,14 +41,14 @@ export default function Header({ }) {
     }
   }
 
-  const handleUpdateRule = (ruleId) => { 
+  const handleUpdateRule = (uid) => { 
     const contentRuleCompleted = contentRule &&
       contentRule.hasOwnProperty('who-can-see') &&
       contentRule.hasOwnProperty('what-content') &&
       contentRule.hasOwnProperty('restrict-view') 
 
     if(contentRuleCompleted) {
-      postData( 'content-restriction/rules/update', { rule_id: ruleId, data:{isPublished, title: ruleTitle, rule: contentRule} } )
+      postData( 'content-restriction/rules/update', { rule_id: uid, data:{status, title: ruleTitle, rule: contentRule} } )
         .then( ( res ) => {
           openNotificationWithIcon('success', __( 'Successfully Updated!', 'content-restriction' ));
         } )
@@ -62,7 +62,7 @@ export default function Header({ }) {
 
   // Handler function to be called when the switch is toggled
   const handleChange = (checked) => {
-    setIsPublished(checked);
+    setStatus(checked);
     dispatch(store).setRulePublished(checked);
   };
 
@@ -90,14 +90,14 @@ export default function Header({ }) {
     // Subscribe to changes in the store's data
     const storeUpdate = subscribe( () => {
         const rule = state.getRuleData();
-        const id = state.getRuleID();
+        const uid = state.getRuleID();
         const title = state.getRuleTitle();
         const publishedStatus = state.getRulePublished();
 
-        setRuleID(id);
+        setRuleID(uid);
         setRuleTitle(title || ruleTitle);
         setContentRule(rule);
-        setIsPublished(publishedStatus);
+        setStatus(publishedStatus);
     } );
 
     // storeUpdate when the component is unmounted
@@ -172,7 +172,7 @@ export default function Header({ }) {
        
         <div className="content-restriction__header__action content-restriction__header__action--right">
           <Switch
-            checked={isPublished}
+            checked={status}
             onChange={handleChange}
             checkedChildren=""
             unCheckedChildren=""

@@ -7,7 +7,7 @@ const DEFAULT_STATE = {
 	sidebarVisible: false,
 	ruleType: '',
 	contentRule: {
-		isPublished: false,
+		status: false,
 		ruleID: '',
 		ruleTitle: '',
 		whoCanSee: { },
@@ -81,7 +81,7 @@ const store = createReduxStore('content-restriction-stores', {
 					...state,
 					contentRule: {
 						...state.contentRule,
-						isPublished: action.isPublished,
+						status: action.status,
 					},
 				};
 				break;

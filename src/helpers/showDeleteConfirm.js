@@ -18,8 +18,8 @@ export default function showDeleteConfirm( ruleID ) {
   });
 };
 
-const handleDeleteClick = (id) => {    
-  postData( `content-restriction/rules/delete?rule_id=${id}` )
+const handleDeleteClick = (uid) => {    
+  postData( `content-restriction/rules/delete?rule_id=${uid}` )
   .then( ( res ) => {
     window.location.reload();
   } )
