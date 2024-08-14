@@ -19,7 +19,7 @@ class RuleModel {
 		$this->table = $wpdb->prefix . 'content_restriction_rules';
 	}
 
-	public function create( \ContentRestriction\DTO\RuleCreateDTO $dto ): void {
+	public function create( \ContentRestriction\DTO\RuleCreateDTO $dto ) {
 		error_log( print_r( $dto, true ) );
 		$this->wpdb->query(
 			$this->wpdb->prepare(
@@ -38,7 +38,7 @@ class RuleModel {
 		);
 	}
 
-	public function update( \ContentRestriction\DTO\RuleUpdateDTO $dto ): void {
+	public function update( \ContentRestriction\DTO\RuleUpdateDTO $dto ) {
 		$this->wpdb->query(
 			$this->wpdb->prepare(
 				"UPDATE {$this->table}

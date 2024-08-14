@@ -37,6 +37,5 @@ class DBMigrator {
 		}
 
 		\ContentRestriction\Database\Rules::migrate();
-		// \ContentRestriction\Analytics\Databases::migrate();
 	}
 }

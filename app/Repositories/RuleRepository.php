@@ -8,10 +8,10 @@
 namespace ContentRestriction\Repositories;
 
 use ContentRestriction\DTO\RuleCreateDTO;
+use ContentRestriction\DTO\RuleUpdateDTO;
 use ContentRestriction\Models\RuleModel;
 use ContentRestriction\Utils\Options;
 use ContentRestriction\Utils\Random;
-use ContentRestriction\Utils\Time;
 
 class RuleRepository {
 	private string $option;
@@ -24,11 +24,11 @@ class RuleRepository {
 
 	public function create( array $data ): string {
 		$key = Random::key( 16 );
-		error_log( print_r( $data, true ) );
+
 		$dto = ( new RuleCreateDTO )
 			->set_uid( $key )
 			->set_title( sanitize_text_field( $data['title'] ) )
-			->set_status( (bool) $data['isPublished'] )
+			->set_status( (bool) $data['status'] )
 			->set_who_can_see( maybe_serialize( $data['rule']['who-can-see'] ) )
 			->set_what_content( maybe_serialize( $data['rule']['what-content'] ) )
 			->set_restrict_view( maybe_serialize( $data['rule']['restrict-view'] ) )
@@ -43,33 +43,27 @@ class RuleRepository {
 		}
 	}
 
-	public function read( string $id ): array {
-		foreach ( $this->rules as $key => $value ) {
-			if ( $value['id'] === $id ) {
-				return $this->rules[$key];
-			}
+	public function update( string $uid, array $data ): string {
+		$dto = ( new RuleUpdateDTO )
+			->set_uid( $uid )
+			->set_title( sanitize_text_field( $data['title'] ) )
+			->set_status( (bool) $data['status'] )
+			->set_who_can_see( maybe_serialize( $data['rule']['who-can-see'] ) )
+			->set_what_content( maybe_serialize( $data['rule']['what-content'] ) )
+			->set_restrict_view( maybe_serialize( $data['rule']['restrict-view'] ) )
+			->set_priority( 1 );
+
+		error_log( print_r( $dto, true ) );
+
+		try {
+			( new RuleModel() )->update( $dto );
+
+			return true;
+		} catch ( \Throwable $th ) {
+			error_log( print_r( $th, true ) );
+
+			return false;
 		}
-
-		return [];
-	}
-
-	public function update( string $id, array $data ): bool {
-		foreach ( $this->rules as $key => $rule ) {
-			if ( $rule['id'] === $id ) {
-				$data['id']       = $id;
-				$data['modified'] = Time::now();
-
-				$this->rules[$key] = $data;
-
-				$json = wp_json_encode( array_values( $this->rules ) );
-
-				Options::set( $this->option, $json );
-
-				return true;
-			}
-		}
-
-		return false;
 	}
 
 	public function delete( string $id ): bool {
@@ -86,17 +80,6 @@ class RuleRepository {
 		}
 
 		return false;
-	}
-
-	public function set( string $key, array $data ): bool {
-		$data['id']       = $key;
-		$data['modified'] = Time::now();
-
-		$this->rules[] = $data;
-
-		$json = wp_json_encode( $this->rules );
-
-		return Options::set( $this->option, $json );
 	}
 
 	public function get_all(): array {
@@ -118,16 +101,5 @@ class RuleRepository {
 		);
 
 		return ! empty( $rules ) ? $rules : [];
-	}
-
-	public function get_all_(): array {
-		if ( isset( $this->rules ) ) {
-			return $this->rules;
-		}
-
-		$json = Options::get( $this->option );
-		$arr  = json_decode( stripslashes( stripslashes( $json ) ), true );
-
-		return ! empty( $arr ) ? array_values( $arr ) : [];
 	}
 }
