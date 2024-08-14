@@ -28,7 +28,7 @@ class Replace extends \ContentRestriction\Common\RestrictViewBase {
 		\ContentRestriction\Utils\Analytics::add( [
 			'user_id' => get_current_user_id(),
 			'context' => 'locked',
-			'rule_id' => $this->r['id'],
+			'id' => $this->r['id'],
 		] );
 
 		add_filter( 'content_restriction_the_title', [$this, 'the_title'], 10 );

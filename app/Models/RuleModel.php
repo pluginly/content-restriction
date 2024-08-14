@@ -20,12 +20,10 @@ class RuleModel {
 	}
 
 	public function create( \ContentRestriction\DTO\RuleCreateDTO $dto ) {
-		error_log( print_r( $dto, true ) );
 		$this->wpdb->query(
 			$this->wpdb->prepare(
-				"INSERT INTO {$this->table} (uid, title, who_can_see, what_content, restrict_view, status, priority, modified, created_at)
-                VALUES (%s, %s, %s, %s, %s, %d, %d, %s, %s)",
-				$dto->get_uid(),
+				"INSERT INTO {$this->table} (title, who_can_see, what_content, restrict_view, status, priority, modified, created_at)
+                VALUES (%s, %s, %s, %s, %d, %d, %s, %s)",
 				$dto->get_title(),
 				$dto->get_who_can_see(),
 				$dto->get_what_content(),
@@ -36,6 +34,8 @@ class RuleModel {
 				Time::mysql()
 			)
 		);
+
+		return $this->wpdb->insert_id;
 	}
 
 	public function update( \ContentRestriction\DTO\RuleUpdateDTO $dto ) {
@@ -49,7 +49,7 @@ class RuleModel {
 					 status = %d,
 					 priority = %d,
 					 modified = %s
-				 WHERE uid = %s",
+				 WHERE id = %s",
 				$dto->get_title(),
 				$dto->get_who_can_see(),
 				$dto->get_what_content(),
@@ -57,7 +57,7 @@ class RuleModel {
 				$dto->is_status(),
 				$dto->get_priority(),
 				Time::mysql(),
-				$dto->get_uid()
+				$dto->get_id()
 			)
 		);
 	}
@@ -69,27 +69,12 @@ class RuleModel {
 		return $results;
 	}
 
-	// public function read( \ContentRestriction\DTO\RuleReadDTO $dto ) {
-	// 	$fields = $dto->get_fields();
-	// 	$where  = $dto->get_where();
-
-	// 	$start_date = $this->get_start_date();
-	// 	$end_date   = Time::create_date( 'tomorrow' );
-
-	// 	$sql = $this->wpdb->prepare(
-	// 		"SELECT {$fields}
-	// 		FROM {$this->table}
-	// 		WHERE $where (created_at BETWEEN %s AND %s)
-	// 		ORDER BY id DESC
-	// 		LIMIT %d",
-	// 		$start_date,
-	// 		$end_date,
-	// 		$dto->get_limit()
-	// 	);
-
-	// 	$results = $this->wpdb->get_results( $sql );
-
-	// 	return $results;
-	// }
-
+	public function delete( $id ) {
+		$this->wpdb->query(
+			$this->wpdb->prepare(
+				"DELETE FROM {$this->table} WHERE id = %d",
+				$id
+			)
+		);
+	}
 }

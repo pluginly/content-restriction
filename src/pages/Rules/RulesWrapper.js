@@ -10,7 +10,7 @@ import defaultIcon from '@icons/default.svg';
 import { __ } from '@wordpress/i18n';
 
 export default function RulesWrapper() {
-    const [ruleId, setRuleId] = useState(null);
+    const [id, setRuleId] = useState(null);
     const [rules, setRules] = useState( [] );
     const [selectedWhoCanSee, setWhoCanSee] = useState('');
     const [selectedWhatContent, setWhatContent] = useState('');
@@ -34,22 +34,22 @@ export default function RulesWrapper() {
 
             dispatch(store).setRuleTitle('');
             dispatch(store).setRulePublished('');
-            dispatch(store).setRuleID('');
+            dispatch(store).setId('');
             dispatch(store).setRule('');
 
             return;
         }
 
         setRuleId(urlParts[6])
-
+        
         postData( 'content-restriction/rules/list' )
             .then( ( res ) => {
                 setRules(res);
 
-                const activeRule = res.length > 0 && res.find(rule => rule.uid === lastUrlPart);
-                
+                const activeRule = res.length > 0 && res.find(rule => rule.id === lastUrlPart);
+               
+                dispatch(store).setId(activeRule?.id);
                 dispatch(store).setRule(activeRule?.rule);
-                dispatch(store).setRuleID(activeRule?.uid);
                 dispatch(store).setRulePublished(activeRule?.status);
                 dispatch(store).setRuleTitle(activeRule?.title);
 
@@ -195,7 +195,7 @@ export default function RulesWrapper() {
                             <>
                                 <h3 className="content-restriction__single__btn__title">{selectedWhoCanSee}</h3>
                                 <DropDownContent
-                                    ruleId={ruleId}
+                                    id={id}
                                     type="who-can-see"
                                     openKey={openKey}
                                     setOpenKey={setOpenKey}
@@ -216,7 +216,7 @@ export default function RulesWrapper() {
                             <>
                                 <h3 className="content-restriction__single__btn__title">{selectedWhatContent}</h3>
                                 <DropDownContent
-                                    ruleId={ruleId}
+                                    id={id}
                                     type="what-content"
                                     openKey={openKey}
                                     setOpenKey={setOpenKey}
@@ -237,7 +237,7 @@ export default function RulesWrapper() {
                             <>  
                                 <h3 className="content-restriction__single__btn__title">{selectedRestrictView}</h3>
                                 <DropDownContent
-                                    ruleId={ruleId}
+                                    id={id}
                                     type="restrict-view"
                                     openKey={openKey}
                                     setOpenKey={setOpenKey}

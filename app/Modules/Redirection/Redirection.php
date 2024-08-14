@@ -28,7 +28,7 @@ class Redirection extends \ContentRestriction\Common\RestrictViewBase {
 		\ContentRestriction\Utils\Analytics::add( [
 			'user_id' => get_current_user_id(),
 			'context' => 'locked',
-			'rule_id' => $this->r['id'],
+			'id' => $this->r['id'],
 		] );
 
 		add_action( 'content_restriction_template_redirect', [$this, 'redirect'] );

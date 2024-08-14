@@ -4,7 +4,7 @@ import { Dropdown } from 'antd';
 import { __ } from '@wordpress/i18n';
 
 export default function DropDownContent (props) {
-    const { ruleId, type, openKey, setOpenKey, changeAction, resetType } = props;
+    const { id, type, openKey, setOpenKey, changeAction, resetType } = props;
     const dropdownRef = useRef(null);
 
     useEffect(() => {
@@ -55,7 +55,7 @@ export default function DropDownContent (props) {
                 menu={{ items }}
                 trigger={['click']}
                 placement="bottomRight"
-                open={!ruleId && isOpen}
+                open={!id && isOpen}
                 onOpenChange={() => {
                     setOpenKey(type);
                 }}
@@ -64,14 +64,14 @@ export default function DropDownContent (props) {
                     className="content-restriction__single__btn__action"
                     onClick={(e) => {
                         e.stopPropagation();
-                        if (ruleId) {
+                        if (id) {
                             changeAction(e, type);
                         } else {
                             setOpenKey(type);
                         }
                     }}
                 >
-                    {!ruleId ? <EllipsisOutlined /> : <SyncOutlined />}
+                    {!id ? <EllipsisOutlined /> : <SyncOutlined />}
                 </button>
             </Dropdown>
         </div>

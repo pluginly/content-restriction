@@ -30,15 +30,15 @@ const actions = {
 
 	setRulePublished( status ) {
 		return {
-			type: 'SET_RULE_PUBLISHED',
+			type: 'SET_RULE_STATUS',
 			status,
 		};
 	},
 
-	setRuleID( uid ) {
+	setId( id ) {
 		return {
-			type: 'SET_RULE_ID',
-			uid,
+			type: 'SET_ID',
+			id,
 		};
 	},
 

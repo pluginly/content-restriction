@@ -8,7 +8,7 @@ const DEFAULT_STATE = {
 	ruleType: '',
 	contentRule: {
 		status: false,
-		ruleID: '',
+		id: '',
 		ruleTitle: '',
 		whoCanSee: { },
 		whatContent: { },
@@ -76,7 +76,7 @@ const store = createReduxStore('content-restriction-stores', {
 				break;
 			
 
-			case 'SET_RULE_PUBLISHED':
+			case 'SET_RULE_STATUS':
 				newState = {
 					...state,
 					contentRule: {
@@ -86,12 +86,12 @@ const store = createReduxStore('content-restriction-stores', {
 				};
 				break;
 					
-			case 'SET_RULE_ID':
+			case 'SET_ID':
 				newState = {
 					...state,
 					contentRule: {
 						...state.contentRule,
-						ruleID: action.ruleID,
+						id: action.id,
 					},
 				};
 				break;

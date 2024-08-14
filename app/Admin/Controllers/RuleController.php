@@ -43,11 +43,11 @@ class RuleController {
 	}
 
 	public function read( WP_REST_Request $request ) {
-		$rule_id = (string) $request->get_param( 'rule_id' );
+		$id = (string) $request->get_param( 'id' );
 
-		if ( empty( $rule_id ) ) {
+		if ( empty( $id ) ) {
 			return Response::error(
-				'invalid_rule_id',
+				'invalid_id',
 				__( 'Invalid Rule ID is provided.', 'content-restriction' ),
 				'rules/read',
 				404
@@ -56,19 +56,19 @@ class RuleController {
 
 		return Response::success(
 			( new RuleRepository() )->read(
-				$rule_id
+				$id
 			)
 		);
 	}
 
 	public function update( WP_REST_Request $request ) {
-		$rule_id = (string) $request->get_param( 'rule_id' );
+		$id = (string) $request->get_param( 'id' );
 		$data    = (array) $request->get_param( 'data' );
 
 		$errors = [];
 
-		if ( empty( $rule_id ) ) {
-			$errors['rule_id'] = __( 'Invalid Rule ID is provided.', 'content-restriction' );
+		if ( empty( $id ) ) {
+			$errors['id'] = __( 'Invalid Rule ID is provided.', 'content-restriction' );
 		}
 
 		if ( empty( $data ) ) {
@@ -94,17 +94,17 @@ class RuleController {
 
 		return Response::success(
 			( new RuleRepository() )->update(
-				$rule_id, $data
+				$id, $data
 			)
 		);
 	}
 
 	public function delete( WP_REST_Request $request ) {
-		$rule_id = (string) $request->get_param( 'rule_id' );
+		$id = (string) $request->get_param( 'id' );
 
-		if ( empty( $rule_id ) ) {
+		if ( empty( $id ) ) {
 			return Response::error(
-				'invalid_rule_id',
+				'invalid_id',
 				__( 'Invalid Rule ID is provided.', 'content-restriction' ),
 				'rules/delete',
 				422
@@ -113,7 +113,7 @@ class RuleController {
 
 		return Response::success(
 			( new RuleRepository() )->delete(
-				$rule_id
+				$id
 			)
 		);
 	}

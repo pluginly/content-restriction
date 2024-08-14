@@ -2,7 +2,7 @@ import postData from '@helpers/postData';
 import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
 import { __ } from '@wordpress/i18n';
 
-export default function handleCreateRule( contentRule, ruleTitle, isPublished, history ) {
+export default function handleCreateRule( contentRule, ruleTitle, status, history ) {
 	const contentRuleCompleted = contentRule 
       && contentRule.hasOwnProperty('who-can-see') 
       && contentRule.hasOwnProperty('what-content') 
@@ -10,15 +10,12 @@ export default function handleCreateRule( contentRule, ruleTitle, isPublished, h
 
     if(contentRuleCompleted) {
       postData( 
-        'content-restriction/rules/create', { data:{isPublished, title: ruleTitle, rule: contentRule} } )
+        'content-restriction/rules/create', { data:{status, title: ruleTitle, rule: contentRule} } )
         .then( ( res ) => {
           openNotificationWithIcon('success', __( 'Successfully Created!', 'content-restriction' ))
-        //   setRuleID(res);
-		console.log('res : ', res );
           history(`/rule/${res}`);
         } )
         .catch( ( error ) => {
-			console.log('error : ', error );
           openNotificationWithIcon('error', __( 'Rules create error', 'content-restriction' ))
         });
     } else {

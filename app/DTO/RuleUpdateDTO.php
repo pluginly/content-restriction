@@ -8,7 +8,7 @@
 namespace ContentRestriction\DTO;
 
 class RuleUpdateDTO {
-	public string $uid;
+	public string $id;
 	public string $title;
 	public string $who_can_see;
 	public string $what_content;
@@ -18,14 +18,14 @@ class RuleUpdateDTO {
 	public string $modified;
 	public string $created_at;
 
-	public function set_uid( string $uid ) {
-		$this->uid = $uid;
+	public function set_id( string $id ) {
+		$this->id = $id;
 
 		return $this;
 	}
 
-	public function get_uid() {
-		return $this->uid;
+	public function get_id() {
+		return $this->id;
 	}
 
 	public function set_title( string $title ) {

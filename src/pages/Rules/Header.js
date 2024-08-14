@@ -12,7 +12,7 @@ import handleUpdateRule from "./handleUpdateRule";
 
 export default function Header({ }) {
 	const [ contentRule, setContentRule ] = useState( {} );
-	const [ ruleID, setRuleID ] = useState( '' );
+	const [ id, setId ] = useState( '' );
 	const [ ruleTitle, setRuleTitle ] = useState( 'Untitled Rule' );
 	const [ editableTitle, setEditableTitle ] = useState( false );
   const [ status, setStatus ] = useState(false);
@@ -20,45 +20,6 @@ export default function Header({ }) {
   
   const history = useNavigate();
   const state = select('content-restriction-stores');
-  
-  const handleCreateRule = () => {
-    const contentRuleCompleted = contentRule && contentRule.hasOwnProperty('who-can-see') && contentRule.hasOwnProperty('what-content') && contentRule.hasOwnProperty('restrict-view');
-
-    if(contentRuleCompleted) {
-      postData( 
-        'content-restriction/rules/create', { data:{status, title: ruleTitle, rule: contentRule} } )
-        .then( ( res ) => {
-          openNotificationWithIcon('success', __( 'Successfully Created!', 'content-restriction' ))
-          setRuleID(res);
-          history(`/rule/${res}`);
-          window.location.reload();
-        } )
-        .catch( ( error ) => {
-          openNotificationWithIcon('error', __( 'Rules create error', 'content-restriction' ))
-        });
-    } else {
-      openNotificationWithIcon('warning', __( 'Please complete the setup', 'content-restriction' ));
-    }
-  }
-
-  const handleUpdateRule = (uid) => { 
-    const contentRuleCompleted = contentRule &&
-      contentRule.hasOwnProperty('who-can-see') &&
-      contentRule.hasOwnProperty('what-content') &&
-      contentRule.hasOwnProperty('restrict-view') 
-
-    if(contentRuleCompleted) {
-      postData( 'content-restriction/rules/update', { rule_id: uid, data:{status, title: ruleTitle, rule: contentRule} } )
-        .then( ( res ) => {
-          openNotificationWithIcon('success', __( 'Successfully Updated!', 'content-restriction' ));
-        } )
-        .catch( ( error ) => {
-          openNotificationWithIcon('error', __( 'Rules update error', 'content-restriction' ))
-        });
-    } else {
-      openNotificationWithIcon('warning', __( 'Please complete the setup', 'content-restriction' ))
-    }
-  }
 
   // Handler function to be called when the switch is toggled
   const handleChange = (checked) => {
@@ -89,15 +50,15 @@ export default function Header({ }) {
   useEffect( () => {
     // Subscribe to changes in the store's data
     const storeUpdate = subscribe( () => {
+        const id = state.getId();
         const rule = state.getRuleData();
-        const uid = state.getRuleID();
         const title = state.getRuleTitle();
-        const publishedStatus = state.getRulePublished();
+        const status =  state.getRuleStatus();
 
-        setRuleID(uid);
+        setId(id);
         setRuleTitle(title || ruleTitle);
         setContentRule(rule);
-        setStatus(publishedStatus);
+        setStatus(status);
     } );
 
     // storeUpdate when the component is unmounted
@@ -128,9 +89,9 @@ export default function Header({ }) {
     };
   }, [editableTitle]);
 
-  const publishButtonClickHandler = ruleID
-    ? () => handleUpdateRule(ruleID, contentRule, ruleTitle, isPublished)
-    : () => handleCreateRule(contentRule, ruleTitle, isPublished, history);
+  const publishButtonClickHandler = id
+    ? () => handleUpdateRule(id, contentRule, ruleTitle, status)
+    : () => handleCreateRule(contentRule, ruleTitle, status, history);
 
   return (
     <>
@@ -186,10 +147,10 @@ export default function Header({ }) {
             className="content-restriction__btn content-restriction__btn--create"
             onClick={publishButtonClickHandler}
           >
-            {ruleID ? __( 'Update', 'content-restriction' ): __( 'Publish', 'content-restriction' )}
+            {id ? __( 'Update', 'content-restriction' ): __( 'Publish', 'content-restriction' )}
           </button>
           {
-            ruleID &&
+            id &&
             <>
               <button 
                 className="content-restriction__btn content-restriction__btn--delete"
@@ -202,7 +163,7 @@ export default function Header({ }) {
                     <li className="content-restriction__single__btn__dropdown__item">
                         <button
                             className="content-restriction__single__btn__dropdown__btn content-restriction__single__btn__dropdown__btn--delete"
-                            onClick={() => showDeleteConfirm(ruleID, history)}
+                            onClick={() => showDeleteConfirm(id, history)}
                         >
                           {__( 'Delete', 'content-restriction' )}
                         </button>

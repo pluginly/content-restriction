@@ -2,11 +2,11 @@ const selectors = {
 	getRuleData(state) {
 		return state.contentRule.ruleData;
 	},
-	getRulePublished(state) {
+	getRuleStatus(state) {
 		return state.contentRule.status;
 	},
-	getRuleID(state) {
-		return state.contentRule.ruleID;
+	getId(state) {
+		return state.contentRule.id;
 	},
 	getRuleTitle(state) {
 		return state.contentRule.ruleTitle;

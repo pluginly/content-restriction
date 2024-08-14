@@ -40,7 +40,7 @@ class ModuleRepository {
 		}
 
 		foreach ( $this->restrictions as $key => $r ) {
-			if ( ! isset( $r['isPublished'] ) || ! $r['isPublished'] ) {
+			if ( ! isset( $r['status'] ) || ! $r['status'] ) {
 				continue;
 			}
 

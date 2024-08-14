@@ -35,7 +35,7 @@ class Blur extends \ContentRestriction\Common\RestrictViewBase {
 			'user_id' => get_current_user_id(),
 			'post_id' => get_the_ID(),
 			'context' => 'locked',
-			'rule_id' => $this->r['id'],
+			'id' => $this->r['id'],
 		] );
 
 		$this->protection->set_post_id( get_the_ID() );
