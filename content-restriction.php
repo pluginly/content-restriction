@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
  * Plugin Name: Content Restriction
  * Plugin URI: https://wordpress.org/plugins/content-restriction/
  * Description: Content Restriction - A simple and user-friendly plugin to restrict users / visitors from viewing posts by restricting access, as simple as that.
- * Version: 1.0.2
+ * Version: 1.0.0
  * Author: Pluginly
  * Author URI: https://profiles.wordpress.org/pluginly/
  * License: GPLv2 or later

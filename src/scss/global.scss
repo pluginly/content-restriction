@@ -147,6 +147,10 @@ body.active-modal {
           padding: 0 8px;
           line-height: normal;
         }
+        img {
+          max-width: 45px;
+          border-radius: 10px;
+        }
       }
       &--right {
         justify-content: flex-end;
