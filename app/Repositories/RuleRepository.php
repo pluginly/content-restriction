@@ -72,7 +72,9 @@ class RuleRepository {
 
 		$rules = array_map(
 			function ( $rule ) {
-				$rule['status'] = (bool) $rule['status'];
+				$rule['status']     = (bool) $rule['status'];
+				$rule['modified']   = strtotime( $rule['modified'] );
+				$rule['created_at'] = strtotime( $rule['created_at'] );
 
 				$rule['rule']['who-can-see']   = maybe_unserialize( $rule['who_can_see'] );
 				$rule['rule']['what-content']  = maybe_unserialize( $rule['what_content'] );

@@ -86,7 +86,6 @@ export default function List() {
                     </Link>
                   </td>
                   <td>
-                    {console.log('rule.modified : ', rule.modified )}
                     <ModifiedTime timestamp={rule.modified} />
                   </td>
                   <td className="content-restriction__rules__action">
