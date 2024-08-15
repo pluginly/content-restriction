@@ -8,16 +8,16 @@
 namespace ContentRestriction\Modules\LoginBack;
 
 class Protection {
-	public $then;
+	public $what_content;
 	public $options;
 	public $r;
 	public $post_id;
 
-	public function __construct( $then, $options, $r ) {
-		$this->then    = $then;
-		$this->options = $options;
-		$this->r       = $r;
-		$this->post_id = get_the_ID();
+	public function __construct( $what_content, $options, $r ) {
+		$this->what_content = $what_content;
+		$this->options      = $options;
+		$this->r            = $r;
+		$this->post_id      = get_the_ID();
 	}
 
 	public function set_post_id( $post_id ) {
@@ -25,9 +25,9 @@ class Protection {
 	}
 
 	public function is_needed(): bool {
-		$then = new $this->then( $this->r );
-		$then->set_post_id( $this->post_id );
-		if ( $then->protect() ) {
+		$what_content = new $this->what_content( $this->r );
+		$what_content->set_post_id( $this->post_id );
+		if ( $what_content->protect() ) {
 			return true;
 		}
 

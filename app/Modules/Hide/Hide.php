@@ -11,12 +11,12 @@ use ContentRestriction\Common\RestrictViewBase;
 
 class Hide extends RestrictViewBase {
 
-	public function __construct( $who_can_see, $then, array $r ) {
-		$this->type        = 'restrict-view';
-		$this->module      = 'hide';
-		$this->r           = $r;
-		$this->who_can_see = $who_can_see;
-		$this->then        = $then;
+	public function __construct( $who_can_see, $what_content, array $r ) {
+		$this->type         = 'restrict-view';
+		$this->module       = 'hide';
+		$this->r            = $r;
+		$this->who_can_see  = $who_can_see;
+		$this->what_content = $what_content;
 	}
 
 	public function boot(): void {
@@ -28,18 +28,18 @@ class Hide extends RestrictViewBase {
 		\ContentRestriction\Utils\Analytics::add( [
 			'user_id' => get_current_user_id(),
 			'context' => 'locked',
-			'id' => $this->r['id'],
+			'id'      => $this->r['id'],
 		] );
 
 		add_action( 'content_restriction_pre_get_posts', [$this, 'exclude'], 10, 2 );
 	}
 
 	public function exclude( object $query, string $post_type ) {
-		$then_type = is_array( $this->r['rule']['what-content'] ) ? array_key_first( $this->r['rule']['what-content'] ) : $this->r['rule']['what-content'];
-		$options   = $this->r['rule']['what-content'][$then_type] ?? [];
+		$what_content_type = is_array( $this->r['rule']['what-content'] ) ? array_key_first( $this->r['rule']['what-content'] ) : $this->r['rule']['what-content'];
+		$options           = $this->r['rule']['what-content'][$what_content_type] ?? [];
 
 		if ( 'posts' === $post_type ) {
-			switch ( $then_type ) {
+			switch ( $what_content_type ) {
 				case 'all_posts':
 					$query->set(
 						'tax_query',
@@ -71,7 +71,7 @@ class Hide extends RestrictViewBase {
 					break;
 			}
 		} elseif ( 'page' === $post_type ) {
-			switch ( $then_type ) {
+			switch ( $what_content_type ) {
 				case 'all_pages':
 					$query->set( 'tax_query', [
 						'relation' => 'OR',
@@ -92,7 +92,7 @@ class Hide extends RestrictViewBase {
 
 			}
 		} else {
-			do_action( 'content_restriction_module_hide', $query, $post_type, $then_type, $options );
+			do_action( 'content_restriction_module_hide', $query, $post_type, $what_content_type, $options );
 		}
 	}
 }

@@ -98,7 +98,7 @@ class Enqueuer extends EnqueuerBase {
 				}
 
 				.toplevel_page_content-restriction .current > div.wp-menu-image:before {
-					margin-top: 10px;
+					margin-top: 6px;
 					background: url("' . esc_attr( CONTENT_RESTRICTION_IMAGES ) . '/sidebar-icon-current.svg' . '") no-repeat center center;
 				}';
 	}

@@ -9,14 +9,14 @@ namespace ContentRestriction\Modules\Redirection;
 
 class Redirection extends \ContentRestriction\Common\RestrictViewBase {
 
-	public function __construct( $who_can_see, $then, array $r ) {
-		$this->type        = 'restrict-view';
-		$this->module      = 'redirection';
-		$this->r           = $r;
-		$this->who_can_see = $who_can_see;
-		$this->then        = $then;
-		$this->options     = $this->r['rule'][$this->type][$this->module] ?? [];
-		$this->protection  = new Protection( $then, $this->options, $this->r );
+	public function __construct( $who_can_see, $what_content, array $r ) {
+		$this->type         = 'restrict-view';
+		$this->module       = 'redirection';
+		$this->r            = $r;
+		$this->who_can_see  = $who_can_see;
+		$this->what_content = $what_content;
+		$this->options      = $this->r['rule'][$this->type][$this->module] ?? [];
+		$this->protection   = new Protection( $what_content, $this->options, $this->r );
 	}
 
 	public function boot(): void {
@@ -28,7 +28,7 @@ class Redirection extends \ContentRestriction\Common\RestrictViewBase {
 		\ContentRestriction\Utils\Analytics::add( [
 			'user_id' => get_current_user_id(),
 			'context' => 'locked',
-			'id' => $this->r['id'],
+			'id'      => $this->r['id'],
 		] );
 
 		add_action( 'content_restriction_template_redirect', [$this, 'redirect'] );

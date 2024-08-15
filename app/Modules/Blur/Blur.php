@@ -9,14 +9,14 @@ namespace ContentRestriction\Modules\Blur;
 
 class Blur extends \ContentRestriction\Common\RestrictViewBase {
 
-	public function __construct( $who_can_see, $then, array $r ) {
-		$this->type        = 'restrict-view';
-		$this->module      = 'blur';
-		$this->r           = $r;
-		$this->who_can_see = $who_can_see;
-		$this->then        = $then;
-		$this->options     = $this->r['rule'][$this->type][$this->module] ?? [];
-		$this->protection  = new Protection( $then, $this->options, $this->r );
+	public function __construct( $who_can_see, $what_content, array $r ) {
+		$this->type         = 'restrict-view';
+		$this->module       = 'blur';
+		$this->r            = $r;
+		$this->who_can_see  = $who_can_see;
+		$this->what_content = $what_content;
+		$this->options      = $this->r['rule'][$this->type][$this->module] ?? [];
+		$this->protection   = new Protection( $what_content, $this->options, $this->r );
 	}
 
 	public function boot(): void {
@@ -35,7 +35,7 @@ class Blur extends \ContentRestriction\Common\RestrictViewBase {
 			'user_id' => get_current_user_id(),
 			'post_id' => get_the_ID(),
 			'context' => 'locked',
-			'id' => $this->r['id'],
+			'id'      => $this->r['id'],
 		] );
 
 		$this->protection->set_post_id( get_the_ID() );

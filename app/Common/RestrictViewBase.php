@@ -16,7 +16,7 @@ abstract class RestrictViewBase extends ModuleBase {
 	public array $options;
 	public $protection;
 	public $who_can_see;
-	public $then;
+	public $what_content;
 
 	abstract public function boot(): void;
 
