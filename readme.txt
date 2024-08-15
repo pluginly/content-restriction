@@ -1,4 +1,4 @@
-=== AIO Content Restriction – Conditional Content Visibility & Access Control for WordPress ===
+=== Content Restriction – Conditional Content Visibility & Access Control for WordPress ===
 Contributors: Pluginly, HeyMehedi
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
