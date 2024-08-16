@@ -53,7 +53,7 @@ class RestrictionServiceProviders extends \ContentRestriction\Common\ProviderBas
 			return;
 		}
 
-		$post_type = $query->query_vars['post_type'] ?? 'posts';
+		$post_type = (string) isset( $query->query_vars['post_type'] ) ? $query->query_vars['post_type'] : 'posts';
 
 		do_action( 'content_restriction_pre_get_posts', $query, $post_type );
 	}
