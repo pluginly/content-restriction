@@ -11,7 +11,7 @@ class SpecificPages extends \ContentRestriction\Common\WhatContentBase {
 	public function __construct( $rule ) {
 		$this->type   = 'what-content';
 		$this->module = 'specific_pages';
-		$this->rule      = $rule;
+		$this->rule   = $rule;
 	}
 
 	public function add_protection() {

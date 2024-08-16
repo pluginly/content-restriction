@@ -12,7 +12,7 @@ class Replace extends \ContentRestriction\Common\RestrictViewBase {
 	public function __construct( $who_can_see, $what_content, array $rule ) {
 		$this->type         = 'restrict-view';
 		$this->module       = 'replace';
-		$this->rule            = $rule;
+		$this->rule         = $rule;
 		$this->who_can_see  = $who_can_see;
 		$this->what_content = $what_content;
 		$this->options      = $this->rule['rule'][$this->type][$this->module] ?? [];

@@ -19,7 +19,7 @@ class Protection {
 	public function __construct( $what_content, $options, $rule ) {
 		$this->what_content = $what_content;
 		$this->options      = $options;
-		$this->rule            = $rule;
+		$this->rule         = $rule;
 		$this->post_id      = get_the_ID();
 	}
 

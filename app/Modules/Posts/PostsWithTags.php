@@ -11,7 +11,7 @@ class PostsWithTags extends \ContentRestriction\Common\WhatContentBase {
 	public function __construct( $rule ) {
 		$this->type   = 'what-content';
 		$this->module = 'posts_with_tags';
-		$this->rule      = $rule;
+		$this->rule   = $rule;
 	}
 
 	public function add_protection() {

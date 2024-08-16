@@ -12,7 +12,7 @@ class Subscriber extends \ContentRestriction\Common\WhoCanSeeBase {
 	public function __construct( array $rule ) {
 		$this->type         = 'who-can-see';
 		$this->module       = 'fluent_crm_subscriber';
-		$this->rule            = $rule;
+		$this->rule         = $rule;
 		$this->options      = $this->rule['rule'][$this->type][$this->module] ?? [];
 		$this->current_user = wp_get_current_user();
 		$this->user_id      = $this->current_user->ID;
