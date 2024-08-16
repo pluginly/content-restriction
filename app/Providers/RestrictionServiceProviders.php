@@ -25,7 +25,7 @@ class RestrictionServiceProviders extends \ContentRestriction\Common\ProviderBas
 		/**
 		 *  Hide
 		 */
-		add_action( 'pre_get_posts', [$this, 'pre_get_posts'] );
+		add_action( 'pre_get_posts', [$this, 'pre_get_posts'], 110 );
 
 		/**
 		 * LoginBack & Redirection

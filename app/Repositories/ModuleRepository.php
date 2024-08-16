@@ -39,21 +39,21 @@ class ModuleRepository {
 			return;
 		}
 
-		foreach ( $this->restrictions as $key => $r ) {
-			if ( ! isset( $r['status'] ) || ! $r['status'] ) {
+		foreach ( $this->restrictions as $key => $rule ) {
+			if ( ! isset( $rule['status'] ) || ! $rule['status'] ) {
 				continue;
 			}
 
 			if (
-				! isset( $r['rule']['who-can-see'] ) ||
-				! isset( $r['rule']['what-content'] ) ||
-				! isset( $r['rule']['restrict-view'] ) ) {
+				! isset( $rule['rule']['who-can-see'] ) ||
+				! isset( $rule['rule']['what-content'] ) ||
+				! isset( $rule['rule']['restrict-view'] ) ) {
 				continue;
 			}
 
-			$if   = is_array( $r['rule']['who-can-see'] ) ? array_key_first( $r['rule']['who-can-see'] ) : $r['rule']['who-can-see'];
-			$then = is_array( $r['rule']['what-content'] ) ? array_key_first( $r['rule']['what-content'] ) : $r['rule']['what-content'];
-			$else = is_array( $r['rule']['restrict-view'] ) ? array_key_first( $r['rule']['restrict-view'] ) : $r['rule']['restrict-view'];
+			$if   = is_array( $rule['rule']['who-can-see'] ) ? array_key_first( $rule['rule']['who-can-see'] ) : $rule['rule']['who-can-see'];
+			$then = is_array( $rule['rule']['what-content'] ) ? array_key_first( $rule['rule']['what-content'] ) : $rule['rule']['what-content'];
+			$else = is_array( $rule['rule']['restrict-view'] ) ? array_key_first( $rule['rule']['restrict-view'] ) : $rule['rule']['restrict-view'];
 
 			$modules = $this->get();
 			$_if     = $modules[$if] ?? '';
@@ -61,7 +61,7 @@ class ModuleRepository {
 			$_else   = $modules[$else] ?? '';
 
 			if ( $_if && $_then && $_else ) {
-				( new $_else( $_if, $_then, $r ) )->boot();
+				( new $_else( $_if, $_then, $rule ) )->boot();
 			}
 		}
 	}

@@ -9,7 +9,7 @@ namespace ContentRestriction\Common;
 
 abstract class WhoCanSeeBase extends ModuleBase {
 	private $current_user;
-	public array $r;
+	public array $rule;
 	public array $options;
 	public int $user_id;
 

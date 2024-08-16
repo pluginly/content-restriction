@@ -8,10 +8,10 @@
 namespace ContentRestriction\Modules\Posts;
 
 class AllPosts extends \ContentRestriction\Common\WhatContentBase {
-	public function __construct( $r ) {
+	public function __construct( $rule ) {
 		$this->type   = 'what-content';
 		$this->module = 'all_posts';
-		$this->r      = $r;
+		$this->rule      = $rule;
 	}
 
 	public function add_protection() {

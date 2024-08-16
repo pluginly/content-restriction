@@ -9,11 +9,11 @@ namespace ContentRestriction\Integrations\FluentCRM;
 
 class SpecificLists extends \ContentRestriction\Common\WhoCanSeeBase {
 
-	public function __construct( array $r ) {
+	public function __construct( array $rule ) {
 		$this->type         = 'who-can-see';
 		$this->module       = 'fluent_crm_specific_lists';
-		$this->r            = $r;
-		$this->options      = $this->r['rule'][$this->type][$this->module] ?? [];
+		$this->rule            = $rule;
+		$this->options      = $this->rule['rule'][$this->type][$this->module] ?? [];
 		$this->current_user = wp_get_current_user();
 		$this->user_id      = $this->current_user->ID;
 	}

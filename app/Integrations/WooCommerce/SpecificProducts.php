@@ -9,10 +9,10 @@ namespace ContentRestriction\Integrations\WooCommerce;
 
 class SpecificProducts extends \ContentRestriction\Common\WhatContentBase {
 
-	public function __construct( $r ) {
+	public function __construct( $rule ) {
 		$this->type   = 'what-content';
 		$this->module = 'woocommerce_specific_products';
-		$this->r      = $r;
+		$this->rule      = $rule;
 	}
 
 	public function add_protection() {

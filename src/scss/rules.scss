@@ -1,6 +1,6 @@
 // Rules CSS
 .content-restriction__rules {
-    min-height: 100vh;
+    min-height: calc(75vh - 80px);
     background-color: #fff;
 	padding: 30px;
     &__header {
@@ -89,7 +89,7 @@
 
  // Create Rules CSS
 .content-restriction__create-rules {
-    height: calc(100vh - 80px);
+    min-height: calc(90vh - 80px);
     display: flex;
     gap: 70px;
     align-items: center;

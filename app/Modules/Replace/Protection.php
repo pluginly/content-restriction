@@ -10,13 +10,13 @@ namespace ContentRestriction\Modules\Replace;
 class Protection {
 	public $what_content;
 	public $options;
-	public $r;
+	public $rule;
 	public $post_id;
 
-	public function __construct( $what_content, $options, $r ) {
+	public function __construct( $what_content, $options, $rule ) {
 		$this->what_content = $what_content;
 		$this->options      = $options;
-		$this->r            = $r;
+		$this->rule            = $rule;
 		$this->post_id      = get_the_ID();
 		$this->type         = 'what-content';
 	}
@@ -34,7 +34,7 @@ class Protection {
 	}
 
 	private function is_needed(): bool {
-		$what_content = new $this->what_content( $this->r );
+		$what_content = new $this->what_content( $this->rule );
 		$what_content->set_post_id( $this->post_id );
 		if ( $what_content->protect() ) {
 			return true;

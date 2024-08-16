@@ -1,4 +1,4 @@
-=== Content Restriction – Conditional Content Visibility & Access Control for WordPress ===
+=== All-in-One Content Restriction – Conditional Content Visibility & Access Control for WordPress ===
 Contributors: Pluginly, HeyMehedi
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
@@ -8,10 +8,10 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-AIl in One Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin to set content access rules for any user - whether logged in, holding specific user role, or a visitor.
+All-in-One Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin to set content access rules for any user - whether logged in, holding specific user role, or a visitor.
 
 == Description ==
-AIl in One Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin to set content access rules for any user - whether logged in, holding specific user role, or a visitor. 
+All-in-One Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin to set content access rules for any user - whether logged in, holding specific user role, or a visitor. 
 
 Decide who gets to see what content – be it pages, posts , taxonomy or any custom post type by setting up content visibility rules.
 

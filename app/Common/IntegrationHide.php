@@ -9,7 +9,7 @@ namespace ContentRestriction\Common;
 
 abstract class IntegrationHide {
 	public array $options;
-	public string $then_type;
+	public string $what_content_type;
 	public array $then_types;
 	public string $post_type;
 	public int $post_id;
@@ -20,7 +20,7 @@ abstract class IntegrationHide {
 		add_action( 'content_restriction_template_redirect', [$this, 'single_view_hide'] );
 	}
 
-	private function redirect_to_home() {
+	public function redirect_to_home() {
 		wp_redirect( home_url() );
 		exit;
 	}

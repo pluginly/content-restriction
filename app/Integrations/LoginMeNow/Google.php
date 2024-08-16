@@ -9,11 +9,11 @@ namespace ContentRestriction\Integrations\LoginMeNow;
 
 class Google extends \ContentRestriction\Common\WhoCanSeeBase {
 
-	public function __construct( array $r ) {
+	public function __construct( array $rule ) {
 		$this->type         = 'who-can-see';
 		$this->module       = 'login_me_now_google_verified';
-		$this->r            = $r;
-		$this->options      = $this->r['rule'][$this->type][$this->module] ?? [];
+		$this->rule            = $rule;
+		$this->options      = $this->rule['rule'][$this->type][$this->module] ?? [];
 		$this->current_user = wp_get_current_user();
 		$this->user_id      = $this->current_user->ID;
 	}

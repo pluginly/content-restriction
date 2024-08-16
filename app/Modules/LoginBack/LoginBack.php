@@ -11,14 +11,14 @@ class LoginBack extends \ContentRestriction\Common\RestrictViewBase {
 
 	public $current_url;
 
-	public function __construct( $who_can_see, $what_content, array $r ) {
+	public function __construct( $who_can_see, $what_content, array $rule ) {
 		$this->type         = 'restrict-view';
 		$this->module       = 'login_back';
-		$this->r            = $r;
+		$this->rule            = $rule;
 		$this->who_can_see  = $who_can_see;
 		$this->what_content = $what_content;
-		$this->options      = $this->r['rule'][$this->type][$this->module] ?? [];
-		$this->protection   = new Protection( $what_content, $this->options, $this->r );
+		$this->options      = $this->rule['rule'][$this->type][$this->module] ?? [];
+		$this->protection   = new Protection( $what_content, $this->options, $this->rule );
 	}
 
 	public function boot(): void {
@@ -29,7 +29,7 @@ class LoginBack extends \ContentRestriction\Common\RestrictViewBase {
 		\ContentRestriction\Utils\Analytics::add( [
 			'user_id' => 0,
 			'context' => 'locked',
-			'id'      => $this->r['id'],
+			'id'      => $this->rule['id'],
 		] );
 
 		add_action( 'content_restriction_template_redirect', [$this, 'redirect'] );

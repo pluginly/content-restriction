@@ -9,18 +9,18 @@ namespace ContentRestriction\Modules\Replace;
 
 class Replace extends \ContentRestriction\Common\RestrictViewBase {
 
-	public function __construct( $who_can_see, $what_content, array $r ) {
+	public function __construct( $who_can_see, $what_content, array $rule ) {
 		$this->type         = 'restrict-view';
 		$this->module       = 'replace';
-		$this->r            = $r;
+		$this->rule            = $rule;
 		$this->who_can_see  = $who_can_see;
 		$this->what_content = $what_content;
-		$this->options      = $this->r['rule'][$this->type][$this->module] ?? [];
-		$this->protection   = new Protection( $what_content, $this->options, $this->r );
+		$this->options      = $this->rule['rule'][$this->type][$this->module] ?? [];
+		$this->protection   = new Protection( $what_content, $this->options, $this->rule );
 	}
 
 	public function boot(): void {
-		$if = ( new $this->who_can_see( $this->r ) );
+		$if = ( new $this->who_can_see( $this->rule ) );
 		if ( $if->has_access() ) {
 			return;
 		}
@@ -28,7 +28,7 @@ class Replace extends \ContentRestriction\Common\RestrictViewBase {
 		\ContentRestriction\Utils\Analytics::add( [
 			'user_id' => get_current_user_id(),
 			'context' => 'locked',
-			'id'      => $this->r['id'],
+			'id'      => $this->rule['id'],
 		] );
 
 		add_filter( 'content_restriction_the_title', [$this, 'the_title'], 10 );

@@ -20,7 +20,7 @@ class Hide extends \ContentRestriction\Common\IntegrationHide {
 			return;
 		}
 
-		switch ( $this->then_type ) {
+		switch ( $this->what_content_type ) {
 
 			case 'woocommerce_all_products':
 				$this->redirect_to_home();
@@ -34,20 +34,20 @@ class Hide extends \ContentRestriction\Common\IntegrationHide {
 		}
 	}
 
-	public function hide( $query, $post_type, $then_type, $options ) {
+	public function hide( $query, $post_type, $what_content_type, $options ) {
 
 		if ( $this->post_type !== $post_type ) {
 			return;
 		}
 
-		$this->options   = $options;
-		$this->then_type = $then_type;
+		$this->options           = $options;
+		$this->what_content_type = $what_content_type;
 
-		if ( ! in_array( $this->then_type, $this->then_types ) ) {
+		if ( ! in_array( $this->what_content_type, $this->then_types ) ) {
 			return;
 		}
 
-		switch ( $this->then_type ) {
+		switch ( $this->what_content_type ) {
 			case 'woocommerce_all_products':
 				$query->set(
 					'tax_query',
