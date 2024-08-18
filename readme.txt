@@ -4,11 +4,11 @@ Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-All-in-One Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin to set content access rules for any user - whether logged in, holding specific user role, or a visitor.
+All-in-One Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin.
 
 == Description ==
 All-in-One Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin to set content access rules for any user - whether logged in, holding specific user role, or a visitor. 
@@ -119,5 +119,5 @@ Yes, you can! Join in on our [GitHub repository](https://github.com/pluginly/con
 
 == Changelog ==
 
-= 1.0.0 – Aug 15, 2024 =
-* Initial Release 
+= 1.0.0 – Aug 18, 2024 =
+* Initial Release
