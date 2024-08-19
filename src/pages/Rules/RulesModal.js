@@ -114,16 +114,33 @@ const RulesModal = () => {
                                         {
                                             rulesType?.map((item, index) => {
                                                 return (
+                                                    <>
+                                                    { item.is_pro && ! content_restriction_admin.pro_available ? 
+                                                    <li className="content-restriction__type__item pro-item" key={index}>
+                                                        <button 
+                                                            className="content-restriction__type__btn"
+                                                        >
+                                                            <span class="pro-badge">{__( 'Premium', 'content-restriction' )}</span>
+                                                            <img src={item?.icon || defaultIcon} alt={item.name} />
+                                                            <h3>{item.name}</h3>
+                                                            <span>{item.desc}</span>
+                                                        </button>
+                                                    </li>
+                                                    :
                                                     <li className="content-restriction__type__item" key={index}>
                                                         <button 
                                                             className="content-restriction__type__btn"
-                                                            onClick={() => selectAction(selectedType, item)}
+                                                            onClick={ () => selectAction(selectedType, item)}
                                                         >
                                                             <img src={item?.icon || defaultIcon} alt={item.name} />
                                                             <h3>{item.name}</h3>
                                                             <span>{item.desc}</span>
                                                         </button>
                                                     </li>
+
+                                                    }
+                                                    </>
+                                                   
                                                 )
                                             })
                                         }

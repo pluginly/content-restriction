@@ -63,6 +63,7 @@ class Frontend extends IntegrationBase {
 					'options' => $this->get_statuses(),
 				],
 			],
+			'is_pro'  => true,
 		];
 
 		return $modules;

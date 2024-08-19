@@ -112,6 +112,7 @@ body.active-modal {
     min-height: 70px;
     position: relative;
     z-index: 2;
+    padding-left: 40px;
     border-bottom: 1px solid rgb(215, 213, 210);
     &__title {
       font-size: 20px;

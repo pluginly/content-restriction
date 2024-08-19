@@ -51,6 +51,7 @@ class Frontend extends IntegrationBase {
 					'options' => $this->product_list(),
 				],
 			],
+			'is_pro'  => true,
 		];
 
 		$modules[] = [
@@ -68,6 +69,7 @@ class Frontend extends IntegrationBase {
 					'options' => $this->term_list( 'product_cat' ),
 				],
 			],
+			'is_pro'  => true,
 		];
 
 		return $modules;
@@ -134,6 +136,7 @@ class Frontend extends IntegrationBase {
 					'options' => $this->product_list(),
 				],
 			],
+			'is_pro'  => true,
 		];
 
 		return $modules;
