@@ -51,7 +51,6 @@ class Frontend extends IntegrationBase {
 					'options' => $this->product_list(),
 				],
 			],
-			'is_pro'  => true,
 		];
 
 		$modules[] = [

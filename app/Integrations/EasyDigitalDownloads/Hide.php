@@ -1,11 +1,11 @@
 <?php
 /**
- * @package ContentRestrictionPro
+ * @package ContentRestriction
  * @since   1.0.0
  * @version 1.0.0
  */
 
-namespace ContentRestrictionPro\Integrations\EasyDigitalDownloads;
+namespace ContentRestriction\Integrations\EasyDigitalDownloads;
 
 class Hide extends \ContentRestriction\Common\IntegrationHide {
 	public array $then_types = ['edd_all_downloads', 'edd_specific_downloads', 'edd_downloads_with_categories'];

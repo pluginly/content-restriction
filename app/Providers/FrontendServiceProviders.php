@@ -28,6 +28,7 @@ class FrontendServiceProviders extends \ContentRestriction\Common\ProviderBase {
 			\ContentRestriction\Modules\Posts\Frontend::class,
 			\ContentRestriction\Modules\Redirection\Frontend::class,
 			\ContentRestriction\Modules\WordPressUsers\Frontend::class,
+			\ContentRestriction\Modules\Randomize\Frontend::class,
 		];
 	}
 }

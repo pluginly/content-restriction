@@ -4,6 +4,12 @@
   --content-restriction-border-radius: 5px;
 }
 
+.toplevel_page_content-restriction {
+  p {
+    font-size: 16px;
+  }
+}
+
 #wpcontent {
   padding-left: 0px !important;
 }

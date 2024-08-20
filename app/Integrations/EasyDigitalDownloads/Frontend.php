@@ -1,11 +1,11 @@
 <?php
 /**
- * @package ContentRestrictionPro
+ * @package ContentRestriction
  * @since   1.0.0
  * @version 1.0.0
  */
 
-namespace ContentRestrictionPro\Integrations\EasyDigitalDownloads;
+namespace ContentRestriction\Integrations\EasyDigitalDownloads;
 
 use ContentRestriction\Common\IntegrationBase;
 
@@ -23,7 +23,7 @@ class Frontend extends IntegrationBase {
 
 	public function add_group( array $groups ): array {
 		$groups['easy-digital-downloads'] = [
-			'title' => __( 'Easy Digital Downloads', 'content-restriction-pro' ),
+			'title' => __( 'Easy Digital Downloads', 'content-restriction' ),
 			'icon'  => $this->get_icon( 'EasyDigitalDownloads' ),
 		];
 
@@ -32,43 +32,42 @@ class Frontend extends IntegrationBase {
 
 	public function what_content( array $modules ): array {
 		$modules[] = [
-			'name'  => __( 'All Downloads', 'content-restriction-pro' ),
+			'name'  => __( 'All Downloads', 'content-restriction' ),
 			'key'   => 'edd_all_downloads',
 			'group' => 'edd',
 			'meta'  => ['downloads', 'edd', 'all downloads'],
 			'icon'  => $this->get_icon( 'EasyDigitalDownloads' ),
-			'desc'  => __( 'All EasyDigitalDownloads Downloads is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
+			'desc'  => __( 'All EasyDigitalDownloads Downloads is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
 		];
 
 		$modules[] = [
-			'name'    => __( 'Specific Downloads', 'content-restriction-pro' ),
+			'name'    => __( 'Specific Downloads', 'content-restriction' ),
 			'key'     => 'edd_specific_downloads',
 			'group'   => 'edd',
 			'meta'    => ['downloads', 'edd', 'all downloads'],
 			'icon'    => $this->get_icon( 'EasyDigitalDownloads' ),
-			'desc'    => __( 'Specific EasyDigitalDownloads Downloads is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
+			'desc'    => __( 'Specific EasyDigitalDownloads Downloads is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'downloads' => [
-					'title'   => __( 'Select Downloads', 'content-restriction-pro' ),
+					'title'   => __( 'Select Downloads', 'content-restriction' ),
 					'type'    => 'multi-select',
 					'options' => $this->download_list(),
 				],
 			],
-			'is_pro'  => true,
 		];
 
 		$modules[] = [
-			'name'    => __( 'Downloads With Categories', 'content-restriction-pro' ),
+			'name'    => __( 'Downloads With Categories', 'content-restriction' ),
 			'key'     => 'edd_downloads_with_categories',
 			'meta'    => ['downloads', 'edd', 'all downloads'],
 			'group'   => 'edd',
 			'icon'    => $this->get_icon( 'EasyDigitalDownloads' ),
-			'desc'    => __( 'Downloads With Categories is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
+			'desc'    => __( 'Downloads With Categories is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'categories' => [
-					'title'   => __( 'Select Categories', 'content-restriction-pro' ),
+					'title'   => __( 'Select Categories', 'content-restriction' ),
 					'type'    => 'multi-select',
 					'options' => $this->term_list( 'download_category' ),
 				],
@@ -109,38 +108,51 @@ class Frontend extends IntegrationBase {
 
 	public function who_can_see( array $modules ): array {
 		$modules[] = [
-			'name'    => __( 'Placed Order', 'content-restriction-pro' ),
+			'name'    => __( 'Placed Order', 'content-restriction' ),
 			'key'     => 'edd_placed_order',
 			'group'   => 'edd',
 			'meta'    => ['order', 'edd', 'has orders'],
 			'icon'    => $this->get_icon( 'EasyDigitalDownloads' ),
-			'desc'    => __( 'All Edd Products is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
+			'desc'    => __( 'All Edd Products is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'status' => [
-					'title'   => __( 'Select Payment Status', 'content-restriction-pro' ),
+					'title'   => __( 'Select Payment Status', 'content-restriction' ),
 					'type'    => 'multi-select',
 					'options' => $this->get_payment_statuses(),
 				],
 			],
 		];
 
-		$modules[] = [
-			'name'    => __( 'Bought Specific Downloads', 'content-restriction-pro' ),
-			'key'     => 'edd_bought_specific_downloads',
-			'group'   => 'edd',
-			'meta'    => ['checkout', 'purchased', 'bought', 'edd', 'products'],
-			'icon'    => $this->get_icon( 'EasyDigitalDownloads' ),
-			'desc'    => __( 'All edd Products is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
-			'type'    => 'section',
-			'options' => [
-				'downloads' => [
-					'title'   => __( 'Select Products', 'content-restriction-pro' ),
-					'type'    => 'multi-select',
-					'options' => $this->download_list(),
-				],
-			],
-		];
+		// $modules[] = [
+		// 	'name'    => __( 'Bought Specific Downloads', 'content-restriction' ),
+		// 	'key'     => 'edd_bought_specific_downloads',
+		// 	'group'   => 'edd',
+		// 	'meta'    => ['checkout', 'purchased', 'bought', 'edd', 'products'],
+		// 	'icon'    => $this->get_icon( 'EasyDigitalDownloads' ),
+		// 	'desc'    => __( 'All edd Products is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+		// 	'type'    => 'section',
+		// 	'options' => [
+		// 		'downloads' => [
+		// 			'title'   => __( 'Select Products', 'content-restriction' ),
+		// 			'type'    => 'multi-select',
+		// 			'options' => $this->download_list(),
+		// 		],
+		// 	],
+		// 	'is_pro'  => true,
+		// ];
+
+		if ( class_exists( 'EDD_All_Access' ) ) {
+			$modules[] = [
+				'name'   => __( 'All Access Pass', 'content-restriction-pro' ),
+				'key'    => 'edd_all_access_pass',
+				'group'  => 'edd',
+				'meta'   => ['downloads', 'edd', 'all downloads'],
+				'icon'   => $this->get_icon( 'EasyDigitalDownloads' ),
+				'desc'   => __( 'All EasyDigitalDownloads Access is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
+				'is_pro' => true,
+			];
+		}
 
 		return $modules;
 	}

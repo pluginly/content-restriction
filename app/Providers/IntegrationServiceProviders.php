@@ -20,6 +20,8 @@ class IntegrationServiceProviders extends \ContentRestriction\Common\ProviderBas
 
 	private function get(): array {
 		return [
+			\ContentRestriction\Integrations\Directorist\Integration::class,
+			\ContentRestriction\Integrations\EasyDigitalDownloads\Integration::class,
 			\ContentRestriction\Integrations\FluentCRM\Integration::class,
 			\ContentRestriction\Integrations\LoginMeNow\Integration::class,
 			\ContentRestriction\Integrations\WooCommerce\Integration::class,

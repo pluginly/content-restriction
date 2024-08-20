@@ -1,11 +1,11 @@
 <?php
 /**
- * @package ContentRestrictionPro
+ * @package ContentRestriction
  * @since   1.0.0
  * @version 1.0.0
  */
 
-namespace ContentRestrictionPro\Integrations\EasyDigitalDownloads;
+namespace ContentRestriction\Integrations\EasyDigitalDownloads;
 
 class AllDownloads extends \ContentRestriction\Common\WhatContentBase {
 

@@ -22,7 +22,7 @@ class Frontend extends IntegrationBase {
 
 	public function add_group( array $groups ): array {
 		$groups['directorist'] = [
-			'title' => __( 'Directorist', 'content-restriction-pro' ),
+			'title' => __( 'Directorist', 'content-restriction' ),
 			'icon'  => $this->get_icon( 'Directorist' ),
 		];
 
@@ -31,43 +31,42 @@ class Frontend extends IntegrationBase {
 
 	public function directorist_listings( array $modules ): array {
 		$modules[] = [
-			'name'  => __( 'All Listings', 'content-restriction-pro' ),
+			'name'  => __( 'All Listings', 'content-restriction' ),
 			'key'   => 'directorist_all_listings',
 			'group' => 'directorist',
 			'meta'  => ['listings', 'directorist', 'all listings'],
 			'icon'  => $this->get_icon( 'Directorist' ),
-			'desc'  => __( 'All Directorist Listings is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
+			'desc'  => __( 'All Directorist Listings is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
 		];
 
 		$modules[] = [
-			'name'    => __( 'Specific Listings', 'content-restriction-pro' ),
+			'name'    => __( 'Specific Listings', 'content-restriction' ),
 			'key'     => 'directorist_specific_listings',
 			'group'   => 'directorist',
 			'meta'    => ['listings', 'directorist', 'all listings'],
 			'icon'    => $this->get_icon( 'Directorist' ),
-			'desc'    => __( 'Specific Directorist Listings is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
+			'desc'    => __( 'Specific Directorist Listings is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'listings' => [
-					'title'   => __( 'Select Listings', 'content-restriction-pro' ),
+					'title'   => __( 'Select Listings', 'content-restriction' ),
 					'type'    => 'multi-select',
 					'options' => $this->listing_list(),
 				],
 			],
-			'is_pro'  => true,
 		];
 
 		$modules[] = [
-			'name'    => __( 'Listings With Categories', 'content-restriction-pro' ),
+			'name'    => __( 'Listings With Categories', 'content-restriction' ),
 			'key'     => 'directorist_listings_with_categories',
 			'meta'    => ['listings', 'directorist', 'all listings'],
 			'group'   => 'directorist',
 			'icon'    => $this->get_icon( 'Directorist' ),
-			'desc'    => __( 'Listings With Categories is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
+			'desc'    => __( 'Listings With Categories is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'categories' => [
-					'title'   => __( 'Select Categories', 'content-restriction-pro' ),
+					'title'   => __( 'Select Categories', 'content-restriction' ),
 					'type'    => 'multi-select',
 					'options' => $this->term_list( 'at_biz_dir-category' ),
 				],
@@ -76,16 +75,16 @@ class Frontend extends IntegrationBase {
 		];
 
 		$modules[] = [
-			'name'    => __( 'Listings With Locations', 'content-restriction-pro' ),
+			'name'    => __( 'Listings With Locations', 'content-restriction' ),
 			'key'     => 'directorist_listings_with_locations',
 			'meta'    => ['listings', 'directorist', 'all listings'],
 			'group'   => 'directorist',
 			'icon'    => $this->get_icon( 'Directorist' ),
-			'desc'    => __( 'Listings With Locations is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
+			'desc'    => __( 'Listings With Locations is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'locations' => [
-					'title'   => __( 'Select Locations', 'content-restriction-pro' ),
+					'title'   => __( 'Select Locations', 'content-restriction' ),
 					'type'    => 'multi-select',
 					'options' => $this->term_list( 'at_biz_dir-location' ),
 				],

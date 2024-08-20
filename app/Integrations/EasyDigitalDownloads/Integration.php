@@ -1,11 +1,11 @@
 <?php
 /**
- * @package ContentRestrictionPro
+ * @package ContentRestriction
  * @since   1.0.0
  * @version 1.0.0
  */
 
-namespace ContentRestrictionPro\Integrations\EasyDigitalDownloads;
+namespace ContentRestriction\Integrations\EasyDigitalDownloads;
 
 class Integration extends \ContentRestriction\Common\IntegrationBase {
 	public function boot(): void {
@@ -24,9 +24,8 @@ class Integration extends \ContentRestriction\Common\IntegrationBase {
 	}
 
 	public function load( $modules ) {
-		$modules['edd_all_downloads']             = AllDownloads::class;
-		$modules['edd_downloads_with_categories'] = DownloadsWithCategories::class;
-		$modules['edd_specific_downloads']        = SpecificDownloads::class;
+		$modules['edd_all_downloads']      = AllDownloads::class;
+		$modules['edd_specific_downloads'] = SpecificDownloads::class;
 
 		$modules['edd_placed_order'] = PlacedOrder::class;
 

@@ -405,6 +405,7 @@
       border-color: rgb(230, 230, 230);
       min-height: 205px;
       align-content: baseline;
+	  flex-flow: column;
       h3 {
         font-size: 1.1em;
       }
