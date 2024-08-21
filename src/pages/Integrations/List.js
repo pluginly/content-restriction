@@ -33,6 +33,8 @@ export default function List() {
           <SingleSkeleton/>
           <SingleSkeleton/>
           <SingleSkeleton/>
+          <SingleSkeleton/>
+          <SingleSkeleton/>
         </>
       :
         integrations.map((integration, index) => {
