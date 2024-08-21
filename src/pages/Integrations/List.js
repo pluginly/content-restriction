@@ -4,13 +4,17 @@ import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
 import transformString from '@helpers/transformString';
 import { __ } from '@wordpress/i18n';
 import upgradeToPro from '@helpers/upgradeToPro';
+import SingleSkeleton from './Skeletons/SingleSkeleton';
 
 export default function List() {
   const [integrations, setIntegrations] = useState( [] );
+  const [ integrationItemsLoaded, setIntegrationItemsLoaded ] = useState( false );
+
   useEffect( () => {
     postData( 'content-restriction/settings/integrations' )
       .then( ( res ) => {
           setIntegrations(res);
+          setIntegrationItemsLoaded(true);
       } )
       .catch( ( error ) => {
         openNotificationWithIcon('error', __( "Something wen't wrong!", 'content-restriction' ))
@@ -19,7 +23,18 @@ export default function List() {
 
   return (
     <div class="content-restriction__integrations__list">
-      {
+      { ! integrationItemsLoaded ? 
+        <>
+          <SingleSkeleton/>
+          <SingleSkeleton/>
+          <SingleSkeleton/>
+          <SingleSkeleton/>
+          <SingleSkeleton/>
+          <SingleSkeleton/>
+          <SingleSkeleton/>
+          <SingleSkeleton/>
+        </>
+      :
         integrations.map((integration, index) => {
           return(
             <div class="content-restriction__integrations__list__item">

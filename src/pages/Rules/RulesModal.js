@@ -3,6 +3,7 @@ import { useEffect, useState } from '@wordpress/element';
 import store from '@store/index';
 import postData from '@helpers/postData';
 import defaultIcon from '@icons/default.svg';
+import RulesModalSkeleton from './Skeletons/RulesModalSkeleton';
 import { __ } from '@wordpress/i18n';
 
 const RulesModal = () => {
@@ -10,6 +11,7 @@ const RulesModal = () => {
     
 	const [ selectedType, setSelectedType ] = useState( state.getRuleType() || 'who-can-see');
 	const [ rulesType, setRulesType ] = useState( [] );
+	const [ rulesTypeLoaded, setRulesTypeLoaded ] = useState( false );
 	const [ modalVisible, setModalVisible ] = useState( state.getModal() || false );
 	const [ modalTitle, setModalTitle ] = useState( '-' );
 	const [ modalSubTitle, setModalSubTitle ] = useState( '-' );
@@ -50,11 +52,13 @@ const RulesModal = () => {
         selectedType && postData( `content-restriction/modules/${selectedType}` )
             .then( ( res ) => {
                 setRulesType(res);
+                setRulesTypeLoaded(true);
             } )
     }
 
     useEffect( () => {
         initModal();
+        setRulesTypeLoaded(false);
 	}, [selectedType]);
     
     useEffect( () => {
@@ -111,7 +115,10 @@ const RulesModal = () => {
                                 rulesType.length > 0 ?
                                 <>
                                     <ul className="content-restriction__type">
-                                        {
+
+                                        { ! rulesTypeLoaded ?
+                                            <RulesModalSkeleton/>
+                                        :
                                             rulesType?.map((item, index) => {
                                                 return (
                                                     <>
@@ -137,7 +144,6 @@ const RulesModal = () => {
                                                             <span>{item.desc}</span>
                                                         </button>
                                                     </li>
-
                                                     }
                                                     </>
                                                    

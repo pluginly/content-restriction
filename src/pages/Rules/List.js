@@ -7,11 +7,13 @@ import showDeleteConfirm from '@helpers/showDeleteConfirm';
 import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
 import { __ } from '@wordpress/i18n';
 import { useNavigate } from 'react-router-dom';
+import RulesSkeleton from './Skeletons/RulesSkeleton';
 
 export default function List() {
   const history = useNavigate();
   const [rules, setRules] = useState( [] );
   const [publishedStatus, setPublishedStatus] = useState({});
+  const [ rulesLoaded, setRulesLoadedLoaded ] = useState( false );
 
   // Initialize state with the published status for each rule
   useEffect(() => {
@@ -41,6 +43,7 @@ export default function List() {
     postData( 'content-restriction/rules/list' )
       .then( ( res ) => {
           setRules(res);
+          setRulesLoadedLoaded(true);
       } )
       .catch( ( error ) => {
         openNotificationWithIcon('error', __( "Something wen't wrong!", 'content-restriction' ))
@@ -114,9 +117,16 @@ export default function List() {
                 </tr>
               )
             }) :
-            <tr>
-              <td colSpan="4" className="text-center">{__( 'No rules was found! Create new rule', 'content-restriction' )}</td>
-            </tr>
+            ! rulesLoaded ? 
+              <>
+                <RulesSkeleton/>
+                <RulesSkeleton/>
+                <RulesSkeleton/>
+              </>
+              :
+              <tr>
+                <td colSpan="4" className="text-center">{__( 'No rules was found! Create new rule', 'content-restriction' )}</td>
+              </tr>        
           }
         </tbody>
       </table>

@@ -8,6 +8,7 @@ import RulesSidebar from './RulesSidebar';
 import transformString from '@helpers/transformString';
 import defaultIcon from '@icons/default.svg';
 import { __ } from '@wordpress/i18n';
+import ModuleSelectSkeleton from './Skeletons/ModuleSelectSkeleton';
 
 export default function RulesWrapper() {
     const [id, setRuleId] = useState(null);
@@ -16,6 +17,7 @@ export default function RulesWrapper() {
     const [selectedWhatContent, setWhatContent] = useState('');
     const [selectedRestrictView, setRestrictView] = useState('');
     const [openKey, setOpenKey] = useState(null);
+	const [ rulesSelectedLoaded, setRulesSelectedLoaded ] = useState( false );
 
     const [whoCanSeeIcon, setWhoCanSeeIcon] = useState(defaultIcon);
     const [whatContentIcon, setWhatContentIcon] = useState(defaultIcon);
@@ -28,6 +30,8 @@ export default function RulesWrapper() {
         const lastUrlPart = urlParts[urlParts.length - 1];
 
         if ( 'rule' === lastUrlPart ) {
+            setRulesSelectedLoaded(true);
+
             dispatch(store).setWhoCanSee(resetValues);
             dispatch(store).setWhatContent(resetValues);
             dispatch(store).setRestrictView(resetValues);
@@ -102,6 +106,8 @@ export default function RulesWrapper() {
                 fetchData('who-can-see', initialWhoCanSee);
                 fetchData('what-content', initialWhatContent);
                 fetchData('restrict-view', initialRestrictView);  
+
+                setRulesSelectedLoaded(true);
             } )
             .catch( ( error ) => {
                 // console.log('Rules List Error', error);
@@ -124,7 +130,7 @@ export default function RulesWrapper() {
             setWhoCanSeeIcon(whoCanSeeAction.icon ?? whoCanSeeIcon);
             setWhatContentIcon(whatContentAction.icon ?? whatContentIcon);
             setRestrictViewIcon(restrictViewAction.icon ?? restrictViewIcon);
-        });      
+        });
 
         // Unsubscribe when the component is unmounted
         return () => storeUpdate();
@@ -184,70 +190,80 @@ export default function RulesWrapper() {
     return (
         <>
             <section className="content-restriction__create-rules">
-                <div className="content-restriction__single">
-                    
-                    <div
-                        className="content-restriction__single__btn"
-                        onClick={(e) => selectRuleType(e, 'who-can-see')}
-                    >
-                        <img src={whoCanSeeIcon} />
-                        {selectedWhoCanSee ? (
-                            <>
-                                <h3 className="content-restriction__single__btn__title">{selectedWhoCanSee}</h3>
-                                <DropDownContent
-                                    id={id}
-                                    type="who-can-see"
-                                    openKey={openKey}
-                                    setOpenKey={setOpenKey}
-                                    changeAction={changeAction}
-                                    resetType={resetType}
-                                />
-                            </>
-                        ) : <h3 className="content-restriction__single__btn__title">{__( 'Who can see the content?', 'content-restriction' )}</h3>}
+
+                { ! rulesSelectedLoaded ?
+                <>
+                    <ModuleSelectSkeleton/>
+                    <ModuleSelectSkeleton/>
+                    <ModuleSelectSkeleton/>
+                </>
+                :
+                <>
+                    <div className="content-restriction__single">         
+                        <div
+                            className="content-restriction__single__btn"
+                            onClick={(e) => selectRuleType(e, 'who-can-see')}
+                        >
+                            <img src={whoCanSeeIcon} />
+                            {selectedWhoCanSee ? (
+                                <>
+                                    <h3 className="content-restriction__single__btn__title">{selectedWhoCanSee}</h3>
+                                    <DropDownContent
+                                        id={id}
+                                        type="who-can-see"
+                                        openKey={openKey}
+                                        setOpenKey={setOpenKey}
+                                        changeAction={changeAction}
+                                        resetType={resetType}
+                                    />
+                                </>
+                            ) : <h3 className="content-restriction__single__btn__title">{__( 'Who can see the content?', 'content-restriction' )}</h3>}
+                        </div>
                     </div>
-                </div>
-                <div className="content-restriction__single">
-                    <div
-                        className={`content-restriction__single__btn ${!selectedWhoCanSee ? 'disabled' : ''}`}
-                        onClick={(e) => selectRuleType(e, 'what-content')}
-                    >
-                         <img src={whatContentIcon} />
-                        {selectedWhatContent ? (
-                            <>
-                                <h3 className="content-restriction__single__btn__title">{selectedWhatContent}</h3>
-                                <DropDownContent
-                                    id={id}
-                                    type="what-content"
-                                    openKey={openKey}
-                                    setOpenKey={setOpenKey}
-                                    changeAction={changeAction}
-                                    resetType={resetType}
-                                />
-                            </>
-                        ) : <h3 className="content-restriction__single__btn__title">{__( 'What content will be unlocked?', 'content-restriction' )}</h3>}
+                    <div className="content-restriction__single">
+                        <div
+                            className={`content-restriction__single__btn ${!selectedWhoCanSee ? 'disabled' : ''}`}
+                            onClick={(e) => selectRuleType(e, 'what-content')}
+                        >
+                            <img src={whatContentIcon} />
+                            {selectedWhatContent ? (
+                                <>
+                                    <h3 className="content-restriction__single__btn__title">{selectedWhatContent}</h3>
+                                    <DropDownContent
+                                        id={id}
+                                        type="what-content"
+                                        openKey={openKey}
+                                        setOpenKey={setOpenKey}
+                                        changeAction={changeAction}
+                                        resetType={resetType}
+                                    />
+                                </>
+                            ) : <h3 className="content-restriction__single__btn__title">{__( 'What content will be unlocked?', 'content-restriction' )}</h3>}
+                        </div>
                     </div>
-                </div>
-                <div className="content-restriction__single">
-                    <div
-                        className={`content-restriction__single__btn ${!selectedWhoCanSee || !selectedWhatContent ? 'disabled' : ''}`}
-                        onClick={(e) => selectRuleType(e, 'restrict-view')}
-                    >
-                         <img src={restrictViewIcon} />
-                        {selectedRestrictView ? (
-                            <>  
-                                <h3 className="content-restriction__single__btn__title">{selectedRestrictView}</h3>
-                                <DropDownContent
-                                    id={id}
-                                    type="restrict-view"
-                                    openKey={openKey}
-                                    setOpenKey={setOpenKey}
-                                    changeAction={changeAction}
-                                    resetType={resetType}
-                                />
-                            </>
-                        ) : <h3 className="content-restriction__single__btn__title">{__( 'How should the content be protected?', 'content-restriction' )}</h3>}
+                    <div className="content-restriction__single">
+                        <div
+                            className={`content-restriction__single__btn ${!selectedWhoCanSee || !selectedWhatContent ? 'disabled' : ''}`}
+                            onClick={(e) => selectRuleType(e, 'restrict-view')}
+                        >
+                            <img src={restrictViewIcon} />
+                            {selectedRestrictView ? (
+                                <>  
+                                    <h3 className="content-restriction__single__btn__title">{selectedRestrictView}</h3>
+                                    <DropDownContent
+                                        id={id}
+                                        type="restrict-view"
+                                        openKey={openKey}
+                                        setOpenKey={setOpenKey}
+                                        changeAction={changeAction}
+                                        resetType={resetType}
+                                    />
+                                </>
+                            ) : <h3 className="content-restriction__single__btn__title">{__( 'How should the content be protected?', 'content-restriction' )}</h3>}
+                        </div>
                     </div>
-                </div>
+                 </>
+                }
             </section>
 
             <RulesModal />
