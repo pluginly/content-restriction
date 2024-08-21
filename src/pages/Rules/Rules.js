@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import GlobalHeader from '@components/GlobalHeader';
 import List from "./List";
 import { __ } from '@wordpress/i18n';
+import "./rules.scss";
 
 export default function Rules() {
   return (

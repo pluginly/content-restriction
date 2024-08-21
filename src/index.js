@@ -4,9 +4,6 @@ const App = lazy( () => import( './boot/App' ) );
 
 import "./scss/global.scss";
 import "./scss/components.scss";
-import "./scss/rules.scss";
-import "./scss/integrations.scss";
-import "./scss/license.scss";
 
 function initializeApp( container ) {
 	if ( createRoot ) {

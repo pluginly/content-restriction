@@ -1,6 +1,7 @@
 import IntegrationsList from "./List";
 import GlobalHeader from "@components/GlobalHeader";
 import { __ } from '@wordpress/i18n';
+import "./integrations.scss";
 
 export default function Integrations() {
   return (

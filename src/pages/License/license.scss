@@ -1,10 +1,18 @@
 .content-restriction__license {
 	clear: both;
     padding-block-start: 10px;
+	max-width: 600px;
+	margin: 0 auto;
 	&__header {
 		margin: 30px auto 60px;
-		max-width: 770px;
 		text-align: center;
 		padding-top: 40px;
+		margin-bottom: 15px;
+	}
+	button, input {
+		height: auto;
+	}
+	&__form {
+		text-align: center;
 	}
 }

@@ -1,20 +1,21 @@
 // Rules CSS
 .content-restriction__rules {
-    min-height: calc(75vh - 80px);
-    background-color: #fff;
-	padding: 30px;
-	padding-left: 20px;
+    min-height: calc(70vh - 80px);
+	padding: 30px 20px;
     &__header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-	  padding: 50px 15px 25px 30px;
+	  padding: 50px 25px 25px;
       &__title {
         font-size: 32px;
         font-weight: 700;
       }
 	}
 	&__list {
+		background-color: #ffffff !important;
+		padding: 40px;
+		border-radius: 5px;
 		width: 100%;
 		border-spacing: unset;
 		&__header {
