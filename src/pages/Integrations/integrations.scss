@@ -15,7 +15,7 @@
 		padding-top: 0;
 		&__item {
 			border: 1px solid #e6e8ea;
-			border-radius: 5px;
+			border-radius: var( --content-restriction-border-radius );
 			display: flex;
 			padding: 20px 24px;
 			flex-direction: column;
@@ -28,7 +28,7 @@
 				align-items: flex-start;
 				width: 100%;
 				img{
-					border-radius: 3px;
+					border-radius: var( --content-restriction-border-radius );;
 					width: 70px;
 					display: flex;
 					margin-block-end: 20px;

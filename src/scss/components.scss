@@ -2,6 +2,15 @@
   margin-top: 102px;
 }
 
+
+.ant-btn-primary {
+  background-color: var(--content-restriction-primary-color);
+  &:not(:disabled):not(.ant-btn-disabled):hover {
+    background-color: var(--content-restriction-primary-color);
+    opacity: .6;
+  }
+}
+
 input:checked + .slider {
   background-color: #4bb543;
 }
@@ -20,12 +29,12 @@ button {
 
 // Ant Input Style
 .ant-input {
-  height: 44px;
+  height: 55px;
   width: 100% !important;
   padding: 10px 20px !important;
   font-size: 14px;
   color: #000000;
-  border-radius: 4px;
+  border-radius: var( --content-restriction-border-radius );
   background-color: transparent;
   border: 1px solid #95928e;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px 0px;
@@ -45,7 +54,7 @@ button {
   width: 100% !important;
   font-size: 16px;
   color: #000000;
-  border-radius: 4px;
+  border-radius: var( --content-restriction-border-radius );
   cursor: pointer;
   background-color: transparent;
   border: 1px solid #95928e;
@@ -168,7 +177,7 @@ button {
     color: #000000;
     margin-bottom: 5px;
     background-color: #ffffff;
-    border-radius: 4px;
+    border-radius: var( --content-restriction-border-radius );
     transition: all ease 0.3s;
     .ant-select-item-option-state {
       display: none;

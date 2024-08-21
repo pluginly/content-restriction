@@ -95,7 +95,6 @@ class Enqueuer extends EnqueuerBase {
 					-webkit-font-smoothing: antialiased !important;
 					-moz-osx-font-smoothing: grayscale !important;
 					box-sizing: content-box;
-					border-radius: 10px;
 				}';
 	}
 }

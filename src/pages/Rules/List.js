@@ -64,8 +64,8 @@ export default function List() {
             <th scope="col">
               {__( 'Last edit', 'content-restriction' )}
             </th>
-            <th scope="col">
-              {__( 'Action', 'content-restriction' )}
+            <th scope="col" width="5%" className='text-center'>
+              {__( 'Actions', 'content-restriction' )}
             </th>
           </tr>
         </thead>
