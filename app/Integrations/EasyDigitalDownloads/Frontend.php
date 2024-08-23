@@ -144,12 +144,12 @@ class Frontend extends IntegrationBase {
 
 		if ( class_exists( 'EDD_All_Access' ) ) {
 			$modules[] = [
-				'name'   => __( 'All Access Pass', 'content-restriction-pro' ),
+				'name'   => __( 'All Access Pass', 'content-restriction' ),
 				'key'    => 'edd_all_access_pass',
 				'group'  => 'edd',
 				'meta'   => ['downloads', 'edd', 'all downloads'],
 				'icon'   => $this->get_icon( 'EasyDigitalDownloads' ),
-				'desc'   => __( 'All EasyDigitalDownloads Access is a plugin that allows you to manage posts in WordPress.', 'content-restriction-pro' ),
+				'desc'   => __( 'All EasyDigitalDownloads Access is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
 				'is_pro' => true,
 			];
 		}

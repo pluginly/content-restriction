@@ -15,19 +15,19 @@ class Frontend extends \ContentRestriction\Common\FrontendBase {
 
 	public function list( array $modules ): array {
 		$modules[] = [
-			'name'       => __( 'Randomize', 'content-restriction-pro' ),
+			'name'       => __( 'Randomize', 'content-restriction' ),
 			'key'        => 'randomize',
 			'icon'       => $this->get_icon( 'Randomize' ),
-			'desc'       => __( 'Randomize words in the post or page title, excerpt, and description.', 'content-restriction-pro' ),
+			'desc'       => __( 'Randomize words in the post or page title, excerpt, and description.', 'content-restriction' ),
 			'type'       => 'section',
 			'options'    => [
 				'apply_to' => [
-					'title'   => __( 'Apply To', 'content-restriction-pro' ),
+					'title'   => __( 'Apply To', 'content-restriction' ),
 					'type'    => 'multi-select',
 					'options' => [
-						'title'   => __( 'Title', 'content-restriction-pro' ),
-						'content' => __( 'Content', 'content-restriction-pro' ),
-						'excerpt' => __( 'Excerpt', 'content-restriction-pro' ),
+						'title'   => __( 'Title', 'content-restriction' ),
+						'content' => __( 'Content', 'content-restriction' ),
+						'excerpt' => __( 'Excerpt', 'content-restriction' ),
 					],
 				],
 			],

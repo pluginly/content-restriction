@@ -4,7 +4,7 @@ Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,10 +114,14 @@ Yes. Content Restriction can restrict access to media that is embedded within a 
 No you don’t have to create account to use this plugin. Gated content rules setup & membership data live securely within the central WordPress dashboard of your website.
 
 
-= Content Restriction is awesome! Can I contribute? =
-Yes, you can! Join in on our [GitHub repository](https://github.com/pluginly/content-restriction/).
-
 == Changelog ==
+
+= 1.1.0 – Aug 25, 2024 =
+* Add: WooCommerce Integration
+* Add: Directorist Integration
+* Add: FluentCRM Integration
+* Add: Login Me Now Integration
+* Add: Easy Digital Downloads Integration
 
 = 1.0.0 – Aug 18, 2024 =
 * Initial Release
