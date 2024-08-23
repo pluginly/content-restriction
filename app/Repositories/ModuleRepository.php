@@ -51,17 +51,17 @@ class ModuleRepository {
 				continue;
 			}
 
-			$if   = is_array( $rule['rule']['who-can-see'] ) ? array_key_first( $rule['rule']['who-can-see'] ) : $rule['rule']['who-can-see'];
-			$then = is_array( $rule['rule']['what-content'] ) ? array_key_first( $rule['rule']['what-content'] ) : $rule['rule']['what-content'];
-			$else = is_array( $rule['rule']['restrict-view'] ) ? array_key_first( $rule['rule']['restrict-view'] ) : $rule['rule']['restrict-view'];
+			$who_can_see   = is_array( $rule['rule']['who-can-see'] ) ? array_key_first( $rule['rule']['who-can-see'] ) : $rule['rule']['who-can-see'];
+			$what_content  = is_array( $rule['rule']['what-content'] ) ? array_key_first( $rule['rule']['what-content'] ) : $rule['rule']['what-content'];
+			$restrict_view = is_array( $rule['rule']['restrict-view'] ) ? array_key_first( $rule['rule']['restrict-view'] ) : $rule['rule']['restrict-view'];
 
-			$modules = $this->get();
-			$_if     = $modules[$if] ?? '';
-			$_then   = $modules[$then] ?? '';
-			$_else   = $modules[$else] ?? '';
+			$modules        = $this->get();
+			$_who_can_see   = $modules[$who_can_see] ?? '';
+			$_what_content  = $modules[$what_content] ?? '';
+			$_restrict_view = $modules[$restrict_view] ?? '';
 
-			if ( $_if && $_then && $_else ) {
-				( new $_else( $_if, $_then, $rule ) )->boot();
+			if ( $_who_can_see && $_what_content && $_restrict_view ) {
+				( new $_restrict_view( $_who_can_see, $_what_content, $rule ) )->boot();
 			}
 		}
 	}

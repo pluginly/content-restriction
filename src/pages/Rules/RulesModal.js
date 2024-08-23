@@ -49,7 +49,16 @@ const RulesModal = () => {
 
     const initModal = () => {
         setModalVisible(state.getModal());
-        selectedType && postData( `content-restriction/modules/${selectedType}` )
+
+        const whatContentAction = state.getWhatContent();
+        const whoCanSeeAction = state.getWhoCanSee();
+        const restrictViewAction = state.getRestrictView();
+
+        selectedType && postData( `content-restriction/modules/${selectedType}`, {
+            what_content : whatContentAction?.key,
+            who_can_see : whoCanSeeAction?.key,
+            restrict_view : restrictViewAction?.key,
+        } )
             .then( ( res ) => {
                 setRulesType(res);
                 setRulesTypeLoaded(true);

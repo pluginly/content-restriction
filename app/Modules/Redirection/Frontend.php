@@ -24,7 +24,7 @@ class Frontend extends FrontendBase {
 			'type'    => 'section',
 			'options' => [
 				'url' => [
-					'title' => __( 'Redirection', 'content-restriction' ),
+					'title' => __( 'Redirection to', 'content-restriction' ),
 					'desc'  => __( 'Title is a plugin that allows you to blur content on your site.', 'content-restriction' ),
 					'type'  => 'url',
 				],
