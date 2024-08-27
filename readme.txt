@@ -123,7 +123,6 @@ No you don’t have to create account to use this plugin. Gated content rules se
 * Add: FluentCRM Integration
 * Add: Login Me Now Integration
 * Add: Easy Digital Downloads Integration
-* Add: Easy Digital Downloads Integration
 
 = 1.0.0 – Aug 18, 2024 =
 * Initial Release
