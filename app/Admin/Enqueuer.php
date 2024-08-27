@@ -96,6 +96,10 @@ class Enqueuer extends EnqueuerBase {
 					-moz-osx-font-smoothing: grayscale !important;
 					box-sizing: content-box;
 					width: 100%
+				}
+					
+				.wp-menu-open .toplevel_page_content-restriction > div.wp-menu-image:before {
+					background: url("' . esc_attr( CONTENT_RESTRICTION_IMAGES ) . '/sidebar-icon-current.svg' . '") no-repeat center center !important;
 				}';
 	}
 }

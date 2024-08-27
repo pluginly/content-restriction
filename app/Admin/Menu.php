@@ -73,18 +73,18 @@ class Menu {
 		);
 
 		if ( ! defined( 'CONTENT_RESTRICTION_PRO_VERSION' ) ) {
-			add_submenu_page(
-				$slug,
-				__( 'Upgrade', 'content-restriction' ),
-				__( 'Upgrade', 'content-restriction' ),
-				$cap,
-				$slug . '-upgrade-to-pro',
-				[$this, 'render_admin_dashboard']
-			);
+			// add_submenu_page(
+			// 	$slug,
+			// 	__( 'Upgrade', 'content-restriction' ),
+			// 	__( 'Upgrade', 'content-restriction' ),
+			// 	$cap,
+			// 	$slug . '-upgrade-to-pro',
+			// 	[$this, 'render_admin_dashboard']
+			// );
 
-			// Rewrite the menu item.
-			global $submenu;
-			$submenu[$slug][4][2] = 'https://contentrestriction.com/pricing/';
+			// // Rewrite the menu item.
+			// global $submenu;
+			// $submenu[$slug][4][2] = 'https://contentrestriction.com/pricing/';
 		}
 	}
 

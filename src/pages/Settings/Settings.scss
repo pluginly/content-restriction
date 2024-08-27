@@ -1,7 +1,7 @@
-.content-restriction__license {
+.content-restriction__settings {
 	clear: both;
     padding-block-start: 10px;
-	max-width: 600px;
+	// max-width: 1280px;
 	margin: 0 auto;
 	&__header {
 		margin: 30px auto 60px;
@@ -9,10 +9,10 @@
 		padding-top: 40px;
 		margin-bottom: 15px;
 	}
-	button {
-		height: auto;
+	.settings-save-button {
+		margin-top: 30px;
 	}
-	&__form {
-		text-align: center;
+	.site-layout-background {
+		background: transparent;
 	}
 }

@@ -7,7 +7,6 @@
 namespace ContentRestriction\Repositories;
 
 use ContentRestriction\Utils\Options;
-use ContentRestriction\Utils\Plugin;
 
 class SettingsRepository {
 	private static array $settings;
@@ -24,152 +23,117 @@ class SettingsRepository {
 		return self::all()[$key] ?? '';
 	}
 
-	public static function update( string $key, $value ): bool {
+	public static function update_batch( array $array ): bool {
 		$settings = self::all();
-		$settings[$key] ??= '';
-		$settings[$key] = $value;
+
+		foreach ( $array as $key => $data ) {
+			if ( ! self::validate_type( $key, $data ) ) {
+				continue;
+			}
+
+			$settings[$key] ??= '';
+			$settings[$key] = $data;
+		}
 
 		return Options::set( self::$key, $settings );
 	}
 
-	public static function integrations() {
-		$settings = self::all();
-		$arr      = self::get_integrations();
-		foreach ( $arr as $key => $i ) {
-			$arr[$key]['icon']      = self::get_icon( $i['icon'] );
-			$arr[$key]['installed'] = Plugin::is_active( $i['plugin'] );
-			$arr[$key]['status']    = $settings[$i['key']] ?? false;
+	private static function validate_type( string $key, $value ): bool {
+		$type = self::get_type( $key );
+
+		if ( 'string' === $type ) {
+			return is_string( $value );
 		}
 
-		return $arr;
+		if ( 'array' === $type ) {
+			return is_array( $value );
+		}
+
+		if ( 'bool' === $type ) {
+			return is_bool( $value );
+		}
+
+		if ( 'integer' === $type ) {
+			return is_integer( $value );
+		}
+
+		return false;
 	}
 
-	private static function get_integrations() {
+	private static function get_type( string $key ): string {
+		$fields = self::get_fields();
+
+		foreach ( $fields as $section => $field ) {
+			if ( isset( $field[$key]['type'] ) ) {
+				return $field[$key]['type'];
+			}
+		}
+
+		return '';
+	}
+
+	public static function get_fields() {
+		return apply_filters(
+			'content_restriction_fields', [
+				'general' => self::general_fields(),
+				'license' => self::license_fields(),
+				'tools'   => self::tools_fields(),
+			]
+		);
+	}
+
+	private static function license_fields() {
 		return [
-			[
-				'title'     => __( 'WooCommerce', 'content-restriction' ), // integration name
-				'icon'      => 'WooCommerce', // icon of this plugin
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.', // a link to know more about the integration
-				'plugin'    => 'woocommerce/woocommerce.php', // the plugin filename to check is it installed? if not we will don't allow to activate this module
-				'key'       => 'woocommerce', // we will save the setting using this key
-				'badges'    => [ // we will serve badges like - is pro , upcoming
-					// check if pro plugin installed or not, if installed remove the pro badge
+			'license_key' => [
+				'type' => 'string',
+				'html' => [
+					'type'        => 'text',
+					'placeholder' => __( 'Please entire your valid license key', 'content-restriction' ),
+					'label'       => __( 'License Key', 'content-restriction' ),
 				],
-				'status'    => false, // status of this setting
-				'installed' => false, // check whether plugin installed? if not then don't allow to trigger the option
-			],
-			[
-				'title'     => __( 'Directorist', 'content-restriction' ),
-				'icon'      => 'Directorist',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
-				'plugin'    => 'directorist/directorist-base.php',
-				'key'       => 'directorist',
-				'badges'    => [
-
-				],
-				'installed' => false,
-				'status'    => false,
-			],
-			[
-				'title'     => __( 'FluentCRM', 'content-restriction' ),
-				'icon'      => 'FluentCRM',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
-				'plugin'    => 'fluent-crm/fluent-crm.php',
-				'key'       => 'fluent_crm',
-				'badges'    => [
-
-				],
-				'installed' => false,
-				'status'    => false,
-			],
-			[
-				'title'     => __( 'Login Me Now', 'content-restriction' ),
-				'icon'      => 'LoginMeNow',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
-				'plugin'    => 'login-me-now/login-me-now.php',
-				'key'       => 'login_me_now',
-				'badges'    => [
-
-				],
-				'installed' => false,
-				'status'    => false,
-			],
-			[
-				'title'     => __( 'Easy Digital Downloads', 'content-restriction' ),
-				'icon'      => 'EasyDigitalDownloads',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
-				'plugin'    => 'easy-digital-downloads/easy-digital-downloads.php',
-				'key'       => 'easy_digital_downloads',
-				'badges'    => [
-
-				],
-				'installed' => false,
-				'status'    => false,
-			],
-			[
-				'title'     => __( ' Easy Digital Downloads - All Access', 'content-restriction' ),
-				'icon'      => 'EasyDigitalDownloads',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
-				'plugin'    => 'edd-all-access/edd-all-access.php',
-				'key'       => 'easy_digital_downloads_all_access',
-				'badges'    => [
-
-				],
-				'installed' => false,
-				'status'    => false,
-			],
-			[
-				'title'     => __( 'Block Editor', 'content-restriction' ),
-				'icon'      => 'BlockEditor',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
-				'plugin'    => '#',
-				'key'       => 'block_editor',
-				'badges'    => [
-					'upcoming',
-				],
-				'installed' => false,
-				'status'    => false,
-			],
-			[
-				'title'     => __( 'Elementor', 'content-restriction' ),
-				'icon'      => 'Elementor',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
-				'plugin'    => 'elementor/elementor.php',
-				'key'       => 'elementor',
-				'badges'    => [
-					'upcoming',
-				],
-				'installed' => false,
-				'status'    => false,
-			],
-			[
-				'title'     => __( 'BuddyPress', 'content-restriction' ),
-				'icon'      => 'BuddyPress',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
-				'plugin'    => 'buddypress/bp-loader.php',
-				'key'       => 'buddypress',
-				'badges'    => [
-					'upcoming',
-				],
-				'installed' => false,
-				'status'    => false,
-			],
-			[
-				'title'     => __( 'Tutor LMS', 'content-restriction' ),
-				'icon'      => 'TutorLMS',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
-				'plugin'    => 'buddypress/bp-loader.php',
-				'key'       => 'buddypress',
-				'badges'    => [
-					'upcoming',
-				],
-				'installed' => false,
-				'status'    => false,
 			],
 		];
 	}
 
-	private static function get_icon( string $module ) {
-		return CONTENT_RESTRICTION_IMAGES . "{$module}.svg?" . CONTENT_RESTRICTION_VERSION;
+	private static function general_fields() {
+		return [
+			'general_key'   => [
+				'type'  => 'string',
+				'label' => __( 'General Setting Key', 'content-restriction' ),
+			],
+			'general_key_2' => [
+				'type'  => 'string',
+				'label' => __( 'General Setting Key 2', 'content-restriction' ),
+			],
+			'general_key_3' => [
+				'type'  => 'string',
+				'label' => __( 'General Setting Key 3', 'content-restriction' ),
+			],
+			'general_key_4' => [
+				'type'  => 'string',
+				'label' => __( 'General Setting Key 4', 'content-restriction' ),
+			],
+		];
+	}
+
+	private static function tools_fields() {
+		return [
+			'export_rules' => [
+				'type' => 'string',
+				'html' => [
+					'type'        => 'file',
+					'placeholder' => __( 'Export', 'content-restriction' ),
+					'label'       => __( 'Export Rules', 'content-restriction' ),
+				],
+			],
+			'import_rules' => [
+				'type' => 'string',
+				'html' => [
+					'type'        => 'file',
+					'placeholder' => __( 'Import', 'content-restriction' ),
+					'label'       => __( 'Import Rules', 'content-restriction' ),
+				],
+			],
+		];
 	}
 }

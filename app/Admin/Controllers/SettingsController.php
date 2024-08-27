@@ -7,12 +7,25 @@
 
 namespace ContentRestriction\Admin\Controllers;
 
+use ContentRestriction\Repositories\IntegrationsRepository;
 use ContentRestriction\Repositories\SettingsRepository;
 
 class SettingsController {
-	public function save() {
+	public function fields() {
+		return SettingsRepository::get_fields();
 	}
+
+	public function get_all() {
+		return SettingsRepository::all();
+	}
+
+	public function update( \WP_REST_Request $request ) {
+		$settings = $request->get_params();
+
+		return SettingsRepository::update_batch( $settings );
+	}
+
 	public function integrations(): array {
-		return SettingsRepository::integrations();
+		return IntegrationsRepository::get_all();
 	}
 }

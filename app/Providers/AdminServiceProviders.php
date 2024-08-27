@@ -21,6 +21,8 @@ class AdminServiceProviders extends \ContentRestriction\Common\ProviderBase {
 
 		add_action( 'wp_loaded', [$this, 'hide_admin_notices'] );
 		add_action( 'admin_init', [$this, 'redirect_to_dashboard'] );
+		add_filter( 'admin_footer_text', [$this, 'admin_footer_link'], 99 );
+
 	}
 
 	public function hide_admin_notices() {
@@ -41,6 +43,12 @@ class AdminServiceProviders extends \ContentRestriction\Common\ProviderBase {
 		if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
 			wp_safe_redirect( admin_url( 'admin.php?page=content-restriction#/rule' ) );
 			exit();
+		}
+	}
+
+	public function admin_footer_link() {
+		if ( isset( $_GET["page"] ) && 'content-restriction' === $_GET["page"] ) {
+			return '<span id="footer-thankyou"> Thank you for using <span class="focus:text-content-restriction-hover active:text-content-restriction-hover hover:text-content-restriction-hover"> ' . esc_attr( __( 'Content Restriction', 'login-me-now' ) ) . '.</span></span>';
 		}
 	}
 }
