@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Layout, Menu, Form, Input, Button, Select, Space, } from 'antd';
 import { SettingOutlined, AppstoreOutlined, UserOutlined, SecurityScanOutlined, KeyOutlined } from '@ant-design/icons';
 import { __ } from '@wordpress/i18n';
-import "./Settings.scss";
 import renderFormContent from './renderFormContent';
 import handleSettingsUpdate from './handleSettingsUpdate';
 

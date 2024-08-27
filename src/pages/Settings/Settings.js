@@ -1,6 +1,6 @@
 import GlobalHeader from "@components/GlobalHeader";
 import { __ } from '@wordpress/i18n';
-import "./Settings.scss";
+import "./Style.scss";
 import Panel from "./Panel";
 
 export default function Settings() {
