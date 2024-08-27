@@ -37,7 +37,7 @@ class Frontend extends IntegrationBase {
 			'group' => 'edd',
 			'meta'  => ['downloads', 'edd', 'all downloads'],
 			'icon'  => $this->get_icon( 'EasyDigitalDownloads' ),
-			'desc'  => __( 'All EasyDigitalDownloads Downloads is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'  => __( 'All the downloads will be accessible when the set rule is applied.', 'content-restriction' ),
 		];
 
 		$modules[] = [
@@ -46,7 +46,7 @@ class Frontend extends IntegrationBase {
 			'group'   => 'edd',
 			'meta'    => ['downloads', 'edd', 'all downloads'],
 			'icon'    => $this->get_icon( 'EasyDigitalDownloads' ),
-			'desc'    => __( 'Specific EasyDigitalDownloads Downloads is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Specific download will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'downloads' => [
@@ -63,7 +63,7 @@ class Frontend extends IntegrationBase {
 			'meta'    => ['downloads', 'edd', 'all downloads'],
 			'group'   => 'edd',
 			'icon'    => $this->get_icon( 'EasyDigitalDownloads' ),
-			'desc'    => __( 'Downloads With Categories is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Download with the category will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'categories' => [
@@ -113,7 +113,7 @@ class Frontend extends IntegrationBase {
 			'group'   => 'edd',
 			'meta'    => ['order', 'edd', 'has orders'],
 			'icon'    => $this->get_icon( 'EasyDigitalDownloads' ),
-			'desc'    => __( 'All Edd Products is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Only who placed an order should have access to the content.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'status' => [
@@ -149,7 +149,7 @@ class Frontend extends IntegrationBase {
 				'group'  => 'edd',
 				'meta'   => ['downloads', 'edd', 'all downloads'],
 				'icon'   => $this->get_icon( 'EasyDigitalDownloads' ),
-				'desc'   => __( 'All EasyDigitalDownloads Access is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+				'desc'   => __( 'All Access Pass should have access to the content.', 'content-restriction' ),
 				'is_pro' => true,
 			];
 		}

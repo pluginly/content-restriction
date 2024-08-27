@@ -36,7 +36,7 @@ class Frontend extends IntegrationBase {
 			'group' => 'directorist',
 			'meta'  => ['listings', 'directorist', 'all listings'],
 			'icon'  => $this->get_icon( 'Directorist' ),
-			'desc'  => __( 'All Directorist Listings is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'  => __( 'All the listings will be accessible when the set rule is applied.', 'content-restriction' ),
 		];
 
 		$modules[] = [
@@ -45,7 +45,7 @@ class Frontend extends IntegrationBase {
 			'group'   => 'directorist',
 			'meta'    => ['listings', 'directorist', 'all listings'],
 			'icon'    => $this->get_icon( 'Directorist' ),
-			'desc'    => __( 'Specific Directorist Listings is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Specific listing will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'listings' => [
@@ -62,7 +62,7 @@ class Frontend extends IntegrationBase {
 			'meta'    => ['listings', 'directorist', 'all listings'],
 			'group'   => 'directorist',
 			'icon'    => $this->get_icon( 'Directorist' ),
-			'desc'    => __( 'Listings With Categories is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Listing with the category will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'categories' => [
@@ -80,7 +80,7 @@ class Frontend extends IntegrationBase {
 			'meta'    => ['listings', 'directorist', 'all listings'],
 			'group'   => 'directorist',
 			'icon'    => $this->get_icon( 'Directorist' ),
-			'desc'    => __( 'Listings With Locations is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Listing with the location will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'locations' => [

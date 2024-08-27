@@ -71,11 +71,12 @@ When a user does not have access permission, the following rules can be applied 
 🔹 FluentCRM
 🔹 Directorist
 🔹 Login Me Now
-🔹 BuddyPress(Upcoming)
-🔹 BuddyBoss(Upcoming)
-🔹 Elementor(Upcoming)
-🔹 TutorLMS(Upcoming)
-🔹 Learndash(Upcoming)
+🔹 ACF - Advanced Custom Fields (Upcoming)
+🔹 BuddyPress (Upcoming)
+🔹 BuddyBoss (Upcoming)
+🔹 Elementor (Upcoming)
+🔹 TutorLMS (Upcoming)
+🔹 Learndash (Upcoming)
 
 
 = OTHER AMAZING PLUGIN BY US =
@@ -116,11 +117,12 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 == Changelog ==
 
-= 1.1.0 – Aug 25, 2024 =
+= 1.1.0 – Aug 27, 2024 =
 * Add: WooCommerce Integration
 * Add: Directorist Integration
 * Add: FluentCRM Integration
 * Add: Login Me Now Integration
+* Add: Easy Digital Downloads Integration
 * Add: Easy Digital Downloads Integration
 
 = 1.0.0 – Aug 18, 2024 =

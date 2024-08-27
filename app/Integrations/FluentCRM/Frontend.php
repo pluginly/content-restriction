@@ -32,7 +32,7 @@ class Frontend extends IntegrationBase {
 			'group'   => 'fluent-crm',
 			'meta'    => ['list', 'subscribed', 'fluent crm', 'fluentCRM', 'subscriber', 'fluent crm', 'mailing list', 'marketing'],
 			'icon'    => $this->get_icon( 'FluentCRM' ),
-			'desc'    => __( 'All FluentCRM is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Only who is subscriber should have access to the content.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'status' => [
@@ -49,7 +49,7 @@ class Frontend extends IntegrationBase {
 			'group'   => 'fluent-crm',
 			'meta'    => ['list', 'subscribed', 'fluent crm', 'fluentCRM', 'subscriber', 'fluent crm', 'mailing list', 'marketing'],
 			'icon'    => $this->get_icon( 'FluentCRM' ),
-			'desc'    => __( 'All WooCommerce Products is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Subscriber in specific list should have access to the content.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'lists'  => [

@@ -33,7 +33,7 @@ class Frontend extends IntegrationBase {
 			'group' => 'woocommerce',
 			'meta'  => ['products', 'woocommerce', 'all products'],
 			'icon'  => $this->get_icon( 'WooCommerce' ),
-			'desc'  => __( 'All WooCommerce Products is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'  => __( 'All the products will be accessible when the set rule is applied.', 'content-restriction' ),
 		];
 
 		$modules[] = [
@@ -42,7 +42,7 @@ class Frontend extends IntegrationBase {
 			'group'   => 'woocommerce',
 			'meta'    => ['products', 'woocommerce', 'all products'],
 			'icon'    => $this->get_icon( 'WooCommerce' ),
-			'desc'    => __( 'Specific WooCommerce products is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Specific product will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'products' => [
@@ -59,7 +59,7 @@ class Frontend extends IntegrationBase {
 			'group'   => 'woocommerce',
 			'meta'    => ['products', 'woocommerce', 'all products'],
 			'icon'    => $this->get_icon( 'WooCommerce' ),
-			'desc'    => __( 'Products With Categories is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Product with the category will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'categories' => [
@@ -109,7 +109,7 @@ class Frontend extends IntegrationBase {
 			'group'   => 'woocommerce',
 			'meta'    => ['order', 'woocommerce', 'has orders'],
 			'icon'    => $this->get_icon( 'WooCommerce' ),
-			'desc'    => __( 'All WooCommerce Products is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Only who placed an order should have access to the content.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'status' => [
@@ -126,7 +126,7 @@ class Frontend extends IntegrationBase {
 			'group'   => 'woocommerce',
 			'meta'    => ['checkout', 'purchased', 'bought', 'woocommerce', 'products'],
 			'icon'    => $this->get_icon( 'WooCommerce' ),
-			'desc'    => __( 'All WooCommerce Products is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'    => __( 'Only who bought specific product should have access to the content.', 'content-restriction' ),
 			'type'    => 'section',
 			'options' => [
 				'products' => [

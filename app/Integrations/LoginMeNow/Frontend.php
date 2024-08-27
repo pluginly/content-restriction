@@ -30,7 +30,7 @@ class Frontend extends \ContentRestriction\Common\IntegrationBase {
 			'group' => 'login-me-now',
 			'meta'  => ['list', 'subscribed', 'fluent crm', 'fluentCRM', 'subscriber', 'fluent crm', 'mailing list', 'marketing'],
 			'icon'  => $this->get_icon( 'LoginMeNow' ),
-			'desc'  => __( 'All LoginMeNow is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'  => __( 'Facebook verified user should have access to the content.', 'content-restriction' ),
 		];
 
 		$modules[] = [
@@ -39,7 +39,7 @@ class Frontend extends \ContentRestriction\Common\IntegrationBase {
 			'group' => 'login-me-now',
 			'meta'  => ['list', 'subscribed', 'fluent crm', 'fluentCRM', 'subscriber', 'fluent crm', 'mailing list', 'marketing'],
 			'icon'  => $this->get_icon( 'LoginMeNow' ),
-			'desc'  => __( 'All LoginMeNow  is a plugin that allows you to manage posts in WordPress.', 'content-restriction' ),
+			'desc'  => __( 'Google verified user should have access to the content.', 'content-restriction' ),
 			'type'  => 'section',
 		];
 

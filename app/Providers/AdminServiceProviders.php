@@ -48,7 +48,7 @@ class AdminServiceProviders extends \ContentRestriction\Common\ProviderBase {
 
 	public function admin_footer_link() {
 		if ( isset( $_GET["page"] ) && 'content-restriction' === $_GET["page"] ) {
-			return '<span id="footer-thankyou"> Thank you for using <span class="focus:text-content-restriction-hover active:text-content-restriction-hover hover:text-content-restriction-hover"> ' . esc_attr( __( 'Content Restriction', 'login-me-now' ) ) . '.</span></span>';
+			return '<span id="footer-thankyou"> Thank you for using <span class="focus:text-content-restriction-hover active:text-content-restriction-hover hover:text-content-restriction-hover"> ' . esc_attr( __( 'Content Restriction', 'content-restriction' ) ) . '.</span></span>';
 		}
 	}
 }
