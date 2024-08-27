@@ -49,13 +49,22 @@ class ModuleController {
 			foreach ( $filter_keys as $filter_key ) {
 				$param_value      = $request->get_param( $filter_key );
 				$condition_values = $module['conditions'][$filter_key] ?? [];
-				if (
-					! empty( $param_value )
-					&& ! empty( $condition_values )
-					&& ! in_array( $param_value, $condition_values )
-				) {
+				$compare          = $module['conditions']['compare'] ?? 'has_any';
+
+				if ( empty( $param_value ) || empty( $condition_values ) ) {
+					continue;
+				}
+
+				// If compare is 'not_in' and the value is in the condition_values, unset the module
+				if ( 'not_in' === $compare && in_array( $param_value, $condition_values ) ) {
 					unset( $modules[$key] );
-					continue 2;
+					continue 2; // Skip to the next module
+				}
+
+				// If compare is 'has_any' (default) and the value is not in the condition_values, unset the module
+				if ( 'has_any' === $compare && ! in_array( $param_value, $condition_values ) ) {
+					unset( $modules[$key] );
+					continue 2; // Skip to the next module
 				}
 			}
 		}

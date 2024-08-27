@@ -21,15 +21,15 @@ class Frontend extends FrontendBase {
 			'key'        => 'login_back',
 			'icon'       => $this->get_icon( 'LoginBack' ),
 			'desc'       => __( 'Redirect back to the current post or page after the user logged in.', 'content-restriction' ),
-			// 'conditions' => apply_filters(
-			// 	'content_restriction_module_login_and_back_conditions',
-			// 	[
-			// 		'who_can_see' => [
-			// 			'user_not_logged_in',
-			// 		],
-			// 		'compare'     => 'has_any',
-			// 	],
-			// ),
+			'conditions' => apply_filters(
+				'content_restriction_module_login_and_back_conditions',
+				[
+					'who_can_see' => [
+						'user_not_logged_in',
+					],
+					'compare'     => 'not_in',
+				],
+			),
 		];
 
 		return $modules;
