@@ -53,9 +53,9 @@ export default function List() {
                 </div>
               </div>
               <h3 class="content-restriction__integrations__list__item__title">{integration.title}</h3>
-              <div class="content-restriction__integrations__list__item__desc">
+              {/* <div class="content-restriction__integrations__list__item__desc">
                 <p>{integration.details}</p>
-              </div>
+              </div> */}
               <p class="content-restriction__integrations__list__item__actions">
                 {
                   integration.link
