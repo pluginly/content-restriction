@@ -10,6 +10,7 @@ class Activate {
 	public function __construct( $file_name ) {
 		$this->auto_deactivate( $file_name );
 		add_option( '_content_restriction_redirect_to_dashboard', true );
+		add_option( '_content_restriction_activation_time', time() );
 
 		DBMigrator::run();
 	}
