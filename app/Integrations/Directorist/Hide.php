@@ -12,6 +12,10 @@ class Hide extends \ContentRestriction\Common\IntegrationHide {
 	public string $post_type = 'at_biz_dir';
 
 	public function single_view_hide() {
+		if ( ! isset( $this->what_content_type ) ) {
+			return;
+		}
+
 		if ( is_front_page() || is_archive() || is_home() ) {
 			return;
 		}
@@ -41,11 +45,12 @@ class Hide extends \ContentRestriction\Common\IntegrationHide {
 	}
 
 	public function hide( $query, $post_type, $what_content_type, $options ) {
+
 		if ( $this->post_type !== $post_type ) {
 			return;
 		}
 
-		$this->options   = $options;
+		$this->options           = $options;
 		$this->what_content_type = $what_content_type;
 
 		if ( ! in_array( $this->what_content_type, $this->then_types ) ) {

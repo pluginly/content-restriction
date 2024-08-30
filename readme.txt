@@ -1,17 +1,17 @@
-=== All-in-One Content Restriction – Conditional Content Visibility & Access Control for WordPress ===
+=== Content Restriction – Conditional Content Visibility & Access Control for WordPress ===
 Contributors: Pluginly, HeyMehedi
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-All-in-One Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin.
+Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin.
 
 == Description ==
-All-in-One Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin to set content access rules for any user - whether logged in, holding specific user role, or a visitor. 
+Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin to set content access rules for any user - whether logged in, holding specific user role, or a visitor. 
 
 Decide who gets to see what content – be it pages, posts , taxonomy or any custom post type by setting up content visibility rules.
 
@@ -116,6 +116,9 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 
 == Changelog ==
+
+= 1.1.1 – Aug 30, 2024 =
+* Fix: Hide Issue
 
 = 1.1.0 – Aug 27, 2024 =
 * Add: WooCommerce Integration

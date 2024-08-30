@@ -12,6 +12,10 @@ class Hide extends \ContentRestriction\Common\IntegrationHide {
 	public string $post_type = 'product';
 
 	public function single_view_hide() {
+		if ( ! isset( $this->what_content_type ) ) {
+			return;
+		}
+
 		if ( is_front_page() || is_archive() || is_home() ) {
 			return;
 		}
