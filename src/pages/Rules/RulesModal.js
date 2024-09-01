@@ -136,7 +136,7 @@ const RulesModal = () => {
                                                         <button 
                                                             className="content-restriction__type__btn"
                                                         >
-                                                            <span class="pro-badge">{__( 'Premium', 'content-restriction' )}</span>
+                                                            <span class="pro-badge">{__( 'Upcoming', 'content-restriction' )}</span>
                                                             <img src={item?.icon || defaultIcon} alt={item.name} />
                                                             <h3>{item.name}</h3>
                                                             <span>{item.desc}</span>

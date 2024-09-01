@@ -9,8 +9,9 @@ namespace ContentRestriction\Setup;
 class Activate {
 	public function __construct( $file_name ) {
 		$this->auto_deactivate( $file_name );
+		$this->first_activation();
+		
 		add_option( '_content_restriction_redirect_to_dashboard', true );
-		add_option( '_content_restriction_activation_time', time() );
 
 		DBMigrator::run();
 	}
@@ -35,5 +36,13 @@ class Activate {
 				'back_link' => true,
 			]
 		);
+	}
+
+	public function first_activation(): void {
+
+		if ( get_option( '_content_restriction_first_activation_time', false ) ) {
+			add_option( '_content_restriction_first_activation_time', time() );
+		}
+
 	}
 }
