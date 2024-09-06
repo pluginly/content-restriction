@@ -56,7 +56,7 @@ final class ContentRestriction {
 
 				do_action( 'content_restriction_after_load' );
 			},
-			11
+			99
 		);
 	}
 }

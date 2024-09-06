@@ -2,7 +2,7 @@
 /**
  * @package ContentRestriction
  * @since   1.0.0
- * @version 1.0.0
+ * @version 1.2.0
  */
 
 namespace ContentRestriction\Integrations\WooCommerce;
@@ -30,6 +30,10 @@ class Integration extends \ContentRestriction\Common\IntegrationBase {
 
 		$modules['woocommerce_placed_order']             = PlacedOrder::class;
 		$modules['woocommerce_bought_specific_products'] = BoughtSpecificProducts::class;
+
+		if ( class_exists( 'WC_Subscriptions' ) ) {
+			$modules['woocommerce_subscriptions_subscriber'] = Subscriber::class;
+		}
 
 		return $modules;
 	}

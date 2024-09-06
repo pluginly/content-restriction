@@ -2,7 +2,7 @@
 /**
  * @package ContentRestriction
  * @since   1.0.0
- * @version 1.0.0
+ * @version 1.2.0
  */
 
 namespace ContentRestriction\Integrations\WooCommerce;
@@ -138,7 +138,77 @@ class Frontend extends IntegrationBase {
 			'is_pro'  => true,
 		];
 
+		if ( class_exists( 'WC_Subscriptions' ) ) {
+
+			$modules[] = [
+				'name'    => __( 'Subscriber', 'content-restriction' ),
+				'key'     => 'woocommerce_subscriptions_subscriber',
+				'group'   => 'woocommerce',
+				'meta'    => ['checkout', 'purchased', 'bought', 'woocommerce', 'products'],
+				'icon'    => $this->get_icon( 'WooCommerce' ),
+				'desc'    => __( 'Only who subscriber should have access to the content.', 'content-restriction' ),
+				'type'    => 'section',
+				'options' => [
+					'status' => [
+						'title'   => __( 'Select Subscription Status', 'content-restriction' ),
+						'type'    => 'multi-select',
+						'options' => $this->subscription_status(),
+					],
+				],
+			];
+
+			$modules[] = [
+				'name'    => __( 'Specific Subscription', 'content-restriction' ),
+				'key'     => 'woocommerce_subscriptions_specific_subscription',
+				'group'   => 'woocommerce',
+				'meta'    => ['checkout', 'purchased', 'bought', 'woocommerce', 'products'],
+				'icon'    => $this->get_icon( 'WooCommerce' ),
+				'desc'    => __( 'Only who subscriber of specific subscriptions should have access to the content.', 'content-restriction' ),
+				'type'    => 'section',
+				'options' => [
+					'subscriptions' => [
+						'title'   => __( 'Select Subscriptions', 'content-restriction' ),
+						'type'    => 'multi-select',
+						'options' => $this->subscription_product_list(),
+					],
+					'status'        => [
+						'title'   => __( 'Select Subscription Status', 'content-restriction' ),
+						'type'    => 'multi-select',
+						'options' => $this->subscription_status(),
+					],
+				],
+				'is_pro'  => true,
+			];
+		}
+
 		return $modules;
+	}
+
+	public function subscription_product_list() {
+		// Retrieve posts of type 'product' with status 'publish' and product type 'subscription'
+		$posts = get_posts( [
+			'post_type'   => 'product',
+			'post_status' => 'publish',
+			'numberposts' => -1, // Retrieve all published products
+			'tax_query'   => [
+				[
+					'taxonomy' => 'product_type',
+					'field'    => 'slug',
+					'terms'    => 'subscription', // Only subscription products
+				],
+			],
+		] );
+
+		$options = [];
+		foreach ( $posts as $post ) {
+			$options[$post->ID] = $post->post_title;
+		}
+
+		return $options;
+	}
+
+	public function subscription_status() {
+		return wcs_get_subscription_statuses();
 	}
 
 	public function get_order_statuses() {
