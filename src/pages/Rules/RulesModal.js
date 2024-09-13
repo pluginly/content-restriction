@@ -16,32 +16,33 @@ const RulesModal = () => {
 	const [ modalTitle, setModalTitle ] = useState( '-' );
 	const [ modalSubTitle, setModalSubTitle ] = useState( '-' );
 
+
+    // Subscribe to changes in the store's data
+    const storeUpdate = subscribe( () => {
+        const modalVisible = state.getModal();
+        const ruleType = state.getRuleType();
+
+        setModalVisible( modalVisible );
+        setSelectedType( ruleType );
+
+        if( 'restrict-view' === ruleType ) {
+            setModalTitle(__( 'How should the content be protected?', 'content-restriction' ));
+            setModalSubTitle(__( 'When user does not have access permission, the following options help control their experience.', 'content-restriction' ));
+        } 
+
+        if( 'what-content' === ruleType ) {
+            setModalTitle(__( 'What content will be unlocked?', 'content-restriction' ));
+            setModalSubTitle(__( 'When user have access permission, the following content will be available.', 'content-restriction' ));
+        }
+
+        if( 'who-can-see' === ruleType ) {
+            setModalTitle(__( 'Who can see the content?', 'content-restriction' ));
+            setModalSubTitle(__( 'Which user type should be allowed to see the content.', 'content-restriction' ));
+        }
+    } );
+
     useEffect( () => {
         setModalVisible(state.getModal());
-
-        // Subscribe to changes in the store's data
-        const storeUpdate = subscribe( () => {
-            const modalVisible = state.getModal();
-            const ruleType = state.getRuleType();
-
-            setModalVisible( modalVisible );
-            setSelectedType( ruleType );
-            
-            if( 'restrict-view' === selectedType ) {
-                setModalTitle(__( 'How should the content be protected?', 'content-restriction' ));
-                setModalSubTitle(__( 'When user does not have access permission, the following options help control their experience.', 'content-restriction' ));
-            } 
-
-            if( 'what-content' === selectedType ) {
-                setModalTitle(__( 'What content will be unlocked?', 'content-restriction' ));
-                setModalSubTitle(__( 'When user have access permission, the following content will be available.', 'content-restriction' ));
-            }
-
-            if( 'who-can-see' === selectedType ) {
-                setModalTitle(__( 'Who can see the content?', 'content-restriction' ));
-                setModalSubTitle(__( 'Which user type should be allowed to see the content.', 'content-restriction' ));
-            }
-        } );
 
         // storeUpdate when the component is unmounted
         return () => storeUpdate();
@@ -131,12 +132,17 @@ const RulesModal = () => {
                                             rulesType?.map((item, index) => {
                                                 return (
                                                     <>
-                                                    { item.is_pro && ! content_restriction_admin.pro_available ? 
+                                                    { item.upcoming || ( item.is_pro  && ! content_restriction_admin.pro_available ) ? 
                                                     <li className="content-restriction__type__item pro-item" key={index}>
                                                         <button 
                                                             className="content-restriction__type__btn"
                                                         >
-                                                            <span class="pro-badge">{__( 'Upcoming', 'content-restriction' )}</span>
+                                                            {
+                                                                item.upcoming ? 
+                                                                <span class="pro-badge">{__( 'Upcoming', 'content-restriction' )}</span> :
+                                                                <span class="pro-badge">{__( 'Pro', 'content-restriction' )}</span>
+                                                            }
+                                                           
                                                             <img src={item?.icon || defaultIcon} alt={item.name} />
                                                             <h3>{item.name}</h3>
                                                             <span>{item.desc}</span>

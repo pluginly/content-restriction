@@ -92,6 +92,70 @@ class Frontend extends IntegrationBase {
 			'is_pro'  => true,
 		];
 
+		$modules[] = [
+			'name'    => __( 'Listings With Directory Type', 'content-restriction' ),
+			'key'     => 'directorist_listings_with_directory_type',
+			'meta'    => ['listings', 'directorist', 'all listings'],
+			'group'   => 'directorist',
+			'icon'    => $this->get_icon( 'Directorist' ),
+			'desc'    => __( 'Listing with the directory type will be accessible when the set rule is applied.', 'content-restriction' ),
+			'type'    => 'section',
+			'options' => [
+				'directory_type' => [
+					'title'   => __( 'Select Directory Type', 'content-restriction' ),
+					'type'    => 'multi-select',
+					'options' => $this->term_list( 'at_biz_dir-location' ),
+				],
+			],
+			'is_pro'  => true,
+		];
+
+		$modules[] = [
+			'name'     => __( 'Listing Sections', 'content-restriction' ),
+			'key'      => 'directorist_listing_sections',
+			'meta'     => ['listings', 'directorist', 'all listings'],
+			'group'    => 'directorist',
+			'icon'     => $this->get_icon( 'Directorist' ),
+			'desc'     => __( 'Listing with the location will be accessible when the set rule is applied.', 'content-restriction' ),
+			'type'     => 'section',
+			'options'  => [
+				'directory_type' => [
+					'title'   => __( 'Select Directory Type', 'content-restriction' ),
+					'type'    => 'multi-select',
+					'options' => $this->term_list( 'at_biz_dir-location' ),
+				],
+				'sections'       => [
+					'title'   => __( 'Select Sections', 'content-restriction' ),
+					'type'    => 'multi-select',
+					'options' => $this->term_list( 'at_biz_dir-location' ),
+				],
+			],
+			'upcoming' => true,
+		];
+
+		$modules[] = [
+			'name'     => __( 'Listing Contact Information', 'content-restriction' ),
+			'key'      => 'directorist_listing_contact_information',
+			'meta'     => ['listings', 'directorist', 'all listings'],
+			'group'    => 'directorist',
+			'icon'     => $this->get_icon( 'Directorist' ),
+			'desc'     => __( 'Listing with the location will be accessible when the set rule is applied.', 'content-restriction' ),
+			'type'     => 'section',
+			'options'  => [
+				'directory_type' => [
+					'title'   => __( 'Select Directory Type', 'content-restriction' ),
+					'type'    => 'multi-select',
+					'options' => $this->term_list( 'at_biz_dir-location' ),
+				],
+				'sections'       => [
+					'title'   => __( 'Select Sections', 'content-restriction' ),
+					'type'    => 'multi-select',
+					'options' => $this->term_list( 'at_biz_dir-location' ),
+				],
+			],
+			'upcoming' => true,
+		];
+
 		return $modules;
 	}
 
