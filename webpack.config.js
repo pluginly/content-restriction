@@ -2,6 +2,8 @@ const path = require( 'path' );
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const defaults = require('@wordpress/scripts/config/webpack.config');
 
+const chunkUniqueKey = Date.now().toString();
+
 module.exports = {
 	...defaults,
 	externals: {
@@ -14,6 +16,8 @@ module.exports = {
 	output: {
 		path: path.resolve( __dirname, './assets/' ),
 		filename: '[name].js',
+		chunkFilename: '[name].js?ver=' + chunkUniqueKey,
+		clean: false,
 	},
 	plugins: [
 		// ...defaultConfig.plugins,

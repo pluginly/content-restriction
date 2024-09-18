@@ -86,6 +86,7 @@ class Enqueuer extends EnqueuerBase {
 					line-height: 27px !important;
 					content: "";
 					background: url("' . esc_attr( CONTENT_RESTRICTION_IMAGES ) . '/sidebar-icon.svg' . '") no-repeat center center;
+					background-size: 20px 20px;
 					speak: none !important;
 					font-style: normal !important;
 					font-weight: normal !important;
@@ -100,6 +101,11 @@ class Enqueuer extends EnqueuerBase {
 					
 				.wp-menu-open .toplevel_page_content-restriction > div.wp-menu-image:before {
 					background: url("' . esc_attr( CONTENT_RESTRICTION_IMAGES ) . '/sidebar-icon-current.svg' . '") no-repeat center center !important;
+					background-size: 20px 20px;
+				}
+				.current.toplevel_page_content-restriction > div.wp-menu-image:before{
+					background: url("' . esc_attr( CONTENT_RESTRICTION_IMAGES ) . '/sidebar-icon-current.svg' . '") no-repeat center center;
+					background-size: 20px 20px;
 				}';
 	}
 }
