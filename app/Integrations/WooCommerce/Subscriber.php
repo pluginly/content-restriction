@@ -34,8 +34,6 @@ class Subscriber extends \ContentRestriction\Common\WhoCanSeeBase {
 
 			return $query->found_orders > 0;
 		} catch ( \Throwable $th ) {
-			\ContentRestriction\Utils\Logger::add( $th, 'woocommerce_subscriptions_subscriber' );
-
 			return false;
 		}
 	}

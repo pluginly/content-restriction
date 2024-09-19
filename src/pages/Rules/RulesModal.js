@@ -140,7 +140,7 @@ const RulesModal = () => {
                                                             {
                                                                 item.upcoming ? 
                                                                 <span class="pro-badge">{__( 'Upcoming', 'content-restriction' )}</span> :
-                                                                <span class="pro-badge">{__( 'Pro', 'content-restriction' )}</span>
+                                                                <span class="pro-badge">{__( 'Upcoming', 'content-restriction' )}</span>
                                                             }
                                                            
                                                             <img src={item?.icon || defaultIcon} alt={item.name} />

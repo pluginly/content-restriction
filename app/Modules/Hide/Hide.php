@@ -97,7 +97,7 @@ class Hide extends RestrictViewBase {
 
 					break;
 
-				case 'selected_pages':
+				case 'specific_pages':
 					$ids = $options['pages'] ?? [];
 					$query->set( 'post__not_in', $ids );
 					break;
@@ -116,9 +116,7 @@ class Hide extends RestrictViewBase {
 		if ( \ContentRestriction\Utils\Post::type( $this->post_id ) !== $this->post_type ) {
 			return;
 		}
-
-		// 	public array $then_types = ['selected_posts',  'selected_pages'];
-
+		
 		switch ( $this->what_content_type ) {
 
 			case 'all_posts':
