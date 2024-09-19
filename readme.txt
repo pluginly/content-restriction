@@ -117,6 +117,10 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 == Changelog ==
 
+= 1.2.1 – Sep 19, 2024 =
+* Fix: Specific Post Hide Issue
+* Fix: Cache Issue for Dashboard
+
 = 1.2.0 – Sep 7, 2024 =
 * Add: WooCommerce Subscription Integration
 * Fix: WooCommerce Error
