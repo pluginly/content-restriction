@@ -147,18 +147,6 @@ const RulesSidebar = () => {
         setNestedOptions(null);
         setSelectedNestedKeys(null);
 
-        if (selectedAction?.conditions) {
-            if (
-                !selectedAction.conditions.what_content.includes(whatContentKey)
-            ) {
-                setConditionValue(transformString(whatContentKey));
-            } else {
-                setConditionValue(false);
-            }
-        } else {
-            setConditionValue(false);
-        }
-
         // Set default values based on defaultData when selectedAction changes
         if (selectedAction && !selectedAction?.options) {
             setSelectedData((prevData) => ({
@@ -235,9 +223,7 @@ const RulesSidebar = () => {
                             >
                                 <div className="content-restriction__sidebar__tab__content__event">
                                     <div className="content-restriction__sidebar__tab__content__event__wrapper">
-                                        {conditionValue ? (
-                                            `${selectedAction?.name} is not allowed on ${conditionValue}`
-                                        ) : selectedAction?.type === 'select' ? (
+                                        { selectedAction?.type === 'select' ? (
                                             <>
                                                 <h3 className="content-restriction__sidebar__tab__content__event__title">
                                                 {__( 'Select ', 'content-restriction' )} {selectedAction?.name}   {__( '(required) ', 'content-restriction' )}
