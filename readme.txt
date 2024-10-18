@@ -2,9 +2,9 @@
 Contributors: Pluginly, HeyMehedi
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
-Tested up to: 6.6
+Tested up to: 6.6.2
 Requires PHP: 7.4
-Stable tag: 1.2.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,7 @@ Decide who gets to see what content – be it pages, posts , taxonomy or any cus
 
 You can transform any static content into conditional and personalized content.
 
+Unlock all features with [Content Restriction Pro](https://contentrestriction.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash).
 
 = Restrict any content in seconds!⏱️ =
 This plugin is intently built with the non-technical users in mind.You have complete control over who can access your website's content and how it is protected.
@@ -116,6 +117,9 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 
 == Changelog ==
+
+= 1.3.0 – Oct 20, 2024 =
+* Fix: Login & Back Dashboard Error
 
 = 1.2.2 – Sep 21, 2024 =
 * Fix: Login & Back Dashboard Error
