@@ -194,6 +194,14 @@ body.active-modal {
         }
       }
 
+      .content-restriction__menu__single__name {
+        &__highlight {
+          color: #0149F8;
+        }
+          display: flex;
+          flex-flow: column;
+      }
+
       .content-restriction__btn--warning {
         position: absolute;
         right: 0;
