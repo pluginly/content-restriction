@@ -2,13 +2,16 @@
 /**
  * @package ContentRestriction
  * @since   1.0.0
- * @version 1.0.0
+ * @version 1.3.0
  */
 
 namespace ContentRestriction\Providers;
 
 class AdminServiceProviders extends \ContentRestriction\Common\ProviderBase {
 	public function boot() {
+
+		$this->init_appsero();
+
 		( new \ContentRestriction\Admin\Enqueuer() );
 		( new \ContentRestriction\Admin\Menu() );
 
@@ -23,6 +26,30 @@ class AdminServiceProviders extends \ContentRestriction\Common\ProviderBase {
 		add_action( 'admin_init', [$this, 'redirect_to_dashboard'] );
 		add_filter( 'admin_footer_text', [$this, 'admin_footer_link'], 99 );
 
+	}
+
+	/**
+	 * Initialize appsero tracking.
+	 *
+	 * Removed custom plugins meta data field in 7.0.5.4
+	 * since Appsero made this builtin.
+	 *
+	 * @see https://github.com/Appsero/client
+	 *
+	 * @return void
+	 */
+	public function init_appsero() {
+		$client = new \ContentRestriction\Admin\Appsero\Client(
+			'5d110217-553d-4f40-9296-0385ef8e9be4',
+			'All-in-One Content Restriction',
+			CONTENT_RESTRICTION_FILE
+		);
+
+		$this->insights = $client->insights();
+
+		// Active insights
+		$client->set_textdomain( 'content-restriction' );
+		$client->insights()->init();
 	}
 
 	public function hide_admin_notices() {
