@@ -28,7 +28,7 @@ class Menu {
 			__( 'All-in-One Content Restriction', 'content-restriction' ),
 			apply_filters(
 				'content_restriction_title',
-				__( 'Content Restriction', 'content-restriction' )
+				__( 'AIO Content Restriction', 'content-restriction' )
 			),
 			$cap,
 			$slug,

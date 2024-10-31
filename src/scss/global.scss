@@ -6,8 +6,11 @@
 
 .toplevel_page_content-restriction {
   p {
-    font-size: 14px;
+    font-size: 16px;
   }
+}
+#content-restriction-admin-dashboard-app {
+  overflow: hidden;
 }
 
 #wpcontent {
@@ -192,6 +195,14 @@ body.active-modal {
         svg {
           fill: #1d2327;
         }
+      }
+
+      .content-restriction__menu__single__name {
+        &__highlight {
+          color: #0149F8;
+        }
+          display: flex;
+          flex-flow: column;
       }
 
       .content-restriction__btn--warning {

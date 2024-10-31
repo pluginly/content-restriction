@@ -23,124 +23,110 @@ class IntegrationsRepository {
 	private static function integrations() {
 		return [
 			[
-				'title'     => __( 'WooCommerce', 'content-restriction' ), // integration name
-				'icon'      => 'WooCommerce', // icon of this plugin
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.', // a link to know more about the integration
-				'plugin'    => 'woocommerce/woocommerce.php', // the plugin filename to check is it installed? if not we will don't allow to activate this module
-				'key'       => 'woocommerce', // we will save the setting using this key
-				'badges'    => [ // we will serve badges like - is pro , upcoming
-					// check if pro plugin installed or not, if installed remove the pro badge
-				],
-				'status'    => false, // status of this setting
-				'installed' => false, // check whether plugin installed? if not then don't allow to trigger the option
+				'title'     => __( 'WooCommerce', 'content-restriction' ),
+				'icon'      => 'WooCommerce',
+				'details'   => 'Personalize the customer shopping experience with dynamic content based on store-specific rules, such as cart rules, product rules, and customer history. You can show upsells, product recommendations, hide specific content, or display personalized messaging.',
+				'plugin'    => 'woocommerce/woocommerce.php',
+				'key'       => 'woocommerce',
+				'badges'    => [],
+				'status'    => false,
+				'installed' => false,
+				'link'      => 'https://contentrestriction.com/integration/woocommerce/',
 			],
 			[
 				'title'     => __( 'Directorist', 'content-restriction' ),
 				'icon'      => 'Directorist',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
+				'details'   => 'Personalize directory listings for users by conditionally displaying or hiding information, such as location, contact details, and more.',
 				'plugin'    => 'directorist/directorist-base.php',
 				'key'       => 'directorist',
-				'badges'    => [
-
-				],
-				'installed' => false,
+				'badges'    => [],
 				'status'    => false,
+				'installed' => false,
+				'link'      => 'https://contentrestriction.com/integration/directorist/',
 			],
 			[
 				'title'     => __( 'FluentCRM', 'content-restriction' ),
 				'icon'      => 'FluentCRM',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
+				'details'   => 'Dynamically display or hide content based on data from funnel stages or marketing automation triggers, such as an LMS course completion success banner, rewarding user, and more.',
 				'plugin'    => 'fluent-crm/fluent-crm.php',
 				'key'       => 'fluent_crm',
-				'badges'    => [
-
-				],
-				'installed' => false,
+				'badges'    => [],
 				'status'    => false,
+				'installed' => false,
+				'link'      => 'https://contentrestriction.com/integration/fluentcrm/',
 			],
 			[
 				'title'     => __( 'Login Me Now', 'content-restriction' ),
 				'icon'      => 'LoginMeNow',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
+				'details'   => "Hide specific content or display personalized messaging based on the user's login method.",
 				'plugin'    => 'login-me-now/login-me-now.php',
 				'key'       => 'login_me_now',
-				'badges'    => [
-
-				],
-				'installed' => false,
+				'badges'    => [],
 				'status'    => false,
+				'installed' => false,
+				'link'      => 'https://contentrestriction.com/integration/login-me-now/',
 			],
 			[
 				'title'     => __( 'Easy Digital Downloads', 'content-restriction' ),
 				'icon'      => 'EasyDigitalDownloads',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
+				'details'   => 'Display dynamic content based on store-specific rules, including cart rules, customer history, and product rules. You can show upsells, product recommendations, hide specific content, or display personalized messaging.',
 				'plugin'    => 'easy-digital-downloads/easy-digital-downloads.php',
 				'key'       => 'easy_digital_downloads',
-				'badges'    => [
-
-				],
-				'installed' => false,
+				'badges'    => [],
 				'status'    => false,
+				'installed' => false,
+				'link'      => 'https://contentrestriction.com/integration/easy-digital-downloads/',
 			],
 			[
 				'title'     => __( 'Block Editor', 'content-restriction' ),
 				'icon'      => 'BlockEditor',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
+				'details'   => 'Apply custom visibility rules for blocks, creating a more dynamic content experience.',
 				'plugin'    => '#',
 				'key'       => 'block_editor',
-				'badges'    => [
-					'upcoming',
-				],
-				'installed' => false,
+				'badges'    => ['upcoming'],
 				'status'    => false,
+				'installed' => false,
 			],
 			[
 				'title'     => __( 'Elementor', 'content-restriction' ),
 				'icon'      => 'Elementor',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
+				'details'   => 'Tailor visibility settings for Elementor widgets, sections, and pages based on user roles.',
 				'plugin'    => 'elementor/elementor.php',
 				'key'       => 'elementor',
-				'badges'    => [
-					'upcoming',
-				],
-				'installed' => false,
+				'badges'    => ['upcoming'],
 				'status'    => false,
+				'installed' => false,
 			],
 			[
 				'title'     => __( 'BuddyPress', 'content-restriction' ),
 				'icon'      => 'BuddyPress',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
+				'details'   => 'Control access to BuddyPress social features, including profiles and groups.',
 				'plugin'    => 'buddypress/bp-loader.php',
 				'key'       => 'buddypress',
-				'badges'    => [
-					'upcoming',
-				],
-				'installed' => false,
+				'badges'    => ['upcoming'],
 				'status'    => false,
+				'installed' => false,
 			],
 			[
 				'title'     => __( 'Tutor LMS', 'content-restriction' ),
 				'icon'      => 'TutorLMS',
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.',
-				'plugin'    => 'buddypress/bp-loader.php',
-				'key'       => 'buddypress',
-				'badges'    => [
-					'upcoming',
-				],
-				'installed' => false,
+				'details'   => 'Customize the visibility of courses, lessons, and quizzes for tailored learning paths.',
+				'plugin'    => 'tutor/tutor.php',
+				'key'       => 'tutor_lms',
+				'badges'    => ['upcoming'],
 				'status'    => false,
+				'installed' => false,
 			],
 			[
-				'title'     => __( 'WooCommerce Subscriptions', 'content-restriction' ), // integration name
-				'icon'      => 'WooCommerce', // icon of this plugin
-				'details'   => 'Check out this incredibly useful plugin that will compress and optimize your images, giving you leaner, faster websites.', // a link to know more about the integration
-				'plugin'    => 'woocommerce/woocommerce.php', // the plugin filename to check is it installed? if not we will don't allow to activate this module
-				'key'       => 'woocommerce-subscriptions', // we will save the setting using this key
-				'badges'    => [
-					'upcoming',
-				],
-				'status'    => false, // status of this setting
-				'installed' => false, // check whether plugin installed? if not then don't allow to trigger the option
+				'title'     => __( 'WooCommerce Subscriptions', 'content-restriction' ),
+				'icon'      => 'WooCommerce',
+				'details'   => 'Create customizable membership levels, restrict access to content based on membership status, and handle recurring subscriptions effortlessly.',
+				'plugin'    => 'woocommerce/woocommerce.php',
+				'key'       => 'woocommerce_subscriptions',
+				'badges'    => [],
+				'status'    => false,
+				'installed' => false,
+				'link'      => 'https://contentrestriction.com/integration/woocommerce/',
 			],
 		];
 	}

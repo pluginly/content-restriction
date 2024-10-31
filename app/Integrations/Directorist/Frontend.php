@@ -93,21 +93,21 @@ class Frontend extends IntegrationBase {
 		];
 
 		$modules[] = [
-			'name'    => __( 'Listings With Directory Type', 'content-restriction' ),
-			'key'     => 'directorist_listings_with_directory_type',
-			'meta'    => ['listings', 'directorist', 'all listings'],
-			'group'   => 'directorist',
-			'icon'    => $this->get_icon( 'Directorist' ),
-			'desc'    => __( 'Listing with the directory type will be accessible when the set rule is applied.', 'content-restriction' ),
-			'type'    => 'section',
-			'options' => [
+			'name'     => __( 'Listings With Directory Type', 'content-restriction' ),
+			'key'      => 'directorist_listings_with_directory_type',
+			'meta'     => ['listings', 'directorist', 'all listings'],
+			'group'    => 'directorist',
+			'icon'     => $this->get_icon( 'Directorist' ),
+			'desc'     => __( 'Listing with the directory type will be accessible when the set rule is applied.', 'content-restriction' ),
+			'type'     => 'section',
+			'options'  => [
 				'directory_type' => [
 					'title'   => __( 'Select Directory Type', 'content-restriction' ),
 					'type'    => 'multi-select',
 					'options' => $this->term_list( 'at_biz_dir-location' ),
 				],
 			],
-			'is_pro'  => true,
+			'upcoming' => true,
 		];
 
 		$modules[] = [

@@ -136,12 +136,12 @@ export default function Header({ }) {
         </div>
        
         <div className="content-restriction__header__action content-restriction__header__action--right">
-          <Switch
+          {/* <Switch
             checked={status}
             onChange={handleChange}
             checkedChildren=""
             unCheckedChildren=""
-          />
+          /> */}
 
           <button 
             className="content-restriction__btn content-restriction__btn--create"
@@ -150,26 +150,26 @@ export default function Header({ }) {
             {id ? __( 'Update', 'content-restriction' ): __( 'Publish', 'content-restriction' )}
           </button>
           {
-            id &&
-            <>
-              <button 
-                className="content-restriction__btn content-restriction__btn--delete"
-                onClick={handleDropdown}
-                ref={dropdownRef}
-              >
-                ...
-              </button>
-              <ul className={`content-restriction__single__btn__dropdown ${openDropDown ? 'active' : ''}`}>
-                    <li className="content-restriction__single__btn__dropdown__item">
-                        <button
-                            className="content-restriction__single__btn__dropdown__btn content-restriction__single__btn__dropdown__btn--delete"
-                            onClick={() => showDeleteConfirm(id, history)}
-                        >
-                          {__( 'Delete', 'content-restriction' )}
-                        </button>
-                    </li>
-              </ul>
-            </>
+            // id &&
+            // <>
+            //   <button 
+            //     className="content-restriction__btn content-restriction__btn--delete"
+            //     onClick={handleDropdown}
+            //     ref={dropdownRef}
+            //   >
+            //     ...
+            //   </button>
+            //   <ul className={`content-restriction__single__btn__dropdown ${openDropDown ? 'active' : ''}`}>
+            //         <li className="content-restriction__single__btn__dropdown__item">
+            //             <button
+            //                 className="content-restriction__single__btn__dropdown__btn content-restriction__single__btn__dropdown__btn--delete"
+            //                 onClick={() => showDeleteConfirm(id, history)}
+            //             >
+            //               {__( 'Delete', 'content-restriction' )}
+            //             </button>
+            //         </li>
+            //   </ul>
+            // </>
           }
         </div>
       </div>

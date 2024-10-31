@@ -23,7 +23,7 @@ class RuleRepository {
 	public function create( array $data ): string {
 		$dto = ( new RuleCreateDTO )
 			->set_title( sanitize_text_field( $data['title'] ) )
-			->set_status( (bool) $data['status'] )
+			->set_status( true )
 			->set_who_can_see( maybe_serialize( $data['rule']['who-can-see'] ) )
 			->set_what_content( maybe_serialize( $data['rule']['what-content'] ) )
 			->set_restrict_view( maybe_serialize( $data['rule']['restrict-view'] ) )
