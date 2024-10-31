@@ -380,11 +380,22 @@
 		position: absolute;
 		text-align: right;
 		right: 15px;
-		background: #ecfdf5;
-		color: #047857;
+		padding: 3px 8px;
+		font-size: 12px;
+	}
+	.pro-item .upcoming-badge {
+		position: absolute;
+		text-align: right;
+		right: 15px;
+		background: #93003f;
+		color: #fff;
 		border-radius: 100px;
 		padding: 3px 8px;
 		font-size: 12px;
+	}
+	.pro-item .upcoming-badge {
+		background: #ecfdf5;
+		color: #047857;
 	}
 	.pro-item {
 		position: relative;

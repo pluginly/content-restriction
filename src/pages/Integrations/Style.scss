@@ -6,11 +6,17 @@
 		max-width: 770px;
 		text-align: center;
 		padding-top: 40px;
+		&__title {
+			font-size: 32px;;
+		}
+		p {
+			font-size: 18px;
+		}
 	}
 	&__list {
 		display: grid;
 		grid-gap: 20px;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+		grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
 		padding: 60px;
 		padding-top: 0;
 		&__item {

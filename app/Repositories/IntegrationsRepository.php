@@ -25,7 +25,7 @@ class IntegrationsRepository {
 			[
 				'title'     => __( 'WooCommerce', 'content-restriction' ),
 				'icon'      => 'WooCommerce',
-				'details'   => 'Control visibility of products, categories, and WooCommerce elements for a personalized shopping experience.',
+				'details'   => 'Personalize the customer shopping experience with dynamic content based on store-specific rules, such as cart rules, product rules, and customer history. You can show upsells, product recommendations, hide specific content, or display personalized messaging.',
 				'plugin'    => 'woocommerce/woocommerce.php',
 				'key'       => 'woocommerce',
 				'badges'    => [],
@@ -36,7 +36,7 @@ class IntegrationsRepository {
 			[
 				'title'     => __( 'Directorist', 'content-restriction' ),
 				'icon'      => 'Directorist',
-				'details'   => 'Show or hide listings, categories, and other Directorist content based on user criteria.',
+				'details'   => 'Personalize directory listings for users by conditionally displaying or hiding information, such as location, contact details, and more.',
 				'plugin'    => 'directorist/directorist-base.php',
 				'key'       => 'directorist',
 				'badges'    => [],
@@ -47,7 +47,7 @@ class IntegrationsRepository {
 			[
 				'title'     => __( 'FluentCRM', 'content-restriction' ),
 				'icon'      => 'FluentCRM',
-				'details'   => 'Manage CRM content visibility to deliver targeted marketing experiences.',
+				'details'   => 'Dynamically display or hide content based on data from funnel stages or marketing automation triggers, such as an LMS course completion success banner, rewarding user, and more.',
 				'plugin'    => 'fluent-crm/fluent-crm.php',
 				'key'       => 'fluent_crm',
 				'badges'    => [],
@@ -58,7 +58,7 @@ class IntegrationsRepository {
 			[
 				'title'     => __( 'Login Me Now', 'content-restriction' ),
 				'icon'      => 'LoginMeNow',
-				'details'   => 'Restrict content access to users logged in via social platforms for enhanced security and personalization.',
+				'details'   => "Hide specific content or display personalized messaging based on the user's login method.",
 				'plugin'    => 'login-me-now/login-me-now.php',
 				'key'       => 'login_me_now',
 				'badges'    => [],
@@ -69,7 +69,7 @@ class IntegrationsRepository {
 			[
 				'title'     => __( 'Easy Digital Downloads', 'content-restriction' ),
 				'icon'      => 'EasyDigitalDownloads',
-				'details'   => 'Manage visibility of digital products and sections for a curated EDD experience.',
+				'details'   => 'Display dynamic content based on store-specific rules, including cart rules, customer history, and product rules. You can show upsells, product recommendations, hide specific content, or display personalized messaging.',
 				'plugin'    => 'easy-digital-downloads/easy-digital-downloads.php',
 				'key'       => 'easy_digital_downloads',
 				'badges'    => [],
@@ -120,7 +120,7 @@ class IntegrationsRepository {
 			[
 				'title'     => __( 'WooCommerce Subscriptions', 'content-restriction' ),
 				'icon'      => 'WooCommerce',
-				'details'   => 'Adjust content visibility based on active subscriptions for exclusive offerings.',
+				'details'   => 'Create customizable membership levels, restrict access to content based on membership status, and handle recurring subscriptions effortlessly.',
 				'plugin'    => 'woocommerce/woocommerce.php',
 				'key'       => 'woocommerce_subscriptions',
 				'badges'    => [],
