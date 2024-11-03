@@ -31,9 +31,6 @@ class AdminServiceProviders extends \ContentRestriction\Common\ProviderBase {
 	/**
 	 * Initialize appsero tracking.
 	 *
-	 * Removed custom plugins meta data field in 7.0.5.4
-	 * since Appsero made this builtin.
-	 *
 	 * @see https://github.com/Appsero/client
 	 *
 	 * @return void
