@@ -118,8 +118,11 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 == Changelog ==
 
-= 1.3.0 – Oct 20, 2024 =
-* Fix: Login & Back Dashboard Error
+= 1.3.0 – Nov 4, 2024 =
+* New: Integrations Page Added
+* Improve: Add User Consent
+* Improve: Changed Default Status
+* Announce: PRO Released
 
 = 1.2.2 – Sep 21, 2024 =
 * Fix: Login & Back Dashboard Error
