@@ -24,8 +24,7 @@ class Integration extends \ContentRestriction\Common\IntegrationBase {
 	}
 
 	public function load( $modules ) {
-		$modules['edd_all_downloads']      = AllDownloads::class;
-		$modules['edd_specific_downloads'] = SpecificDownloads::class;
+		$modules['edd_all_downloads'] = AllDownloads::class;
 
 		$modules['edd_placed_order'] = PlacedOrder::class;
 

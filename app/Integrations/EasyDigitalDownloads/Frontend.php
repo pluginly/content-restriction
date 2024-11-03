@@ -11,14 +11,9 @@ use ContentRestriction\Common\IntegrationBase;
 
 class Frontend extends IntegrationBase {
 	public function boot(): void {
-
 		add_filter( 'content_restriction_module_group_list', [$this, 'add_group'] );
 		add_filter( 'content_restriction_what_content_module_list', [$this, 'what_content'] );
 		add_filter( 'content_restriction_who_can_see_module_list', [$this, 'who_can_see'] );
-
-		/**
-		 * Code goes here
-		 */
 	}
 
 	public function add_group( array $groups ): array {

@@ -19,8 +19,7 @@ class Integration extends \ContentRestriction\Common\IntegrationBase {
 	}
 
 	public function load( $modules ): array {
-		$modules['fluent_crm_subscriber']     = Subscriber::class;
-		$modules['fluent_crm_specific_lists'] = SpecificLists::class;
+		$modules['fluent_crm_subscriber'] = Subscriber::class;
 
 		return $modules;
 	}

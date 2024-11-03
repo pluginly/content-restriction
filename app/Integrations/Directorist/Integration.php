@@ -24,10 +24,8 @@ class Integration extends \ContentRestriction\Common\IntegrationBase {
 	}
 
 	public function load( $modules ) {
-		$modules['directorist_all_listings']             = AllListings::class;
-		$modules['directorist_listings_with_categories'] = ListingsWithCategories::class;
-		$modules['directorist_listings_with_locations']  = ListingsWithLocations::class;
-		$modules['directorist_specific_listings']        = SpecificListings::class;
+		$modules['directorist_all_listings']      = AllListings::class;
+		$modules['directorist_specific_listings'] = SpecificListings::class;
 
 		return $modules;
 	}

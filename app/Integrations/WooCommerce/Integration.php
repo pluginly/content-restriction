@@ -24,12 +24,10 @@ class Integration extends \ContentRestriction\Common\IntegrationBase {
 	}
 
 	public function load( $modules ): array {
-		$modules['woocommerce_all_products']             = AllProducts::class;
-		$modules['woocommerce_products_with_categories'] = ProductsWithCategories::class;
-		$modules['woocommerce_specific_products']        = SpecificProducts::class;
+		$modules['woocommerce_all_products']      = AllProducts::class;
+		$modules['woocommerce_specific_products'] = SpecificProducts::class;
 
-		$modules['woocommerce_placed_order']             = PlacedOrder::class;
-		$modules['woocommerce_bought_specific_products'] = BoughtSpecificProducts::class;
+		$modules['woocommerce_placed_order'] = PlacedOrder::class;
 
 		if ( class_exists( 'WC_Subscriptions' ) ) {
 			$modules['woocommerce_subscriptions_subscriber'] = Subscriber::class;
