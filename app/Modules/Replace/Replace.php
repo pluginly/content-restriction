@@ -7,6 +7,8 @@
 
 namespace ContentRestriction\Modules\Replace;
 
+use ContentRestriction\Utils\Analytics;
+
 class Replace extends \ContentRestriction\Common\RestrictViewBase {
 
 	public function __construct( $who_can_see, $what_content, array $rule ) {
@@ -15,61 +17,64 @@ class Replace extends \ContentRestriction\Common\RestrictViewBase {
 		$this->rule         = $rule;
 		$this->who_can_see  = $who_can_see;
 		$this->what_content = $what_content;
-		$this->options      = $this->rule['rule'][$this->type][$this->module] ?? [];
-		$this->protection   = new Protection( $what_content, $this->options, $this->rule );
+		$this->options      = $rule['rule'][$this->type][$this->module] ?? [];
+		$this->protection   = new Protection( $what_content, $this->options, $rule );
 	}
 
+	/**
+	 * Initializes content restriction checks and applies modifications as needed.
+	 */
 	public function boot(): void {
-		$if = ( new $this->who_can_see( $this->rule ) );
-		if ( $if->has_access() ) {
+		// Exit early if the current user has access to the restricted content
+		$who_can_see = new $this->who_can_see( $this->rule );
+		if ( $who_can_see->has_access() ) {
 			return;
 		}
 
-		\ContentRestriction\Utils\Analytics::add( [
+		// Log that the user encountered restricted content
+		Analytics::add( [
 			'user_id' => get_current_user_id(),
 			'context' => 'locked',
 			'id'      => $this->rule['id'],
 		] );
 
-		add_filter( 'content_restriction_the_title', [$this, 'the_title'], 10 );
-		add_filter( 'content_restriction_the_excerpt', [$this, 'the_excerpt'], 1 );
-		add_filter( 'content_restriction_the_content', [$this, 'the_content'] );
-	}
-
-	public function the_title( $title ) {
-		$this->protection->set_post_id( get_the_ID() );
-
-		$override = $this->apply_to( 'title' );
-		if ( ! empty( $override ) ) {
-			$title = $this->protection->add( $title, $override );
+		/**
+		 * Allow developers to intervene before applying content replacement,
+		 * using the 'content_restriction_replace_before' filter. If any
+		 * callback returns false, stop further processing.
+		 *
+		 * @param bool  $continue Whether to proceed with content replacement.
+		 * @param self  $this     Current instance of the restriction handler.
+		 */
+		if ( ! apply_filters( 'content_restriction_replace_before', true, $this ) ) {
+			return;
 		}
 
-		return $title;
+		// Attach filters to modify restricted content areas as specified by the rule
+		add_filter( 'content_restriction_the_title', [$this, 'modify_content'], 10 );
+		add_filter( 'content_restriction_the_excerpt', [$this, 'modify_content'], 1 );
+		add_filter( 'content_restriction_the_content', [$this, 'modify_content'], 10 );
 	}
 
-	public function the_excerpt( $excerpt ) {
-		$override = $this->apply_to( 'excerpt' );
-		if ( $override ) {
-			$excerpt = $this->protection->add( $excerpt, $override );
+	public function modify_content( $content ): string {
+		$this->protection->set_post_id( get_the_ID() ?: 0 );
+
+		$type = '';
+
+		switch ( current_filter() ) {
+			case 'content_restriction_the_title':
+				$type = 'title';
+				break;
+			case 'content_restriction_the_excerpt':
+				$type = 'excerpt';
+				break;
+			case 'content_restriction_the_content':
+				$type = 'content';
+				break;
 		}
 
-		return $excerpt;
-	}
+		$override = (string) isset( $this->options[$type] ) ? $this->options[$type] : '';
 
-	public function the_content( $content ) {
-		$override = $this->apply_to( 'content' );
-		if ( $override ) {
-			$content = $this->protection->add( $content, $override );
-		}
-
-		return $content;
-	}
-
-	private function apply_to( string $t ) {
-		if ( isset( $this->options[$t] ) ) {
-			return $this->options[$t];
-		}
-
-		return '';
+		return ! empty( $override ) ? $this->protection->add( $content, $override ) : $content;
 	}
 }

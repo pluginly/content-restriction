@@ -67,6 +67,31 @@ class RuleRepository {
 		}
 	}
 
+	public function get( string $id ): array {
+		// Fetch the rule by id using RuleModel
+		$rule = ( new RuleModel )->get( $id );
+
+		// Return an empty array if no rule is found
+		if ( ! $rule ) {
+			return [];
+		}
+
+		// Format the retrieved rule to match the structure used in get_all()
+		$rule['status']     = (bool) $rule['status'];
+		$rule['modified']   = strtotime( $rule['modified'] );
+		$rule['created_at'] = strtotime( $rule['created_at'] );
+
+		$rule['rule']['who-can-see']   = maybe_unserialize( $rule['who_can_see'] );
+		$rule['rule']['what-content']  = maybe_unserialize( $rule['what_content'] );
+		$rule['rule']['restrict-view'] = maybe_unserialize( $rule['restrict_view'] );
+
+		unset( $rule['who_can_see'] );
+		unset( $rule['what_content'] );
+		unset( $rule['restrict_view'] );
+
+		return $rule;
+	}
+
 	public function get_all(): array {
 		$rules = ( new RuleModel )->get_all();
 

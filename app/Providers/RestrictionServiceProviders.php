@@ -15,6 +15,8 @@ class RestrictionServiceProviders extends \ContentRestriction\Common\ProviderBas
 			return;
 		}
 
+		// Flow - Restrict View > Who Can See > What Content
+
 		/**
 		 * Blur, Randomize, & Replace
 		 */

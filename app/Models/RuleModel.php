@@ -77,4 +77,15 @@ class RuleModel {
 			)
 		);
 	}
+
+	public function get( $id ) {
+		$query = $this->wpdb->prepare(
+			"SELECT * FROM {$this->table} WHERE id = %d",
+			$id
+		);
+
+		$result = $this->wpdb->get_row( $query, ARRAY_A );
+
+		return $result;
+	}
 }
