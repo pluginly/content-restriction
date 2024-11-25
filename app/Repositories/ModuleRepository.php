@@ -9,6 +9,7 @@ namespace ContentRestriction\Repositories;
 
 class ModuleRepository {
 	private array $restrictions;
+	public static array $modules;
 
 	public function __construct() {
 		$this->restrictions = $this->fetch_restrictions();
@@ -42,27 +43,27 @@ class ModuleRepository {
 		}
 
 		// Get available restriction modules once for efficiency
-		$modules = $this->get_modules();
+		self::$modules = $this->get_modules();
 
 		// Iterate through each restriction rule
 		foreach ( $this->restrictions as $rule ) {
 			// Skip rule if it's inactive or invalid
-			if ( empty( $rule['status'] ) || ! $this->is_valid_rule( $rule['rule'] ) ) {
+			if ( empty( $rule['status'] ) || ! self::is_valid_rule( $rule['rule'] ) ) {
 				continue;
 			}
 
 			// Resolve modules for "who can see," "what content," and "restrict view"
-			$who_can_see   = $this->resolve_rule_module( $rule['rule']['who-can-see'] );
-			$what_content  = $this->resolve_rule_module( $rule['rule']['what-content'] );
-			$restrict_view = $this->resolve_rule_module( $rule['rule']['restrict-view'] );
+			$who_can_see   = self::resolve_rule_module( $rule['rule']['who-can-see'] );
+			$what_content  = self::resolve_rule_module( $rule['rule']['what-content'] );
+			$restrict_view = self::resolve_rule_module( $rule['rule']['restrict-view'] );
 
 			// Check that all required modules exist in the loaded modules array
-			if ( isset( $modules[$who_can_see], $modules[$what_content], $modules[$restrict_view] ) ) {
+			if ( isset( self::$modules[$who_can_see], self::$modules[$what_content], self::$modules[$restrict_view] ) ) {
 
 				// Initialize and boot the restriction view module with resolved modules
-				$restriction_module = new $modules[$restrict_view](
-					$modules[$who_can_see],
-					$modules[$what_content],
+				$restriction_module = new self::$modules[$restrict_view](
+					self::$modules[$who_can_see],
+					self::$modules[$what_content],
 					$rule
 				);
 
@@ -115,7 +116,7 @@ class ModuleRepository {
 	 * @param array $rule Rule data array.
 	 * @return bool True if the rule is valid; false otherwise.
 	 */
-	private function is_valid_rule( array $rule ): bool {
+	public static function is_valid_rule( array $rule ): bool {
 		return isset(
 			$rule['who-can-see'],
 			$rule['what-content'],
@@ -129,7 +130,14 @@ class ModuleRepository {
 	 * @param mixed $module Rule module data, potentially an array.
 	 * @return string|null Primary key of the module or null if undefined.
 	 */
-	private function resolve_rule_module( $module ): ?string {
+	public static function resolve_rule_module( $module ): ?string {
 		return is_array( $module ) ? array_key_first( $module ) : $module;
+	}
+
+	/**
+	 * Get Specific Module by key
+	 */
+	public static function get_module( string $key ) {
+		return self::$modules[$key] ?? '';
 	}
 }

@@ -7,6 +7,9 @@
 
 namespace ContentRestriction\Modules\Shortcode;
 
+use ContentRestriction\Repositories\ModuleRepository;
+use ContentRestriction\Repositories\RuleRepository;
+
 class ServiceProvider extends \ContentRestriction\Common\ProviderBase {
 	public function boot() {
 		/**
@@ -40,12 +43,37 @@ class ServiceProvider extends \ContentRestriction\Common\ProviderBase {
 			'content_restriction'
 		);
 
-		ob_start();
-		echo 34343;
-		echo $content;
+		$rule = ( new RuleRepository() )->get( $atts['id'] );
+		if ( ! $rule ) {
+			return $content;
+		}
 
-		// error_log( ' $content : ' . print_r( $content, true ) );
-		// error_log( ' $atts[id] : ' . print_r( $atts['id'], true ) );
+		// Skip rule if it's inactive or invalid
+		if ( empty( $rule['status'] ) || ! ModuleRepository::is_valid_rule( $rule['rule'] ) ) {
+			return $content;
+		}
+
+		$who_can_see_key   = ModuleRepository::resolve_rule_module( $rule['rule']['who-can-see'] );
+		$what_content_key  = ModuleRepository::resolve_rule_module( $rule['rule']['what-content'] );
+		$restrict_view_key = ModuleRepository::resolve_rule_module( $rule['rule']['restrict-view'] );
+
+		if ( 'shortcode' !== $what_content_key ) {
+			return $content;
+		}
+
+		// Current user has no access, no restrict the content
+		$who_can_see_class   = ModuleRepository::get_module( $who_can_see_key );
+		$restrict_view_class = ModuleRepository::get_module( $restrict_view_key );
+		$restrict_view_obj   = new $restrict_view_class(
+			$what_content_key,
+			$who_can_see_class,
+			$rule['rule']
+		);
+
+		// error_log( ' $rule[] : ' . print_r( $rule['rule'], true ) );
+		ob_start();
+
+		echo $restrict_view_obj->modify_content( $content, 'shortcode_content' );
 
 		return ob_get_clean();
 	}

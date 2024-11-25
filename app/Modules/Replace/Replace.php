@@ -56,10 +56,8 @@ class Replace extends \ContentRestriction\Common\RestrictViewBase {
 		add_filter( 'content_restriction_the_content', [$this, 'modify_content'], 10 );
 	}
 
-	public function modify_content( $content ): string {
+	public function modify_content( $content, $type = '' ): string {
 		$this->protection->set_post_id( get_the_ID() ?: 0 );
-
-		$type = '';
 
 		switch ( current_filter() ) {
 			case 'content_restriction_the_title':
@@ -73,7 +71,10 @@ class Replace extends \ContentRestriction\Common\RestrictViewBase {
 				break;
 		}
 
+		error_log( ' $content : ' . print_r( $content, true ) );
+
 		$override = (string) isset( $this->options[$type] ) ? $this->options[$type] : '';
+		error_log( ' $override : ' . print_r( $override, true ) );
 
 		return ! empty( $override ) ? $this->protection->add( $content, $override ) : $content;
 	}

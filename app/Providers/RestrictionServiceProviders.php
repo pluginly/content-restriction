@@ -25,7 +25,7 @@ class RestrictionServiceProviders extends \ContentRestriction\Common\ProviderBas
 		add_filter( 'the_content', [$this, 'the_content'] );
 
 		/**
-		 *  Hide
+		 * Hide
 		 */
 		add_action( 'pre_get_posts', [$this, 'pre_get_posts'], 110 );
 
