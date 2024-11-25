@@ -118,6 +118,10 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 == Changelog ==
 
+
+= 1.3.1 – Nov 26, 2024 =
+* Add: Hook - content_restriction_module_condition_check_before	
+
 = 1.3.0 – Nov 4, 2024 =
 * New: Integrations Page Added
 * Improve: Add User Consent

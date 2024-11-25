@@ -42,6 +42,11 @@ class ModuleController {
 				}
 			}
 
+			/**
+			 * This filter is used to modify the module before the condition check.
+			 */
+			$modules[$key] = apply_filters( 'content_restriction_module_condition_check_before', $module, $request );
+
 			if ( ! isset( $module['conditions'] ) ) {
 				continue;
 			}
