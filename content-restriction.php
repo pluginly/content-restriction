@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
  * Plugin Name: All-in-One Content Restriction
  * Plugin URI: https://wordpress.org/plugins/content-restriction/
  * Description: Content Restriction - A simple and user-friendly plugin to restrict users / visitors from viewing posts by restricting access, as simple as that.
- * Version: 1.3.1
+ * Version: 1.3.2
  * Author: ContentRestriction.com
  * Author URI: https://contentrestriction.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
  * License: GPLv2 or later

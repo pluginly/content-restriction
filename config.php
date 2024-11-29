@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) || exit;
 
 return [
-	'version'     => '1.3.1',
+	'version'     => '1.3.2',
 	'min_php'     => '7.4',
 	'db_version'  => '1.0.0',
 	'menu_slug'   => 'content-restriction',
