@@ -2,7 +2,7 @@
 /**
  * @package ContentRestriction
  * @since   1.0.0
- * @version 1.0.0
+ * @version 1.4.0
  */
 
 namespace ContentRestriction\Integrations\Directorist;
@@ -24,8 +24,9 @@ class Integration extends \ContentRestriction\Common\IntegrationBase {
 	}
 
 	public function load( $modules ) {
-		$modules['directorist_all_listings']      = AllListings::class;
-		$modules['directorist_specific_listings'] = SpecificListings::class;
+		$modules['directorist_all_listings']                 = AllListings::class;
+		$modules['directorist_specific_listings']            = SpecificListings::class;
+		$modules['directorist_listings_with_directory_type'] = SpecificDirectoryTypeListings::class;
 
 		return $modules;
 	}

@@ -2,7 +2,7 @@
 /**
  * @package ContentRestriction
  * @since   1.0.0
- * @version 1.0.0
+ * @version 1.4.0
  */
 
 namespace ContentRestriction\Integrations\Directorist;
@@ -88,21 +88,20 @@ class Frontend extends IntegrationBase {
 		];
 
 		$modules[] = [
-			'name'     => __( 'Listings With Directory Type', 'content-restriction' ),
-			'key'      => 'directorist_listings_with_directory_type',
-			'meta'     => ['listings', 'directorist', 'all listings'],
-			'group'    => 'directorist',
-			'icon'     => $this->get_icon( 'Directorist' ),
-			'desc'     => __( 'Listing with the directory type will be accessible when the set rule is applied.', 'content-restriction' ),
-			'type'     => 'section',
-			'options'  => [
-				'directory_type' => [
+			'name'    => __( 'Listings With Directory Type', 'content-restriction' ),
+			'key'     => 'directorist_listings_with_directory_type',
+			'meta'    => ['listings', 'directorist', 'all listings'],
+			'group'   => 'directorist',
+			'icon'    => $this->get_icon( 'Directorist' ),
+			'desc'    => __( 'Listing with the directory type will be accessible when the set rule is applied.', 'content-restriction' ),
+			'type'    => 'section',
+			'options' => [
+				'directory_types' => [
 					'title'   => __( 'Select Directory Type', 'content-restriction' ),
 					'type'    => 'multi-select',
-					'options' => $this->term_list( 'at_biz_dir-location' ),
+					'options' => $this->term_list( ATBDP_DIRECTORY_TYPE, false ),
 				],
 			],
-			'upcoming' => true,
 		];
 
 		$modules[] = [
@@ -114,12 +113,12 @@ class Frontend extends IntegrationBase {
 			'desc'     => __( 'Listing with the location will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'     => 'section',
 			'options'  => [
-				'directory_type' => [
+				'directory_types' => [
 					'title'   => __( 'Select Directory Type', 'content-restriction' ),
 					'type'    => 'multi-select',
 					'options' => $this->term_list( 'at_biz_dir-location' ),
 				],
-				'sections'       => [
+				'sections'        => [
 					'title'   => __( 'Select Sections', 'content-restriction' ),
 					'type'    => 'multi-select',
 					'options' => $this->term_list( 'at_biz_dir-location' ),
@@ -168,10 +167,10 @@ class Frontend extends IntegrationBase {
 		return $options;
 	}
 
-	public function term_list( string $taxonomy ) {
+	public function term_list( string $taxonomy, bool $empty = true ) {
 		$terms = get_terms( [
 			'taxonomy'   => $taxonomy,
-			'hide_empty' => true,
+			'hide_empty' => $empty,
 		] );
 
 		$options = [];

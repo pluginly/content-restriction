@@ -110,6 +110,22 @@ class Hide extends \ContentRestriction\Common\IntegrationHide {
 					]
 				);
 				break;
+
+			case 'directorist_listings_with_directory_type':
+				$ids = $options['directory_types'] ?? [];
+				$query->set(
+					'meta_query',
+					[
+						'relation' => 'OR',
+						[
+							'taxonomy' => ATBDP_DIRECTORY_TYPE,
+							'field'    => 'term_id',
+							'terms'    => $ids,
+							'operator' => 'NOT IN',
+						],
+					]
+				);
+				break;
 		}
 	}
 }
