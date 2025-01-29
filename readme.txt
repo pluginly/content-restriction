@@ -4,7 +4,7 @@ Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 6.6.2
 Requires PHP: 7.4
-Stable tag: 1.3
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,6 +117,13 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 
 == Changelog ==
+
+
+= 1.3.2 – Nov 29, 2024 =
+* Fix: Translation Warning Issue	
+
+= 1.3.1 – Nov 26, 2024 =
+* Add: Hook - content_restriction_module_condition_check_before	
 
 = 1.3.0 – Nov 4, 2024 =
 * New: Integrations Page Added
