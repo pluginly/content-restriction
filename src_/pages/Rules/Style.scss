@@ -361,50 +361,20 @@
     display: flex;
     flex: 1;
     gap: 15px;
-	flex-wrap: wrap;
+    flex-direction: column;
     padding: 15px;
-}
-
-.content-restriction__group {
-	display: flex;
-	gap: 6px;
-	flex-direction: column;
-	width: 125px;
-	margin: 0;
-	@media screen and (max-width: 768px) {
-		flex-direction: row;
-		width: 100%;
-		justify-content: center;
-	}
-	&__item {
-		margin: 0;
-	}
-	&__btn {
-		width: 100%;
-		padding: 10px 15px;
-		background-color: rgb(230, 230, 230);
-		border-radius: 6px;
-		transition: all ease 0.3s;
-		&.active,
-		&:hover {
-			background-color: rgb(31, 49, 33);
-			color: #ffffff;
-		}
-	}
 }
 
 // Action Type CSS
 .content-restriction__type {
     display: flex;
     gap: 5px;
-	flex: 1;
     align-items: center;
     flex-wrap: wrap;
     margin-top: 0px;
     &__item {
       margin: 0;
-      flex: 0 0 32.84%;
-	  max-width: 32.84%;
+      flex: 0 0 32.94%;
 	}
 	.pro-item .pro-badge {
 		position: absolute;

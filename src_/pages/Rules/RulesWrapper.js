@@ -1,13 +1,13 @@
-import DropDownContent from '@components/DropDownContent';
-import postData from '@helpers/postData';
-import transformString from '@helpers/transformString';
-import defaultIcon from '@icons/default.svg';
-import store from '@store/index';
 import { dispatch, select, subscribe } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
+import store from '@store/index';
+import postData from '@helpers/postData';
+import DropDownContent from '@components/DropDownContent';
 import RulesModal from './RulesModal';
 import RulesSidebar from './RulesSidebar';
+import transformString from '@helpers/transformString';
+import defaultIcon from '@icons/default.svg';
+import { __ } from '@wordpress/i18n';
 import ModuleSelectSkeleton from './Skeletons/ModuleSelectSkeleton';
 
 export default function RulesWrapper() {
@@ -131,14 +131,6 @@ export default function RulesWrapper() {
             setWhatContentIcon(whatContentAction.icon ?? whatContentIcon);
             setRestrictViewIcon(restrictViewAction.icon ?? restrictViewIcon);
         });
-
-        const status =  state.getRuleStatus();
-        const ruleTitle = state.getRuleTitle();
-        const contentRule = state.getRuleData();
-        
-        if ( id && status && ruleTitle && contentRule ) {
-            postData( 'content-restriction/rules/update', { id: id, data:{status, title: ruleTitle, rule: contentRule} } )
-        }
 
         // Unsubscribe when the component is unmounted
         return () => storeUpdate();
