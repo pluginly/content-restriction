@@ -244,9 +244,8 @@
 		display: flex;
 		flex-direction: column;
 		border-radius: var( --content-restriction-border-radius );
-		max-width: 900px;
+		max-width: 1000px;
 		max-height: 550px;
-		overflow-y: auto;
 		opacity: 0;
 		z-index: 2;
 		transform: translate(-50%, -50%) scale(0.9);
@@ -265,6 +264,12 @@
 			justify-content: space-between;
 			background: rgb(31, 49, 33);
 			padding: 20px;
+			position: absolute;
+			width: 100%;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			box-sizing: border-box;
 		&__info {
 			display: flex;
 			gap: 10px;
@@ -362,15 +367,26 @@
     flex: 1;
     gap: 15px;
 	flex-wrap: wrap;
-    padding: 15px;
+	padding: 0 15px;
 }
 
 .content-restriction__group {
 	display: flex;
 	gap: 6px;
 	flex-direction: column;
-	width: 125px;
+	width: 200px;
 	margin: 0;
+	position: absolute;
+    left: 15px;
+    top: 123px;
+    height: 100%;
+	~ .content-restriction__type {
+		padding-left: 215px;
+		.content-restriction__type__item {
+			flex: 0 0 49%;
+			max-width: 50%;
+		}
+	}
 	@media screen and (max-width: 768px) {
 		flex-direction: row;
 		width: 100%;
@@ -400,7 +416,12 @@
 	flex: 1;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 0px;
+	margin: 0px;
+    height: 465px;
+    padding: 123px 0 15px;
+	box-sizing: border-box;
+    overflow-y: auto;
+	scrollbar-width: thin;
     &__item {
       margin: 0;
       flex: 0 0 32.84%;

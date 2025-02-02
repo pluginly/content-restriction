@@ -235,7 +235,6 @@ const RulesModal = () => {
                                                         <img src={item?.icon || defaultIcon} alt={item.name} />
                                                         <h3>{item.name}</h3>
                                                         <span>{item.desc}</span>
-                                                        {item.group && <span className="group">{item.group}</span>}
                                                     </button>
                                                 </li>
                                             ))
