@@ -17,10 +17,11 @@ class Frontend extends FrontendBase {
 
 	public function list( array $modules ): array {
 		$modules[] = [
-			'name' => __( 'Hide', 'content-restriction' ),
-			'key'  => 'hide',
-			'icon' => $this->get_icon( 'Hide' ),
-			'desc' => __( 'Hide entirely.', 'content-restriction' ),
+			'name'  => __( 'Hide', 'content-restriction' ),
+			'key'   => 'hide',
+			'icon'  => $this->get_icon( 'Hide' ),
+			'desc'  => __( 'Hide entirely.', 'content-restriction' ),
+			'group' => 'wordpress',
 		];
 
 		return $modules;

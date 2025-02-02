@@ -21,6 +21,7 @@ class Frontend extends FrontendBase {
 			'icon'       => $this->get_icon( 'Blur' ),
 			'desc'       => __( 'Blur title, excerpt and description.', 'content-restriction' ),
 			'type'       => 'section',
+			'group'      => 'wordpress',
 			'options'    => [
 				'apply_to' => [
 					'title'   => __( 'Apply To', 'content-restriction' ),

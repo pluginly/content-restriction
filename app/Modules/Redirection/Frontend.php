@@ -22,6 +22,7 @@ class Frontend extends FrontendBase {
 			'icon'    => $this->get_icon( 'Redirection' ),
 			'desc'    => __( 'Redirect to any URL.', 'content-restriction' ),
 			'type'    => 'section',
+			'group'   => 'wordpress',
 			'options' => [
 				'url' => [
 					'title' => __( 'Redirection to', 'content-restriction' ),

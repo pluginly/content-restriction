@@ -23,10 +23,11 @@ class Frontend extends FrontendBase {
 
 	public function list( array $modules ): array {
 		$modules[] = [
-			'name' => __( 'Shortcode', 'content-restriction' ),
-			'key'  => 'shortcode',
-			'icon' => $this->get_icon( 'WordPress' ),
-			'desc' => __( 'All the shortcode area will be accessible when the set rule is applied.', 'content-restriction' ),
+			'name'  => __( 'Shortcode', 'content-restriction' ),
+			'key'   => 'shortcode',
+			'icon'  => $this->get_icon( 'WordPress' ),
+			'desc'  => __( 'All the shortcode area will be accessible when the set rule is applied.', 'content-restriction' ),
+			'group' => 'wordpress',
 		];
 
 		return $modules;
@@ -40,7 +41,7 @@ class Frontend extends FrontendBase {
 			if ( isset( $module['key'] ) ) {
 				if ( 'replace' === $module['key'] ) {
 					$module['options']['shortcode_content'] = $module['options']['content'];
-					
+
 					unset( $module['options']['title'] );
 					unset( $module['options']['excerpt'] );
 					unset( $module['options']['content'] );

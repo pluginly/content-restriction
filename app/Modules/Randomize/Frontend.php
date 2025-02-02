@@ -20,6 +20,7 @@ class Frontend extends \ContentRestriction\Common\FrontendBase {
 			'icon'       => $this->get_icon( 'Randomize' ),
 			'desc'       => __( 'Randomize words in the post or page title, excerpt, and description.', 'content-restriction' ),
 			'type'       => 'section',
+			'group'      => 'wordpress',
 			'options'    => [
 				'apply_to' => [
 					'title'   => __( 'Apply To', 'content-restriction' ),
