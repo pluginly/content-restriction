@@ -23,6 +23,7 @@ class Frontend extends FrontendBase {
 			'url'     => 'https://wordpress.org/plugins/wordpress-users/',
 			'desc'    => __( 'Select who should have access to the content.', 'content-restriction' ),
 			'type'    => 'section',
+			'group'   => 'wordpress',
 			'options' => [
 				'roles' => [
 					'title'   => __( 'Select Roles', 'content-restriction' ),
@@ -39,6 +40,7 @@ class Frontend extends FrontendBase {
 			'url'     => 'https://wordpress.org/plugins/wordpress-users/',
 			'desc'    => __( 'Select who should have access to the content.', 'content-restriction' ),
 			'type'    => 'section',
+			'group'   => 'wordpress',
 			'options' => [
 				'users' => [
 					'title'   => __( 'Select Users', 'content-restriction' ),
@@ -49,17 +51,19 @@ class Frontend extends FrontendBase {
 		];
 
 		$modules[] = [
-			'name' => __( 'Logged In User', 'content-restriction' ),
-			'key'  => 'user_logged_in',
-			'icon' => $this->get_icon( 'WordPress' ),
-			'desc' => __( 'Only logged in user should have access to the content.', 'content-restriction' ),
+			'name'  => __( 'Logged In User', 'content-restriction' ),
+			'key'   => 'user_logged_in',
+			'icon'  => $this->get_icon( 'WordPress' ),
+			'desc'  => __( 'Only logged in user should have access to the content.', 'content-restriction' ),
+			'group' => 'wordpress',
 		];
 
 		$modules[] = [
-			'name' => __( 'Logged Out User', 'content-restriction' ),
-			'key'  => 'user_not_logged_in',
-			'icon' => $this->get_icon( 'WordPress' ),
-			'desc' => __( 'Only logged out user should have access to the content.', 'content-restriction' ),
+			'name'  => __( 'Logged Out User', 'content-restriction' ),
+			'key'   => 'user_not_logged_in',
+			'icon'  => $this->get_icon( 'WordPress' ),
+			'desc'  => __( 'Only logged out user should have access to the content.', 'content-restriction' ),
+			'group' => 'wordpress',
 		];
 
 		return $modules;

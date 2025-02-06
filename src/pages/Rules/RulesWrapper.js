@@ -1,13 +1,13 @@
-import { dispatch, select, subscribe } from '@wordpress/data';
-import { useEffect, useState } from '@wordpress/element';
-import store from '@store/index';
-import postData from '@helpers/postData';
 import DropDownContent from '@components/DropDownContent';
-import RulesModal from './RulesModal';
-import RulesSidebar from './RulesSidebar';
+import postData from '@helpers/postData';
 import transformString from '@helpers/transformString';
 import defaultIcon from '@icons/default.svg';
+import store from '@store/index';
+import { dispatch, select, subscribe } from '@wordpress/data';
+import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import RulesModal from './RulesModal';
+import RulesSidebar from './RulesSidebar';
 import ModuleSelectSkeleton from './Skeletons/ModuleSelectSkeleton';
 
 export default function RulesWrapper() {
@@ -83,7 +83,11 @@ export default function RulesWrapper() {
 
                 const fetchData = async (defaultType, defaultAction) => {
                     try {
-                        const res = defaultType && await postData(`content-restriction/modules/${defaultType}`);
+                        const res = defaultType && await postData( `content-restriction/modules/${defaultType}`, {
+                            what_content : initialWhatContent,
+                            who_can_see : initialWhoCanSee,
+                            restrict_view : initialRestrictView,
+                        } )
                 
                         // Filter the result and access the first element
                         const action = res.find(item => item.key === defaultAction);

@@ -17,10 +17,11 @@ class Frontend extends FrontendBase {
 
 	public function list( array $modules ): array {
 		$modules[] = [
-			'name' => __( 'All Posts', 'content-restriction' ),
-			'key'  => 'all_posts',
-			'icon' => $this->get_icon( 'WordPress' ),
-			'desc' => __( 'All the posts will be accessible when the set rule is applied.', 'content-restriction' ),
+			'name'  => __( 'All Posts', 'content-restriction' ),
+			'key'   => 'all_posts',
+			'icon'  => $this->get_icon( 'WordPress' ),
+			'desc'  => __( 'All the posts will be accessible when the set rule is applied.', 'content-restriction' ),
+			'group' => 'wordpress',
 		];
 
 		$modules[] = [
@@ -29,6 +30,7 @@ class Frontend extends FrontendBase {
 			'icon'    => $this->get_icon( 'WordPress' ),
 			'desc'    => __( 'Specific post will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
+			'group'   => 'wordpress',
 			'options' => [
 				'posts' => [
 					'title'   => __( 'Select Posts', 'content-restriction' ),
@@ -44,6 +46,7 @@ class Frontend extends FrontendBase {
 			'icon'    => $this->get_icon( 'WordPress' ),
 			'desc'    => __( 'Post with the category will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
+			'group'   => 'wordpress',
 			'options' => [
 				'categories' => [
 					'title'   => __( 'Select Categories', 'content-restriction' ),
@@ -59,6 +62,7 @@ class Frontend extends FrontendBase {
 			'icon'    => $this->get_icon( 'WordPress' ),
 			'desc'    => __( 'Post with the tag will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
+			'group'   => 'wordpress',
 			'options' => [
 				'tags' => [
 					'title'   => __( 'Select Tags', 'content-restriction' ),

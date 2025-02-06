@@ -17,10 +17,11 @@ class Frontend extends FrontendBase {
 
 	public function list( array $modules ): array {
 		$modules[] = [
-			'name' => __( 'All Pages', 'content-restriction' ),
-			'key'  => 'all_pages',
-			'icon' => $this->get_icon( 'WordPress' ),
-			'desc' => __( 'All the pages will be accessible when the set rule is applied.', 'content-restriction' ),
+			'name'  => __( 'All Pages', 'content-restriction' ),
+			'key'   => 'all_pages',
+			'icon'  => $this->get_icon( 'WordPress' ),
+			'desc'  => __( 'All the pages will be accessible when the set rule is applied.', 'content-restriction' ),
+			'group' => 'wordpress',
 		];
 
 		$modules[] = [
@@ -29,6 +30,7 @@ class Frontend extends FrontendBase {
 			'icon'    => $this->get_icon( 'WordPress' ),
 			'desc'    => __( 'Specific page will be accessible when the set rule is applied.', 'content-restriction' ),
 			'type'    => 'section',
+			'group'   => 'wordpress',
 			'options' => [
 				'pages' => [
 					'title'   => __( 'Selected Pages', 'content-restriction' ),
@@ -39,10 +41,11 @@ class Frontend extends FrontendBase {
 		];
 
 		$modules[] = [
-			'name' => __( 'Frontpage', 'content-restriction' ),
-			'key'  => 'frontpage',
-			'icon' => $this->get_icon( 'WordPress' ),
-			'desc' => __( 'Frontpage will be accessible when the set rule is applied.', 'content-restriction' ),
+			'name'  => __( 'Frontpage', 'content-restriction' ),
+			'key'   => 'frontpage',
+			'icon'  => $this->get_icon( 'WordPress' ),
+			'desc'  => __( 'Frontpage will be accessible when the set rule is applied.', 'content-restriction' ),
+			'group' => 'wordpress',
 		];
 
 		return $modules;

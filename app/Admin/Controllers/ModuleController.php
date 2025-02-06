@@ -26,15 +26,25 @@ class ModuleController {
 		return $this->filter( $request, $modules );
 	}
 
+	/**
+	 * Register Groups for Modules
+	 */
 	public function groups(): array {
 		return apply_filters( 'content_restriction_module_group_list', [] );
 	}
 
+	/**
+	 * Before Sending Response Filter All The Modules
+	 * To Ensure That The Admin Frontend Showing Correct Result
+	 */
 	private function filter( \WP_REST_Request $request, array $modules ): array {
 		$filter_keys = ['what_content', 'who_can_see', 'restrict_view'];
 
 		foreach ( $modules as $key => $module ) {
 
+			/**
+			 * Add selected key to the module
+			 */
 			foreach ( $filter_keys as $filter_key ) {
 				$param_value = $request->get_param( $filter_key );
 				if ( $module['key'] === $param_value ) {
@@ -47,10 +57,16 @@ class ModuleController {
 			 */
 			$modules[$key] = apply_filters( 'content_restriction_module_condition_check_before', $module, $request );
 
-			if ( ! isset( $module['conditions'] ) ) {
+			/**
+			 * If the module has no conditions, don't run remaining code.
+			 */
+			if ( ! isset( $modules[$key]['conditions'] ) ) {
 				continue;
 			}
 
+			/**
+			 * Check if the current module meets the conditions.
+			 */
 			foreach ( $filter_keys as $filter_key ) {
 				$param_value      = $request->get_param( $filter_key );
 				$condition_values = $module['conditions'][$filter_key] ?? [];

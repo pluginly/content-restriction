@@ -22,6 +22,7 @@ class Frontend extends FrontendBase {
 			'icon'       => $this->get_icon( 'Replace' ),
 			'desc'       => __( 'Replace title, excerpt, and description with custom message.', 'content-restriction' ),
 			'type'       => 'section',
+			'group'      => 'wordpress',
 			'options'    => [
 				'title'   => [
 					'title' => __( 'Title', 'content-restriction' ),

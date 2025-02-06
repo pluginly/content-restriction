@@ -4,9 +4,9 @@
     "paths": {
       "@icon/*": ["assets/icon"],
       "@components/*": ["src/components/*"],
-      "@features/*": ["./src/features/*"],
+      "@features/*": ["src/features/*"],
       "@helpers/*": ["src/helpers/*"],
-      "@store/*": ["./src/store/*"]
+      "@store/*": ["src/store/*"]
     }
   },
   "exclude": [".git", "app", "node_modules", "vendor"]

@@ -24,6 +24,7 @@ class FrontendServiceProviders extends \ContentRestriction\Common\ProviderBase {
 			\ContentRestriction\Modules\Hide\Frontend::class,
 			\ContentRestriction\Modules\LoginBack\Frontend::class,
 			\ContentRestriction\Modules\Replace\Frontend::class,
+			\ContentRestriction\Modules\Shortcode\Frontend::class,
 			\ContentRestriction\Modules\Pages\Frontend::class,
 			\ContentRestriction\Modules\Posts\Frontend::class,
 			\ContentRestriction\Modules\Redirection\Frontend::class,

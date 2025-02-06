@@ -1,12 +1,13 @@
-import { useEffect, useState } from '@wordpress/element';
-import { Switch, Tooltip } from "antd";
-import { Link } from "react-router-dom";
-import postData from '@helpers/postData';
 import ModifiedTime from '@helpers/ModifiedTime';
-import showDeleteConfirm from '@helpers/showDeleteConfirm';
 import openNotificationWithIcon from '@helpers/openNotificationWithIcon';
+import postData from '@helpers/postData';
+import showDeleteConfirm from '@helpers/showDeleteConfirm';
+import store from '@store/index';
+import { dispatch } from '@wordpress/data';
+import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { useNavigate } from 'react-router-dom';
+import { Switch, Tooltip } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import RulesSkeleton from './Skeletons/RulesSkeleton';
 
 export default function List() {
@@ -48,6 +49,8 @@ export default function List() {
       .catch( ( error ) => {
         openNotificationWithIcon('error', __( "Something wen't wrong!", 'content-restriction' ))
       });
+
+      dispatch(store).setSidebarVisible(false);
   }, []);
 
   return (

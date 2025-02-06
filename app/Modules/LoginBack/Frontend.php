@@ -21,6 +21,7 @@ class Frontend extends FrontendBase {
 			'key'        => 'login_back',
 			'icon'       => $this->get_icon( 'LoginBack' ),
 			'desc'       => __( 'Redirect back to the current post or page after the user logged in.', 'content-restriction' ),
+			'group'      => 'wordpress',
 			'conditions' => apply_filters(
 				'content_restriction_module_login_and_back_conditions',
 				[

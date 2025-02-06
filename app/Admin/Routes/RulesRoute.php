@@ -16,6 +16,7 @@ class RulesRoute extends \ContentRestriction\Common\RouteBase {
 		$this->post( $this->endpoint . '/read', [\ContentRestriction\Admin\Controllers\RuleController::class, 'read'] );
 		$this->post( $this->endpoint . '/update', [\ContentRestriction\Admin\Controllers\RuleController::class, 'update'] );
 		$this->post( $this->endpoint . '/delete', [\ContentRestriction\Admin\Controllers\RuleController::class, 'delete'] );
+		
 		$this->post( $this->endpoint . '/list', [\ContentRestriction\Admin\Controllers\RuleController::class, 'list'] );
 	}
 }
