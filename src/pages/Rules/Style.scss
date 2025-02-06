@@ -512,7 +512,7 @@
       right: 0;
       padding: 15px 0;
       background: #ffffff;
-      height: 100vh;
+      height: calc(90vh - 80px);
       width: 100%;
       max-width: 500px;
       display: flex;
@@ -521,6 +521,7 @@
       border-radius: var( --content-restriction-border-radius );
       box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
       z-index: 1;
+	  overflow-y: auto;
       opacity: 0;
       transform: translateX(50px);
       transition:

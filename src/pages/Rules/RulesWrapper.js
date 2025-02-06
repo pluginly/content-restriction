@@ -83,7 +83,11 @@ export default function RulesWrapper() {
 
                 const fetchData = async (defaultType, defaultAction) => {
                     try {
-                        const res = defaultType && await postData(`content-restriction/modules/${defaultType}`);
+                        const res = defaultType && await postData( `content-restriction/modules/${defaultType}`, {
+                            what_content : initialWhatContent,
+                            who_can_see : initialWhoCanSee,
+                            restrict_view : initialRestrictView,
+                        } )
                 
                         // Filter the result and access the first element
                         const action = res.find(item => item.key === defaultAction);
@@ -131,14 +135,6 @@ export default function RulesWrapper() {
             setWhatContentIcon(whatContentAction.icon ?? whatContentIcon);
             setRestrictViewIcon(restrictViewAction.icon ?? restrictViewIcon);
         });
-
-        const status =  state.getRuleStatus();
-        const ruleTitle = state.getRuleTitle();
-        const contentRule = state.getRuleData();
-        
-        if ( id && status && ruleTitle && contentRule ) {
-            postData( 'content-restriction/rules/update', { id: id, data:{status, title: ruleTitle, rule: contentRule} } )
-        }
 
         // Unsubscribe when the component is unmounted
         return () => storeUpdate();

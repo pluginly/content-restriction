@@ -64,6 +64,28 @@ const RulesModal = () => {
             .then( ( res ) => {
                 setRulesType(res);
                 setRulesTypeLoaded(true);
+                let ruleType = null;
+
+                if (selectedType === 'who-can-see') {
+                    ruleType = whoCanSeeAction?.key;
+                } else if (selectedType === 'what-content') {
+                    ruleType = whatContentAction?.key;
+                } else if (selectedType === 'restrict-view') {
+                    ruleType = restrictViewAction?.key;
+                }
+
+                // Filter the result and access the first element
+                const action = res.find(item => item.key === ruleType);
+                
+                if (action) { // Check if action is not empty
+                    if (selectedType === 'who-can-see') {
+                        dispatch(store).setWhoCanSee(action);
+                    } else if (selectedType === 'what-content') {
+                        dispatch(store).setWhatContent(action);
+                    } else if (selectedType === 'restrict-view') {
+                        dispatch(store).setRestrictView(action);
+                    }
+                }
             } )
     }
 
