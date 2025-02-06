@@ -70,7 +70,6 @@ class ServiceProvider extends \ContentRestriction\Common\ProviderBase {
 			$rule['rule']
 		);
 
-		// error_log( ' $rule[] : ' . print_r( $rule['rule'], true ) );
 		ob_start();
 
 		echo $restrict_view_obj->modify_content( $content, 'shortcode_content' );

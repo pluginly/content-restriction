@@ -47,9 +47,6 @@ class Frontend extends FrontendBase {
 					unset( $module['options']['content'] );
 					unset( $module['conditions'] );
 
-					error_log( ' $replace : ' . print_r( $module['key'], true ) );
-					error_log( ' $module[ : ' . print_r( $module, true ) );
-					
 				} elseif ( 'blur' === $module['key'] ) {
 					//
 				} elseif ( 'randomize' === $module['key'] ) {

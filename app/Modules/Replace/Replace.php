@@ -71,10 +71,7 @@ class Replace extends \ContentRestriction\Common\RestrictViewBase {
 				break;
 		}
 
-		error_log( ' $content : ' . print_r( $content, true ) );
-
 		$override = (string) isset( $this->options[$type] ) ? $this->options[$type] : '';
-		error_log( ' $override : ' . print_r( $override, true ) );
 
 		return ! empty( $override ) ? $this->protection->add( $content, $override ) : $content;
 	}
