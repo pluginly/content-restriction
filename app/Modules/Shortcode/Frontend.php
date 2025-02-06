@@ -38,7 +38,9 @@ class Frontend extends FrontendBase {
 		$param_value = $request->get_param( 'what_content' );
 
 		if ( 'shortcode' === $param_value ) {
+
 			if ( isset( $module['key'] ) ) {
+
 				if ( 'replace' === $module['key'] ) {
 					$module['options']['shortcode_content'] = $module['options']['content'];
 
@@ -48,9 +50,15 @@ class Frontend extends FrontendBase {
 					unset( $module['conditions'] );
 
 				} elseif ( 'blur' === $module['key'] ) {
-					//
+					error_log( 'blur : ' . print_r( $module, true ) );
+					unset( $module['options']['apply_to'] );
 				} elseif ( 'randomize' === $module['key'] ) {
-					//
+					error_log( 'randomize : ' . print_r( $module, true ) );
+				} elseif ( 'login_back' === $module['key'] ) {
+					error_log( 'login_back : ' . print_r( $module, true ) );
+				} elseif ( 'redirection' === $module['key'] ) {
+					error_log( 'redirection : ' . print_r( $module, true ) );
+
 				}
 
 			}

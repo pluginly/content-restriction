@@ -41,6 +41,7 @@ class Frontend extends \ContentRestriction\Common\FrontendBase {
 					'all_pages',
 					'specific_pages',
 					'frontpage',
+					'shortcode'
 				],
 				'compare'      => 'has_any',
 			],
